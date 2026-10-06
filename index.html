@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Frise vivante — l’histoire au collège</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800&family=Figtree:wght@400;500;600;700;800&family=Lexend:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7FC; --surface:#FFFFFF; --ink:#151A3A; --ink-soft:#5C6285; --line:rgba(21,26,58,.13);
+  --accent:#4B3FD8; --accent-ink:#FFFFFF; --gold:#F0A500; --ok:#14865A; --ok-soft:#DDF5EA; --ko:#D02B4E; --ko-soft:#FDE3E9;
+  --p-pre:#E58A00; --p-ant:#0E9C9A; --p-moy:#6B4FBB; --p-mod:#E8436A; --p-cont:#2D63E8;
+  --t-pre:#FFF2DC; --t-ant:#DDF6F3; --t-moy:#EEE8FB; --t-mod:#FFE7EC; --t-cont:#E3ECFF;
+  --spectrum:linear-gradient(90deg,#E58A00,#0E9C9A 28%,#6B4FBB 52%,#E8436A 76%,#2D63E8);
+  --display:"Unbounded", "Trebuchet MS", Arial, sans-serif;
+  --sans:"Figtree", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --serif:var(--sans);
+  --stick:52px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1330; --surface:#1B2149; --ink:#F3F1FF; --ink-soft:#AEB2D6; --line:rgba(243,241,255,.16);
+    --accent:#9D93FF; --accent-ink:#120E3A; --gold:#FFC43D; --ok:#5EE0A6; --ok-soft:#14372B; --ko:#FF7D98; --ko-soft:#43182A;
+    --p-pre:#FFB238; --p-ant:#3ED6CF; --p-moy:#A98BFF; --p-mod:#FF6F91; --p-cont:#6E9BFF;
+    --t-pre:#2B2312; --t-ant:#102E35; --t-moy:#211C47; --t-mod:#36182B; --t-cont:#14224F;
+    --spectrum:linear-gradient(90deg,#FFB238,#3ED6CF 28%,#A98BFF 52%,#FF6F91 76%,#6E9BFF);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1330; --surface:#1B2149; --ink:#F3F1FF; --ink-soft:#AEB2D6; --line:rgba(243,241,255,.16);
+  --accent:#9D93FF; --accent-ink:#120E3A; --gold:#FFC43D; --ok:#5EE0A6; --ok-soft:#14372B; --ko:#FF7D98; --ko-soft:#43182A;
+  --p-pre:#FFB238; --p-ant:#3ED6CF; --p-moy:#A98BFF; --p-mod:#FF6F91; --p-cont:#6E9BFF;
+  --t-pre:#2B2312; --t-ant:#102E35; --t-moy:#211C47; --t-mod:#36182B; --t-cont:#14224F;
+  --spectrum:linear-gradient(90deg,#FFB238,#3ED6CF 28%,#A98BFF 52%,#FF6F91 76%,#6E9BFF);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:1.0625rem;line-height:1.5}
+body.dys{--display:"Lexend", Verdana, Arial, sans-serif;--sans:"Lexend", Verdana, Arial, sans-serif;letter-spacing:.03em;word-spacing:.12em;line-height:1.7}
+body.noscroll{overflow:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+[hidden]{display:none !important}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+
+/* En-tête */
+.top{padding:24px 0 0}
+.top .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-family:var(--display);font-weight:700;font-size:clamp(1.75rem,6vw,2.9rem);line-height:1.05;letter-spacing:-.02em}
+.top p{margin:.45rem 0 0;color:var(--ink-soft);max-width:46ch}
+.hbtns{display:flex;gap:8px;flex-wrap:wrap}
+.dysbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.45rem .95rem;cursor:pointer;font-weight:700;font-size:.92rem;min-height:40px}
+.dysbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.spectrum{height:6px;background:var(--spectrum);margin-top:18px}
+
+/* Onglets */
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:none;padding:.8rem .9rem .7rem;cursor:pointer;font-weight:700;color:var(--ink-soft);border-bottom:3px solid transparent;font-size:1rem}
+.tab[aria-selected="true"]{color:var(--ink);border-image:var(--spectrum) 1;border-bottom-width:3px;border-bottom-style:solid}
+
+/* Barre d’outils */
+.tools{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:14px 0 12px}
+.grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.grp-l{font-size:.85rem;color:var(--ink-soft);font-weight:700;margin-right:2px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.32rem .8rem;cursor:pointer;font-weight:700;font-size:.92rem;display:inline-flex;align-items:center;gap:.4rem;min-height:36px}
+.chip .dot{width:.65rem;height:.65rem;border-radius:50%;background:var(--lv)}
+.chip[aria-pressed="true"]{border-color:var(--ink)}
+.chip[aria-pressed="false"]{opacity:.55;background:transparent}
+.chip[aria-pressed="false"] .dot{background:transparent;box-shadow:inset 0 0 0 2px var(--lv)}
+.chip.go{opacity:1;background:transparent;font-weight:600}
+.chip.go[data-go]{border-color:var(--lv);border-width:1.5px}
+.chip:hover{border-color:var(--ink-soft)}
+
+/* Frise */
+#tl{position:relative;margin:0 auto;max-width:1100px;overflow:hidden}
+.band{position:absolute;left:0;right:0;border-top:2px solid var(--pc)}
+.band::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--cx) - 3px);width:6px;border-radius:3px;background:var(--pc)}
+.band.s-pre{background:var(--t-pre);--pc:var(--p-pre)} .band.s-ant{background:var(--t-ant);--pc:var(--p-ant)}
+.band.s-moy{background:var(--t-moy);--pc:var(--p-moy)} .band.s-mod{background:var(--t-mod);--pc:var(--p-mod)}
+.band.s-cont{background:var(--t-cont);--pc:var(--p-cont)}
+.plabel{position:-webkit-sticky;position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--stick) + 10px);z-index:6;width:-webkit-fit-content;width:fit-content;margin:10px 12px 0 auto;padding:.3rem .85rem .35rem;border-radius:999px;background:var(--pc);color:#fff;font-family:var(--display);font-weight:600;font-size:.95rem}
+:root[data-theme="dark"] .plabel{color:#0F1330}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .plabel{color:#0F1330} }
+.s-pre{--pc:var(--p-pre)} .s-ant{--pc:var(--p-ant)} .s-moy{--pc:var(--p-moy)} .s-mod{--pc:var(--p-mod)} .s-cont{--pc:var(--p-cont)}
+.compact .plabel{display:none}
+.core{display:none}
+.tick{position:absolute;transform:translate(-50%,-50%);z-index:4;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:0 .45rem;font-size:.76rem;font-weight:700;white-space:nowrap;color:var(--ink-soft);line-height:1.65;font-variant-numeric:tabular-nums}
+.tick.bound{background:var(--ink);color:var(--bg);border-color:var(--ink);font-size:.8rem}
+.tick.end{background:var(--spectrum);color:#fff;border:0;padding:.05rem .6rem;text-shadow:0 1px 1px rgba(0,0,0,.25)}
+.rupt{position:absolute;z-index:3;color:var(--ink);opacity:.5;transform:translateY(-50%);height:14px;display:flex;justify-content:center}
+.rupt svg{display:block}
+.dot2{position:absolute;z-index:4;width:12px;height:12px;border-radius:50%;background:var(--surface);border:3px solid var(--lv);transform:translate(-50%,-50%)}
+.dur{position:absolute;z-index:3;width:4px;border-radius:2px;background:var(--lv);opacity:.55}
+#links{position:absolute;left:0;top:0;z-index:1;pointer-events:none;overflow:visible}
+#links line{stroke:var(--ink-soft);stroke-width:1;opacity:.4}
+.ev{position:absolute;top:0;z-index:5;display:block;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:.5rem .75rem .55rem 1rem;cursor:pointer;box-shadow:0 1px 2px rgba(21,26,58,.06),0 4px 14px rgba(21,26,58,.05);overflow:hidden}
+.ev::before{content:"";position:absolute;top:0;bottom:0;width:5px;background:var(--lv)}
+.ev.R::before{left:0} .ev.L::before{right:0}
+.ev.L{padding:.5rem 1rem .55rem .75rem}
+.ev.perso{border:1.5px dashed var(--lv)}
+.ev:hover{border-color:var(--lv)}
+.ev .d{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;font-weight:800;font-size:.8rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.ev .t{display:block;font-weight:600;font-size:1rem;line-height:1.28;margin-top:.1rem}
+.lvb{font-size:.68rem;font-weight:800;padding:0 .38rem;border-radius:999px;border:1px solid var(--line);color:var(--ink-soft)}
+.rp{display:inline-block;font-size:.68rem;padding:0 .42rem;border-radius:999px;background:var(--gold);color:#2A1C00;font-weight:800;letter-spacing:.02em}
+.ev.flash{animation:flash 1.8s ease 1}
+@keyframes flash{0%,55%{box-shadow:0 0 0 4px var(--lv)}100%{box-shadow:0 0 0 0 transparent}}
+.phead{position:absolute;z-index:5;display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem .6rem;padding:.25rem .8rem .3rem;border-radius:999px;background:var(--pc);color:#fff}
+:root[data-theme="dark"] .phead{color:#0F1330}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .phead{color:#0F1330} }
+.phead span{font-family:var(--display);font-weight:600;font-size:1rem;line-height:1.3}
+.phead small{font-weight:700;font-size:.8rem;opacity:.85}
+.empty{padding:40px 16px;text-align:center;color:var(--ink-soft)}
+
+/* Viseur et compteur temporel */
+.viseur{position:fixed;left:0;right:0;top:50%;z-index:15;height:0;border-top:1.5px dashed var(--ink);opacity:.3;pointer-events:none}
+.fbar{position:fixed;left:0;right:0;bottom:0;z-index:25;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;padding:8px 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+.fbar > *{pointer-events:auto}
+.info{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:.45rem .9rem .5rem 1.05rem;font-size:.8rem;line-height:1.3;box-shadow:0 6px 22px rgba(21,26,58,.16);max-width:64vw;overflow:hidden;min-width:9.5rem}
+.info::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--lv,var(--accent))}
+.info .cl{display:block;color:var(--ink-soft);font-weight:700}
+.info b{display:block;font-family:var(--display);font-weight:700;font-size:1.55rem;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.info b small{font-size:.55em;font-weight:600}
+.info .cp{display:block;font-weight:800;color:var(--ink)}
+.info .cs{display:block;color:var(--ink-soft)}
+.zoom{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:0 6px 22px rgba(21,26,58,.16)}
+.zoom button{width:44px;height:44px;border-radius:50%;border:0;background:var(--bg);font-size:1.4rem;font-weight:700;cursor:pointer;line-height:1}
+.zoom button:disabled{opacity:.35;cursor:default}
+.zoom output{min-width:3.2ch;text-align:center;font-weight:800;font-size:.85rem}
+#v-frise{padding-bottom:100px}
+
+/* Fiche */
+.sheet{position:fixed;inset:0;z-index:50;display:flex;align-items:flex-end;justify-content:center;background:rgba(15,19,48,.45)}
+.sheet-in{background:var(--surface);width:100%;max-width:620px;max-height:88vh;overflow:auto;border-radius:22px 22px 0 0;padding:22px 20px calc(22px + env(safe-area-inset-bottom,0px));position:relative;border-top:8px solid var(--lv)}
+@media (min-width:700px){.sheet{align-items:center}.sheet-in{border-radius:20px}}
+.sheet-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-size:1.3rem;line-height:1}
+.sh-date{margin:0;font-weight:800;color:var(--ink-soft);padding-right:50px;display:flex;gap:.4rem;align-items:center;flex-wrap:wrap}
+.sheet h2{margin:.2rem 0 .9rem;font-family:var(--display);font-weight:700;font-size:1.4rem;line-height:1.2;padding-right:40px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:.35rem .9rem;margin:0 0 1rem;font-size:.95rem}
+.facts dt{color:var(--ink-soft);font-weight:700}
+.facts dd{margin:0}
+.sheet .desc{font-size:1.08rem;line-height:1.65;margin:0 0 1rem;max-width:60ch}
+
+/* Boutons */
+.btn{border:1px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:12px;padding:.65rem 1.15rem;font-weight:800;cursor:pointer;min-height:44px}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:disabled{opacity:.4;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* Défis */
+.sec-h{font-family:var(--display);font-weight:700;font-size:1.45rem;margin:24px 0 6px;letter-spacing:-.01em}
+.sec-p{margin:0 0 14px;color:var(--ink-soft);max-width:60ch}
+.modes{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:16px 0 30px}
+.mode{position:relative;overflow:hidden;text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:18px;padding:18px 16px 16px 22px;cursor:pointer;display:flex;flex-direction:column;gap:4px;min-height:140px}
+.mode::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--lv)}
+.mode:hover{border-color:var(--lv)}
+.mode b{font-family:var(--display);font-size:1.08rem;font-weight:700}
+.mode span{color:var(--ink-soft);font-size:.95rem}
+.mode em{margin-top:auto;font-style:normal;font-weight:800;font-size:.85rem;color:var(--ink)}
+.msg{padding:.6rem .9rem;border-radius:12px;background:var(--ko-soft);color:var(--ink);margin:8px 0}
+.game{max-width:680px;margin:18px auto 40px}
+.g-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.g-head h2{margin:0;font-family:var(--display);font-weight:700;font-size:1.2rem}
+.g-head span{color:var(--ink-soft);font-weight:700;font-size:.92rem}
+.prog{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-bottom:18px}
+.prog i{display:block;height:100%;background:var(--spectrum);background-size:680px 100%}
+.q{font-size:1.4rem;font-weight:800;line-height:1.25;margin:.2rem 0 .3rem}
+.q-sub{color:var(--ink-soft);margin:0 0 14px}
+.big-date{display:inline-block;font-family:var(--display);font-weight:700;font-size:1.25rem;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.25rem .8rem;margin-bottom:14px;font-variant-numeric:tabular-nums}
+.opts{display:grid;gap:8px;margin-bottom:14px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:.8rem 1rem;cursor:pointer;font-size:1.05rem;font-weight:700;min-height:52px}
+.opts.two .opt{font-size:1.05rem;min-height:110px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.ok{background:var(--ok-soft);border-color:var(--ok);border-width:2px}
+.opt.ko{background:var(--ko-soft);border-color:var(--ko);border-width:2px}
+.opt small{display:block;font-weight:800;color:var(--ink-soft);margin-top:.3rem;font-size:.9rem}
+.ord{display:grid;gap:8px;margin-bottom:14px}
+.ord .opt{display:flex;align-items:center;gap:.8rem}
+.num{flex:0 0 auto;width:2rem;height:2rem;border-radius:50%;border:2px dashed var(--line);display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+.num.on{border-style:solid;border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.fb{border-radius:14px;padding:.85rem 1rem;margin-bottom:14px;line-height:1.5}
+.fb.ok{background:var(--ok-soft)} .fb.ko{background:var(--ko-soft)}
+.fb b{display:block;margin-bottom:.2rem}
+.fb ol{margin:.4rem 0 0;padding-left:1.3rem}
+.score{font-family:var(--display);font-weight:800;font-size:3rem;line-height:1;margin:.4rem 0;background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.errs{margin:12px 0 18px;padding:0;list-style:none;display:grid;gap:6px}
+.errs li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:.55rem .8rem;font-size:.95rem}
+
+/* Révision */
+.card{position:relative;overflow:hidden;max-width:560px;margin:10px auto 20px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px 20px 20px 26px;min-height:220px;display:flex;flex-direction:column;box-shadow:0 6px 22px rgba(21,26,58,.08)}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:var(--lv)}
+.card .lvl{font-weight:800;font-size:.85rem;color:var(--ink-soft)}
+.card .ct{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.25;margin:.4rem 0 1rem}
+.card .ans{border-top:1px dashed var(--line);padding-top:.8rem;margin-bottom:1rem}
+.card .ans .ad{font-family:var(--display);font-weight:700;font-size:1.2rem}
+.card .ans p{margin:.4rem 0 0}
+.card .row{margin-top:auto}
+.bar{height:10px;background:var(--line);border-radius:5px;overflow:hidden;margin:6px 0 4px;max-width:560px}
+.bar i{display:block;height:100%;background:var(--spectrum);background-size:560px 100%}
+.tbl-w{overflow-x:auto;margin:10px 0 40px}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--surface);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:.55rem .75rem;border-bottom:1px solid var(--line);vertical-align:top;font-size:.95rem}
+th{font-size:.85rem;color:var(--ink-soft)}
+td.dt{font-weight:800;white-space:nowrap}
+.lvl-dot{display:inline-block;width:.65rem;height:.65rem;border-radius:50%;background:var(--lv);margin-right:.4rem}
+.mst{display:inline-flex;gap:3px}
+.mst i{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ok)}
+.mst i.on{background:var(--ok)}
+
+/* Ma frise */
+.form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:12px;max-width:640px}
+.field label{display:block;font-weight:700;font-size:.92rem;margin-bottom:.25rem}
+.field input[type=text],.field input[type=number],.field textarea{width:100%;font:inherit;padding:.55rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);min-height:44px}
+.field textarea{min-height:90px;resize:vertical}
+.inline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.inline input[type=number]{max-width:10rem}
+.ck{display:inline-flex;align-items:center;gap:.4rem;font-weight:500;font-size:.95rem;cursor:pointer}
+.ck input{width:1.15rem;height:1.15rem;accent-color:var(--accent)}
+.err{color:var(--ko);font-weight:700;min-height:1.2em;margin:0}
+.ok-msg{color:var(--ok);font-weight:700;min-height:1.2em;margin:0}
+.plist{list-style:none;padding:0;margin:12px 0;display:grid;gap:8px;max-width:640px}
+.plist li{background:var(--surface);border:1.5px dashed var(--line);border-radius:14px;padding:.6rem .8rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.plist .pt{flex:1 1 200px}
+.plist .pt b{display:block;font-size:.85rem;color:var(--ink-soft)}
+.plist .pt span{font-weight:600;font-size:1.02rem}
+.small-btn{border:1px solid var(--line);background:transparent;border-radius:10px;padding:.35rem .75rem;cursor:pointer;font-weight:700;font-size:.9rem;min-height:38px}
+.small-btn.danger{color:var(--ko);border-color:var(--ko)}
+.share textarea{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem}
+
+/* Ateliers */
+.lv-h{font-family:var(--display);font-weight:700;font-size:1.15rem;margin:22px 0 0}
+.tag{align-self:flex-start;font-size:.72rem;font-weight:800;padding:.05rem .5rem;border-radius:999px;background:var(--bg);border:1px solid var(--line);color:var(--ink-soft);margin-bottom:4px}
+.at .small-btn{margin-bottom:12px}
+.at-meta{margin:0;color:var(--ink-soft);font-weight:700;font-size:.9rem}
+.at-title{margin:.15rem 0 .5rem;font-family:var(--display);font-weight:700;font-size:1.45rem;line-height:1.2}
+.at-title::after{content:"";display:block;width:56px;height:5px;border-radius:3px;background:var(--lv);margin-top:.5rem}
+.at-intro{margin:0 0 .8rem;max-width:62ch}
+.cl-list{display:grid;gap:10px;margin-bottom:14px}
+.cl-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.8rem 1rem}
+.cl-item p{margin:0 0 .55rem;font-weight:600;line-height:1.4}
+.cl-opts{display:flex;flex-wrap:wrap;gap:6px}
+.cl-b{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:.35rem .8rem;cursor:pointer;font-weight:700;font-size:.9rem;min-height:38px;text-align:left}
+.cl-b[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cl-b:disabled{cursor:default}
+.cl-item.ok{border-color:var(--ok);background:var(--ok-soft)}
+.cl-item.ko{border-color:var(--ko);background:var(--ko-soft)}
+.cl-x{margin-top:.55rem;font-size:.95rem}
+.fb.neutral{background:var(--surface);border:1px solid var(--line)}
+.at-end{margin-top:6px}
+.at-score{display:block;font-family:var(--display);font-weight:800;font-size:2.2rem;line-height:1.1;margin-bottom:.2rem}
+.at-outro{margin:.5rem 0 0}
+.scene{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:8px;margin-bottom:12px}
+.scene svg{display:block;width:100%;height:auto;max-height:62vh}
+.sc-ground{fill:var(--t-pre)} .sc-sky{fill:var(--t-cont)}
+.sc-wall{fill:var(--t-ant);stroke:var(--ink-soft);stroke-width:4;stroke-dasharray:10 4}
+.sc-road{fill:var(--surface);opacity:.85}
+.sc-house{fill:var(--line)}
+.sc-b{fill:var(--surface);stroke:var(--ink);stroke-width:1.5}
+.sc-in{fill:var(--line);stroke:var(--ink);stroke-width:1}
+.sc-win{fill:var(--t-cont);stroke:var(--ink);stroke-width:1}
+.sc-line{fill:none;stroke:var(--ink);stroke-width:2}
+.sc-thin{stroke:var(--ink-soft);stroke-width:1.5}
+.sc-dot{fill:var(--ink)}
+.sc-water{fill:var(--p-cont);opacity:.45}
+.sc-smoke{fill:var(--ink-soft);opacity:.25}
+.sc-coal{fill:var(--ink)}
+.sc-tree{fill:var(--p-ant);opacity:.7}
+.sc-txt{fill:var(--ink);font-family:var(--sans);font-weight:800}
+.sc-bust{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
+.sc-cap{fill:#E2324A}
+.zone{cursor:pointer;outline:none}
+.zone .hit{fill:transparent;stroke:transparent;stroke-width:2.5;rx:8}
+.zone:hover .hit{fill:var(--accent);fill-opacity:.08}
+.zone:focus-visible .hit{stroke:var(--accent)}
+.zone.found .hit{fill:var(--ok);fill-opacity:.22;stroke:var(--ok)}
+.zone.miss .hit{animation:miss .7s ease 1}
+@keyframes miss{0%,60%{fill:var(--ko);fill-opacity:.3}100%{fill-opacity:0}}
+.lbl{display:none;font-family:var(--sans);font-weight:800;font-size:11px;fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3px}
+.zone.found .lbl{display:inline}
+.prompt-box .q{margin-top:0}
+.tablet{display:inline-flex;flex-direction:column;gap:8px;background:#D8B98A;border-radius:14px 20px 12px 18px;padding:14px 18px;margin:0 0 14px;box-shadow:inset 0 -4px 0 rgba(0,0,0,.14),0 2px 6px rgba(0,0,0,.12)}
+.tab-line{display:flex;gap:5px;align-items:center}
+.gl{display:inline-block;width:26px;height:26px;color:#4A3519;flex:0 0 auto}
+.gl svg{display:block;width:100%;height:100%}
+.legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:.6rem .9rem;margin:0 0 12px;font-size:.92rem}
+.legend .doc-l{flex-basis:100%}
+.legend .lg{display:inline-flex;align-items:center;gap:.4rem}
+.legend .gl{background:#D8B98A;border-radius:6px;padding:3px;width:28px;height:28px}
+.doc{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--lv);border-radius:12px;padding:.8rem 1rem;margin-bottom:14px;font-size:.98rem;line-height:1.6}
+.doc p{margin:.2rem 0}
+.doc-l{font-size:.8rem;font-weight:800;color:var(--ink-soft)}
+.gauge{margin-bottom:12px}
+.gauge-t{font-size:.95rem}
+.gauge-t b{font-family:var(--display);font-size:1.5rem}
+.gauge .bar i{background:var(--p-pre)}
+.cur{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
+.cur-top{display:flex;align-items:center;justify-content:center;gap:16px}
+.cur-year{font-family:var(--display);font-weight:800;font-size:2.6rem;line-height:1;font-variant-numeric:tabular-nums;min-width:4.2ch;text-align:center}
+.cur input[type=range]{width:100%;margin:14px 0 4px;accent-color:var(--accent);height:28px}
+.cur-ticks{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;color:var(--ink-soft)}
+.cur-l{font-weight:800;font-size:1.15rem;margin:.8rem 0 0;text-align:center}
+.cur-v{margin:.1rem 0 .8rem;text-align:center;color:var(--ink-soft);font-weight:700}
+.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.grp-c{border:1.5px solid var(--gc);border-radius:14px;padding:.6rem .5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px;transition:opacity .25s}
+.grp-c svg{width:40px;height:40px;color:var(--gc)}
+.grp-c b{font-size:.88rem;line-height:1.2}
+.grp-c span{font-size:.8rem;color:var(--ink-soft);font-weight:700}
+.grp-c.off{opacity:.3;border-style:dashed}
+.cur-x{margin:.9rem 0 0;line-height:1.5}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div>
+      <h1>La Frise vivante</h1>
+      <p>Ta machine à remonter le temps, de la Préhistoire à aujourd’hui. Fais défiler : le compteur t’indique l’année où tu te trouves.</p>
+    </div>
+    <div class="hbtns"><button class="dysbtn" id="theme" type="button">Thème : clair</button><button class="dysbtn" id="dys" type="button" aria-pressed="false">Lecture facilitée</button></div>
+  </div>
+  <div class="spectrum" aria-hidden="true"></div>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist">
+    <button class="tab" role="tab" type="button" data-tab="frise" aria-selected="true">La frise</button>
+    <button class="tab" role="tab" type="button" data-tab="defis" aria-selected="false">Défis</button>
+    <button class="tab" role="tab" type="button" data-tab="ateliers" aria-selected="false">Ateliers</button>
+    <button class="tab" role="tab" type="button" data-tab="revision" aria-selected="false">Mes repères</button>
+    <button class="tab" role="tab" type="button" data-tab="perso" aria-selected="false">Ma frise</button>
+  </div>
+</nav>
+
+<main>
+  <section id="v-frise" role="tabpanel" aria-label="La frise">
+    <div class="wrap"><div class="tools" id="tools"></div></div>
+    <div id="tl"></div>
+  </section>
+
+  <section id="v-defis" role="tabpanel" aria-label="Défis" hidden>
+    <div class="wrap" id="defis"></div>
+  </section>
+
+  <section id="v-ateliers" role="tabpanel" aria-label="Ateliers" hidden>
+    <div class="wrap" id="ateliers"></div>
+  </section>
+
+  <section id="v-revision" role="tabpanel" aria-label="Mes repères" hidden>
+    <div class="wrap" id="revision"></div>
+  </section>
+
+  <section id="v-perso" role="tabpanel" aria-label="Ma frise" hidden>
+    <div class="wrap" id="perso"></div>
+  </section>
+</main>
+
+<div class="viseur" id="viseur" aria-hidden="true"></div>
+<div class="fbar" id="fbar">
+  <div class="info" id="info" aria-live="polite"></div>
+  <div class="zoom" role="group" aria-label="Zoom de la frise">
+    <button type="button" id="zout" aria-label="Dézoomer">−</button>
+    <output id="zval">×1</output>
+    <button type="button" id="zin" aria-label="Zoomer">+</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-in" id="sheet-in" role="dialog" aria-modal="true" aria-labelledby="sh-title">
+    <button class="sheet-x" id="sheet-x" type="button" aria-label="Fermer">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+
+<script type="application/json" id="frise-data">{"events":[
+{"id":"e1","y":-300000,"a":true,"t":"Les plus anciens Homo sapiens connus","n":"6","c":"Premiers hommes et sédentarisation","r":false,"d":"Des restes humains découverts à Djebel Irhoud, au Maroc, sont les plus anciens fossiles d’Homo sapiens connus à ce jour. Notre espèce se répand ensuite peu à peu sur tous les continents."},
+{"id":"e2","y":-36000,"a":true,"t":"Peintures de la grotte Chauvet","n":"6","c":"Premiers hommes et sédentarisation","r":false,"d":"Dans cette grotte de l’Ardèche, des chasseurs-cueilleurs peignent lions, rhinocéros et chevaux. Ce sont parmi les plus anciennes œuvres d’art connues."},
+{"id":"e3","y":-18000,"a":true,"t":"Peintures de la grotte de Lascaux","n":"6","c":"Premiers hommes et sédentarisation","r":false,"d":"En Dordogne, des centaines d’animaux sont peints et gravés sur les parois. Les humains sont alors nomades et vivent de la chasse, de la pêche et de la cueillette."},
+{"id":"e4","y":-10000,"a":true,"t":"Début du Néolithique au Proche-Orient","n":"6","c":"Premiers hommes et sédentarisation","r":true,"d":"Dans le Croissant fertile, les humains commencent à cultiver des céréales et à élever des animaux. Ils se sédentarisent et fondent les premiers villages."},
+{"id":"e5","y":-6000,"a":true,"t":"Premiers agriculteurs sur le territoire de la France","n":"6","c":"Premiers hommes et sédentarisation","r":false,"d":"Venues du Proche-Orient par la Méditerranée et par la vallée du Danube, l’agriculture et l’élevage gagnent peu à peu l’Europe de l’Ouest."},
+{"id":"e6","y":-4500,"a":true,"t":"Premiers mégalithes de Carnac","n":"6","c":"Premiers hommes et sédentarisation","r":false,"d":"En Bretagne, des communautés de paysans dressent des milliers de menhirs alignés. Il faut une société organisée pour réaliser de tels chantiers."},
+{"id":"e7","y":-3300,"a":true,"t":"Invention de l’écriture en Mésopotamie","n":"6","c":"Premiers États, premières écritures","r":true,"d":"À Uruk, des signes sont tracés sur des tablettes d’argile pour compter les récoltes et les troupeaux. L’invention de l’écriture marque traditionnellement la fin de la Préhistoire."},
+{"id":"e8","y":-3100,"a":true,"t":"Unification de l’Égypte sous un seul pharaon","n":"6","c":"Premiers États, premières écritures","r":false,"d":"La Haute et la Basse-Égypte sont réunies en un seul royaume. Le pharaon, roi aux pouvoirs immenses, gouverne avec l’aide d’une administration de scribes."},
+{"id":"e9","y":-2560,"a":true,"t":"Construction de la pyramide de Khéops","n":"6","c":"Premiers États, premières écritures","r":false,"d":"À Gizeh, la plus grande des pyramides est bâtie comme tombeau du pharaon Khéops. Ce chantier gigantesque montre la puissance de l’État égyptien."},
+{"id":"e10","y":-1750,"a":true,"t":"Le Code de Hammurabi","n":"6","c":"Premiers États, premières écritures","r":false,"d":"Le roi de Babylone fait graver sur une stèle près de 300 lois. C’est l’un des plus anciens recueils de lois écrits."},
+{"id":"e11","y":-776,"t":"Premiers Jeux olympiques","n":"6","c":"Le monde des cités grecques","r":true,"d":"Selon la tradition, les premiers Jeux sont organisés à Olympie en l’honneur de Zeus. Tous les quatre ans, les cités grecques s’y retrouvent malgré leurs rivalités."},
+{"id":"e12","y":-753,"t":"Fondation légendaire de Rome","n":"6","c":"Rome, du mythe à l’histoire","r":true,"d":"D’après la légende, Romulus fonde Rome après avoir tué son frère Remus. Les archéologues datent les premiers villages du site à peu près de la même époque."},
+{"id":"e13","y":-750,"a":true,"t":"L’Iliade et l’Odyssée d’Homère","n":"6","c":"Le monde des cités grecques","r":false,"d":"Ces deux grands récits racontent la guerre de Troie et le long retour d’Ulysse. Ils forment une culture commune à tous les Grecs."},
+{"id":"e14","y":-700,"a":true,"t":"Début de la mise par écrit de la Bible hébraïque","n":"6","c":"Naissance du monothéisme juif","r":false,"d":"Les Hébreux commencent à rassembler par écrit leurs récits et leurs lois ; la rédaction s’étale sur plusieurs siècles. Ils croient en un dieu unique : c’est le monothéisme."},
+{"id":"e15","y":-509,"t":"Naissance de la République romaine","n":"6","c":"Rome, du mythe à l’histoire","r":false,"d":"Selon la tradition, les Romains chassent leur dernier roi. Le pouvoir est désormais exercé par des magistrats élus et par le Sénat."},
+{"id":"e16","y":-508,"t":"Réformes de Clisthène : la démocratie à Athènes","n":"6","c":"Le monde des cités grecques","r":true,"d":"Clisthène réorganise la cité pour que tous les citoyens participent aux décisions. Les femmes, les esclaves et les étrangers (métèques) restent exclus de la citoyenneté."},
+{"id":"e17","y":-447,"t":"Début de la construction du Parthénon","n":"6","c":"Le monde des cités grecques","r":false,"d":"Sous Périclès, Athènes bâtit sur l’Acropole un temple dédié à sa déesse protectrice, Athéna. La cité est alors à l’apogée de sa puissance."},
+{"id":"e18","y":-206,"y2":220,"t":"La dynastie des Han en Chine","n":"6","c":"Rome et la Chine des Han","r":false,"d":"Les empereurs Han unifient un immense territoire. Par les routes de la soie, des marchandises circulent jusqu’à l’Empire romain."},
+{"id":"e19","y":-52,"t":"Bataille d’Alésia","n":"6","c":"L’Empire romain","r":true,"d":"Le chef gaulois Vercingétorix se rend à Jules César. La Gaule passe sous domination romaine et se romanise peu à peu."},
+{"id":"e20","y":-27,"t":"Auguste, premier empereur romain","n":"6","c":"L’Empire romain","r":true,"d":"Octave reçoit du Sénat le titre d’Auguste. Il concentre tous les pouvoirs : c’est le début de l’Empire et de la « paix romaine »."},
+{"id":"e21","y":30,"a":true,"t":"Mort de Jésus à Jérusalem","n":"6","c":"Les débuts du christianisme","r":false,"d":"Jésus de Nazareth, un prédicateur juif, est crucifié sur ordre du gouverneur romain. Ses disciples affirment qu’il est ressuscité et diffusent son message : c’est la naissance du christianisme."},
+{"id":"e22","y":64,"t":"Premières persécutions des chrétiens sous Néron","n":"6","c":"Les débuts du christianisme","r":false,"d":"Après le grand incendie de Rome, l’empereur Néron accuse les chrétiens. Parce qu’ils refusent d’honorer l’empereur comme un dieu, ils seront persécutés à plusieurs reprises."},
+{"id":"e23","y":79,"t":"Éruption du Vésuve et destruction de Pompéi","n":"6","c":"L’Empire romain","r":false,"d":"La ville est ensevelie sous les cendres. Les fouilles ont permis de découvrir la vie quotidienne d’une cité romaine presque intacte."},
+{"id":"e24","y":117,"t":"L’Empire romain à son extension maximale","n":"6","c":"L’Empire romain","r":false,"d":"Sous l’empereur Trajan, l’Empire s’étend de la Bretagne (l’Angleterre actuelle) à la Mésopotamie, tout autour de la Méditerranée."},
+{"id":"e25","y":212,"t":"Édit de Caracalla","n":"6","c":"L’Empire romain","r":false,"d":"L’empereur Caracalla accorde la citoyenneté romaine à presque tous les hommes libres de l’Empire."},
+{"id":"e26","y":313,"t":"Édit de Milan : liberté de culte pour les chrétiens","n":"6","c":"Les débuts du christianisme","r":true,"d":"Les empereurs Constantin et Licinius autorisent librement le christianisme. Les persécutions prennent fin."},
+{"id":"e27","y":380,"t":"Le christianisme devient religion officielle","n":"6","c":"Les débuts du christianisme","r":false,"d":"L’empereur Théodose fait du christianisme la religion de l’Empire. Les cultes païens sont ensuite interdits."},
+{"id":"e28","y":476,"t":"Fin de l’Empire romain d’Occident","n":"6","c":"L’Empire romain","r":true,"d":"Le dernier empereur d’Occident est déposé par un chef germanique. Cette date marque traditionnellement la fin de l’Antiquité. L’Empire d’Orient continue : c’est l’Empire byzantin."},
+{"id":"e29","y":496,"a":true,"t":"Baptême de Clovis","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"Le roi des Francs se convertit au christianisme. Il obtient ainsi le soutien de l’Église et des populations gallo-romaines."},
+{"id":"e30","y":527,"y2":565,"t":"Règne de Justinien, empereur byzantin","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"Depuis Constantinople, Justinien veut reconstituer l’Empire romain. Il reconquiert une partie de la Méditerranée et fait rédiger un grand recueil de lois."},
+{"id":"e31","y":537,"t":"Consécration de Sainte-Sophie à Constantinople","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"La gigantesque basilique voulue par Justinien symbolise l’alliance de l’empereur et de l’Église chrétienne d’Orient."},
+{"id":"e32","y":622,"t":"L’Hégire","n":"5","c":"Naissance et expansion de l’islam","r":true,"d":"Muhammad quitte La Mecque pour Médine avec ses fidèles. Cet exil marque l’an 1 du calendrier musulman."},
+{"id":"e33","y":632,"t":"Mort de Muhammad","n":"5","c":"Naissance et expansion de l’islam","r":false,"d":"À la mort du prophète, l’Arabie est unifiée par l’islam. Ses successeurs, les califes, mènent des conquêtes qui s’étendent en un siècle de l’Espagne à l’Indus."},
+{"id":"e34","y":732,"t":"Bataille de Poitiers","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"Charles Martel arrête une expédition arabo-berbère venue d’Espagne. Sa famille, les Carolingiens, en tire un grand prestige."},
+{"id":"e35","y":762,"t":"Fondation de Bagdad","n":"5","c":"Naissance et expansion de l’islam","r":false,"d":"Le calife abbasside fait de Bagdad sa capitale. La ville devient l’une des plus grandes du monde et un grand centre de savoir."},
+{"id":"e36","y":800,"t":"Charlemagne couronné empereur","n":"5","c":"Byzance et l’Europe carolingienne","r":true,"d":"Le jour de Noël, à Rome, le pape couronne Charlemagne empereur. Son empire réunit une grande partie de l’Europe chrétienne d’Occident."},
+{"id":"e37","y":843,"t":"Traité de Verdun","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"Les petits-fils de Charlemagne se partagent son empire en trois royaumes. La partie occidentale deviendra la France."},
+{"id":"e38","y":910,"t":"Fondation de l’abbaye de Cluny","n":"5","c":"L’ordre seigneurial et l’Église","r":false,"d":"En Bourgogne, cette abbaye devient la tête d’un vaste réseau de monastères et l’un des lieux les plus puissants de la chrétienté."},
+{"id":"e39","y":987,"t":"Hugues Capet devient roi","n":"5","c":"L’affirmation de l’État monarchique","r":true,"d":"Élu par les grands seigneurs, Hugues Capet fonde la dynastie des Capétiens. Son pouvoir réel ne s’étend alors que sur un petit domaine autour de Paris et d’Orléans."},
+{"id":"e40","y":1054,"t":"Schisme entre chrétiens d’Orient et d’Occident","n":"5","c":"Byzance et l’Europe carolingienne","r":false,"d":"Le pape de Rome et le patriarche de Constantinople s’excommunient. Les chrétiens se séparent entre catholiques et orthodoxes."},
+{"id":"e41","y":1095,"t":"Appel à la croisade","n":"5","c":"La Méditerranée, lieu d’échanges et de conflits","r":true,"d":"À Clermont, le pape Urbain II appelle les chrétiens d’Occident à partir délivrer Jérusalem. La ville est prise par les croisés en 1099."},
+{"id":"e42","y":1163,"t":"Début de la construction de Notre-Dame de Paris","n":"5","c":"L’ordre seigneurial et l’Église","r":false,"d":"Avec l’essor des villes, de grandes cathédrales gothiques sont bâties. Le chantier de Notre-Dame dure près de deux siècles."},
+{"id":"e43","y":1214,"t":"Bataille de Bouvines","n":"5","c":"L’affirmation de l’État monarchique","r":false,"d":"Philippe Auguste remporte une victoire décisive sur ses ennemis. Le prestige et le domaine du roi de France s’agrandissent."},
+{"id":"e44","y":1226,"y2":1270,"t":"Règne de Louis IX (Saint Louis)","n":"5","c":"L’affirmation de l’État monarchique","r":false,"d":"Roi très pieux, Louis IX renforce la justice royale et participe à deux croisades. Il est proclamé saint après sa mort."},
+{"id":"e45","y":1258,"t":"Prise de Bagdad par les Mongols","n":"5","c":"Naissance et expansion de l’islam","r":false,"d":"Les Mongols détruisent la capitale des califes abbassides. C’est la fin d’un grand empire musulman."},
+{"id":"e46","y":1337,"y2":1453,"t":"Guerre de Cent Ans","n":"5","c":"L’affirmation de l’État monarchique","r":true,"d":"Les rois de France et d’Angleterre s’affrontent pour la couronne de France. Le conflit renforce finalement le pouvoir du roi de France."},
+{"id":"e47","y":1347,"y2":1352,"t":"La Peste noire","n":"5","c":"L’ordre seigneurial et l’Église","r":false,"d":"Une épidémie de peste venue d’Asie tue entre un tiers et la moitié de la population européenne."},
+{"id":"e48","y":1429,"t":"Jeanne d’Arc délivre Orléans","n":"5","c":"L’affirmation de l’État monarchique","r":false,"d":"La jeune paysanne lorraine aide Charles VII à vaincre les Anglais et à se faire sacrer à Reims. Capturée, elle est brûlée à Rouen en 1431."},
+{"id":"e49","y":1453,"t":"Prise de Constantinople par les Ottomans","n":"5","c":"Byzance et l’Europe carolingienne","r":true,"d":"Le sultan Mehmed II s’empare de la ville, qui deviendra Istanbul. C’est la fin de l’Empire byzantin."},
+{"id":"e50","y":1454,"a":true,"t":"Gutenberg imprime la Bible","n":"5","c":"Humanisme, réformes et conflits religieux","r":false,"d":"Grâce à l’imprimerie à caractères mobiles mise au point à Mayence, les livres sont produits plus vite et circulent davantage. Les idées des humanistes se diffusent."},
+{"id":"e51","y":1492,"t":"Christophe Colomb atteint l’Amérique","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":true,"d":"Cherchant une route vers l’Asie par l’ouest pour le compte des souverains espagnols, Colomb aborde les Antilles. Cette date marque traditionnellement le début des Temps modernes."},
+{"id":"e52","y":1498,"t":"Vasco de Gama atteint l’Inde","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":false,"d":"Le navigateur portugais contourne l’Afrique et ouvre une route maritime vers les épices d’Asie."},
+{"id":"e53","y":1515,"y2":1547,"t":"Règne de François Ier","n":"5","c":"Du Prince de la Renaissance au roi absolu","r":false,"d":"Vainqueur à Marignan dès 1515, François Ier est un prince de la Renaissance : il protège les artistes, comme Léonard de Vinci, et fait construire des châteaux."},
+{"id":"e54","y":1517,"t":"Luther publie ses 95 thèses","n":"5","c":"Humanisme, réformes et conflits religieux","r":true,"d":"Le moine allemand Martin Luther critique l’Église catholique, notamment la vente des indulgences. C’est le début de la Réforme protestante."},
+{"id":"e55","y":1519,"t":"Charles Quint élu empereur","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":false,"d":"Déjà roi d’Espagne, Charles Quint devient aussi empereur du Saint-Empire. Il règne sur un territoire immense, des Pays-Bas à l’Amérique."},
+{"id":"e56","y":1519,"y2":1522,"t":"Premier tour du monde : l’expédition de Magellan","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":false,"d":"Partie d’Espagne, l’expédition fait le tour de la Terre. Magellan meurt en route ; quelques survivants rentrent en 1522 avec Elcano."},
+{"id":"e57","y":1520,"y2":1566,"t":"Règne de Soliman le Magnifique","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":false,"d":"Sous ce sultan, l’Empire ottoman atteint son apogée. Il assiège Vienne en 1529 et domine une grande partie de la Méditerranée."},
+{"id":"e58","y":1521,"t":"Cortés s’empare de l’Empire aztèque","n":"5","c":"Le monde au temps de Charles Quint et Soliman","r":false,"d":"Le conquistador espagnol prend la capitale aztèque, Tenochtitlan. Guerres, travail forcé et maladies venues d’Europe déciment les populations amérindiennes."},
+{"id":"e59","y":1539,"t":"Ordonnance de Villers-Cotterêts","n":"5","c":"Du Prince de la Renaissance au roi absolu","r":false,"d":"François Ier impose le français, à la place du latin, dans les actes officiels et de justice du royaume."},
+{"id":"e60","y":1572,"t":"Massacre de la Saint-Barthélemy","n":"5","c":"Humanisme, réformes et conflits religieux","r":false,"d":"À Paris puis en province, des milliers de protestants sont tués par des catholiques. C’est l’un des épisodes les plus sanglants des guerres de Religion."},
+{"id":"e61","y":1598,"t":"Édit de Nantes","n":"5","c":"Humanisme, réformes et conflits religieux","r":true,"d":"Henri IV met fin aux guerres de Religion. Les protestants obtiennent la liberté de culte dans certains lieux."},
+{"id":"e62","y":1643,"y2":1715,"t":"Règne de Louis XIV","n":"5","c":"Du Prince de la Renaissance au roi absolu","r":true,"d":"Roi à 4 ans, Louis XIV gouverne seul à partir de 1661. Il incarne la monarchie absolue : il ne partage son pouvoir avec personne."},
+{"id":"e63","y":1682,"t":"La Cour s’installe à Versailles","n":"5","c":"Du Prince de la Renaissance au roi absolu","r":false,"d":"Le château devient le siège du pouvoir. Les nobles vivent auprès du roi, qui les surveille et les occupe par l’étiquette."},
+{"id":"e64","y":1685,"t":"Révocation de l’édit de Nantes","n":"5","c":"Du Prince de la Renaissance au roi absolu","r":false,"d":"Louis XIV interdit le protestantisme. Des dizaines de milliers de protestants fuient le royaume."},
+{"id":"e65","y":1685,"t":"Le Code noir","n":"4","c":"Négoces et traites négrières","r":false,"d":"Cet édit royal fixe le statut des esclaves dans les colonies françaises. Ils y sont considérés comme des biens appartenant à leur maître."},
+{"id":"e66","y":1751,"t":"Premier volume de l’Encyclopédie","n":"4","c":"L’Europe des Lumières","r":true,"d":"Diderot et d’Alembert rassemblent les connaissances de leur temps. Leur ouvrage diffuse l’esprit des Lumières : raison, tolérance, critique de l’absolutisme."},
+{"id":"e67","y":1769,"t":"James Watt perfectionne la machine à vapeur","n":"4","c":"L’industrialisation","r":false,"d":"Le brevet de Watt rend la machine à vapeur bien plus efficace. Elle sera au cœur de l’industrialisation au XIXe siècle."},
+{"id":"e68","y":1776,"t":"Déclaration d’indépendance des États-Unis","n":"4","c":"L’Europe des Lumières","r":false,"d":"Les treize colonies britanniques d’Amérique proclament leur indépendance au nom de l’égalité et des droits naturels, des idées proches de celles des Lumières."},
+{"id":"e69","y":1789,"t":"Prise de la Bastille","n":"4","c":"La Révolution française et l’Empire","r":true,"d":"Le 14 juillet, le peuple de Paris s’empare de cette prison, symbole de l’arbitraire royal. 1789 marque traditionnellement le début de l’époque contemporaine."},
+{"id":"e70","y":1789,"t":"Déclaration des droits de l’homme et du citoyen","n":"4","c":"La Révolution française et l’Empire","r":true,"d":"Le 26 août, les députés affirment que « les hommes naissent et demeurent libres et égaux en droits ». La société d’ordres est abolie."},
+{"id":"e71","y":1791,"t":"Déclaration des droits de la femme et de la citoyenne","n":"4","c":"La Révolution française et l’Empire","r":false,"d":"Olympe de Gouges réclame pour les femmes les mêmes droits que pour les hommes. Elle est guillotinée en 1793."},
+{"id":"e72","y":1791,"t":"Révolte des esclaves à Saint-Domingue","n":"4","c":"Négoces et traites négrières","r":false,"d":"Dans la plus riche des colonies françaises, les esclaves se soulèvent. Menée notamment par Toussaint Louverture, la lutte aboutit à l’indépendance d’Haïti en 1804."},
+{"id":"e73","y":1792,"t":"Proclamation de la Ire République","n":"4","c":"La Révolution française et l’Empire","r":true,"d":"Le 21 septembre, la monarchie est abolie. Le roi Louis XVI est jugé puis guillotiné en janvier 1793."},
+{"id":"e74","y":1794,"t":"Première abolition de l’esclavage","n":"4","c":"Négoces et traites négrières","r":false,"d":"La Convention abolit l’esclavage dans toutes les colonies françaises. Napoléon Bonaparte le rétablit en 1802."},
+{"id":"e75","y":1799,"t":"Coup d’État de Napoléon Bonaparte","n":"4","c":"La Révolution française et l’Empire","r":false,"d":"Le général Bonaparte prend le pouvoir et devient Premier consul. Il met fin à la période révolutionnaire."},
+{"id":"e76","y":1804,"t":"Napoléon Ier sacré empereur","n":"4","c":"La Révolution française et l’Empire","r":true,"d":"Bonaparte devient Napoléon Ier. La même année, il fait adopter le Code civil, qui conserve des acquis de la Révolution comme l’égalité devant la loi."},
+{"id":"e77","y":1815,"t":"Défaite de Waterloo","n":"4","c":"La Révolution française et l’Empire","r":false,"d":"Battu par les armées européennes coalisées, Napoléon est exilé à Sainte-Hélène. La monarchie est rétablie en France."},
+{"id":"e78","y":1830,"t":"Début de la conquête de l’Algérie","n":"4","c":"Conquêtes et sociétés coloniales","r":false,"d":"L’armée française prend Alger. La conquête du territoire, longue et violente, dure plusieurs décennies."},
+{"id":"e88","y":1830,"t":"Ligne de chemin de fer Liverpool – Manchester","n":"4","c":"L’industrialisation","r":false,"d":"C’est la première ligne de voyageurs tirée par des locomotives à vapeur. Le chemin de fer transforme les échanges et les paysages."},
+{"id":"e79","y":1848,"t":"Suffrage universel masculin","n":"4","c":"La conquête du suffrage universel","r":true,"d":"Après la révolution de février, la IIe République donne le droit de vote à tous les hommes de plus de 21 ans. Les femmes restent exclues."},
+{"id":"e80","y":1848,"t":"Abolition définitive de l’esclavage","n":"4","c":"Négoces et traites négrières","r":true,"d":"À l’initiative de Victor Schœlcher, le décret du 27 avril abolit l’esclavage dans les colonies françaises."},
+{"id":"e81","y":1852,"y2":1870,"t":"Second Empire de Napoléon III","n":"4","c":"La conquête du suffrage universel","r":false,"d":"Élu président en 1848, Louis-Napoléon Bonaparte fait un coup d’État en 1851 puis devient empereur. Le régime tombe avec la défaite contre la Prusse."},
+{"id":"e82","y":1870,"t":"Proclamation de la IIIe République","n":"4","c":"La IIIe République","r":true,"d":"Le 4 septembre, après la défaite de Sedan, la République est proclamée. Elle s’installe durablement dans les années 1870-1880."},
+{"id":"e83","y":1871,"t":"La Commune de Paris","n":"4","c":"La IIIe République","r":false,"d":"Les Parisiens insurgés gouvernent la ville pendant deux mois. La Commune est écrasée lors de la « Semaine sanglante »."},
+{"id":"e84","y":1881,"y2":1882,"t":"Lois Ferry sur l’école","n":"4","c":"La IIIe République","r":true,"d":"L’école primaire devient gratuite, laïque et obligatoire pour les filles et les garçons de 6 à 13 ans."},
+{"id":"e85","y":1884,"y2":1885,"t":"Conférence de Berlin","n":"4","c":"Conquêtes et sociétés coloniales","r":false,"d":"Les puissances européennes fixent les règles du partage de l’Afrique. La colonisation du continent s’accélère."},
+{"id":"e86","y":1894,"y2":1906,"t":"L’affaire Dreyfus","n":"4","c":"La IIIe République","r":false,"d":"Le capitaine Dreyfus, juif, est condamné à tort pour trahison. L’affaire divise profondément la France ; il est réhabilité en 1906."},
+{"id":"e87","y":1905,"t":"Loi de séparation des Églises et de l’État","n":"4","c":"La IIIe République","r":true,"d":"La République garantit la liberté de conscience et ne reconnaît ni ne finance aucun culte. C’est un pilier de la laïcité."},
+{"id":"e89","y":1914,"y2":1918,"t":"Première Guerre mondiale","n":"3","c":"La Première Guerre mondiale","r":true,"d":"Une guerre totale mobilise soldats, civils et économies. Près de 10 millions de militaires y trouvent la mort."},
+{"id":"e90","y":1915,"t":"Génocide des Arméniens","n":"3","c":"La Première Guerre mondiale","r":true,"d":"Le gouvernement de l’Empire ottoman organise l’extermination des Arméniens. Plus d’un million de personnes sont tuées."},
+{"id":"e91","y":1916,"t":"Bataille de Verdun","n":"3","c":"La Première Guerre mondiale","r":false,"d":"De février à décembre, Français et Allemands s’affrontent sous un déluge d’obus. Environ 300 000 soldats y sont tués ou portés disparus."},
+{"id":"e92","y":1917,"t":"Révolution russe","n":"3","c":"Démocraties fragilisées et totalitarismes","r":false,"d":"Le tsar est renversé, puis Lénine et les bolcheviks prennent le pouvoir. La Russie devient le premier État communiste."},
+{"id":"e93","y":1918,"t":"Armistice du 11 novembre","n":"3","c":"La Première Guerre mondiale","r":false,"d":"Les combats cessent sur le front de l’Ouest. L’Allemagne a perdu la guerre."},
+{"id":"e94","y":1919,"t":"Traité de Versailles","n":"3","c":"La Première Guerre mondiale","r":false,"d":"Les vainqueurs imposent à l’Allemagne de lourdes conditions. Beaucoup d’Allemands vivent ce traité comme une humiliation."},
+{"id":"e95","y":1922,"t":"Mussolini prend le pouvoir en Italie","n":"3","c":"Démocraties fragilisées et totalitarismes","r":false,"d":"Le chef fasciste devient président du Conseil et installe progressivement une dictature."},
+{"id":"e96","y":1929,"t":"Krach de Wall Street","n":"3","c":"Démocraties fragilisées et totalitarismes","r":false,"d":"L’effondrement de la Bourse de New York déclenche une crise économique mondiale. Le chômage et la misère fragilisent les démocraties."},
+{"id":"e97","y":1933,"t":"Hitler devient chancelier","n":"3","c":"Démocraties fragilisées et totalitarismes","r":true,"d":"Le chef du parti nazi arrive légalement au pouvoir puis met en place en quelques mois un régime totalitaire."},
+{"id":"e98","y":1936,"t":"Le Front populaire","n":"3","c":"Démocraties fragilisées et totalitarismes","r":false,"d":"La gauche gagne les élections. Les ouvriers obtiennent les congés payés et la semaine de 40 heures."},
+{"id":"e99","y":1939,"y2":1945,"t":"Deuxième Guerre mondiale","n":"3","c":"La Deuxième Guerre mondiale","r":true,"d":"Une guerre d’anéantissement fait plus de 60 millions de morts, en majorité des civils."},
+{"id":"e100","y":1940,"t":"Appel du 18 juin du général de Gaulle","n":"3","c":"La France défaite et occupée","r":true,"d":"Depuis Londres, de Gaulle appelle à poursuivre le combat, alors que le maréchal Pétain a demandé l’armistice."},
+{"id":"e101","y":1940,"y2":1944,"t":"Le régime de Vichy","n":"3","c":"La France défaite et occupée","r":false,"d":"Pétain met fin à la République et collabore avec l’Allemagne nazie, notamment dans la persécution des Juifs."},
+{"id":"e103","y":1941,"y2":1945,"t":"Génocide des Juifs et des Tsiganes","n":"3","c":"La Deuxième Guerre mondiale","r":true,"d":"Les nazis organisent l’extermination des Juifs d’Europe (la Shoah) et des Tsiganes, par des massacres et dans des centres de mise à mort. Près de 6 millions de Juifs sont assassinés."},
+{"id":"e102","y":1942,"t":"Rafle du Vél’ d’Hiv","n":"3","c":"La France défaite et occupée","r":false,"d":"Les 16 et 17 juillet, la police française arrête plus de 13 000 Juifs à Paris, dont plus de 4 000 enfants. Presque tous sont déportés et assassinés."},
+{"id":"e104","y":1944,"t":"Débarquement en Normandie","n":"3","c":"La Deuxième Guerre mondiale","r":false,"d":"Le 6 juin, les Alliés débarquent sur les plages normandes. Paris est libéré en août."},
+{"id":"e105","y":1944,"t":"Droit de vote des femmes","n":"3","c":"Refonder la République (1944-1947)","r":true,"d":"Une ordonnance du 21 avril accorde aux Françaises le droit de voter et d’être élues. Elles votent pour la première fois en 1945."},
+{"id":"e108","y":1945,"t":"Bombes atomiques sur Hiroshima et Nagasaki","n":"3","c":"La Deuxième Guerre mondiale","r":false,"d":"Les 6 et 9 août, les États-Unis larguent deux bombes atomiques sur le Japon, qui capitule peu après."},
+{"id":"e106","y":1945,"t":"Création de l’ONU","n":"3","c":"Le monde depuis 1945","r":false,"d":"Cinquante et un pays fondent l’Organisation des Nations unies pour maintenir la paix et la sécurité dans le monde."},
+{"id":"e107","y":1945,"t":"Création de la Sécurité sociale","n":"3","c":"Refonder la République (1944-1947)","r":false,"d":"Inspirée du programme du Conseil national de la Résistance, elle protège les travailleurs face à la maladie, à la vieillesse et aux accidents."},
+{"id":"e109","y":1946,"t":"Naissance de la IVe République","n":"3","c":"Refonder la République (1944-1947)","r":false,"d":"Une nouvelle Constitution est adoptée. Son préambule ajoute des droits sociaux, comme le droit à la santé et à l’instruction."},
+{"id":"e110","y":1947,"t":"Début de la guerre froide","n":"3","c":"Un monde bipolaire","r":true,"d":"Les États-Unis et l’URSS s’opposent sans s’affronter directement. Le monde se divise en deux blocs."},
+{"id":"e111","y":1947,"t":"Indépendance de l’Inde","n":"3","c":"Indépendances et nouveaux États","r":false,"d":"Après une lutte menée notamment par Gandhi, l’Inde devient indépendante du Royaume-Uni. Le Pakistan naît au même moment."},
+{"id":"e112","y":1954,"y2":1962,"t":"Guerre d’Algérie","n":"3","c":"Indépendances et nouveaux États","r":true,"d":"Les nationalistes algériens luttent pour l’indépendance contre la France. L’Algérie devient indépendante en 1962."},
+{"id":"e113","y":1957,"t":"Traités de Rome","n":"3","c":"La construction européenne","r":true,"d":"Six pays, dont la France et l’Allemagne de l’Ouest, créent la Communauté économique européenne (CEE)."},
+{"id":"e114","y":1958,"t":"Naissance de la Ve République","n":"3","c":"La Ve République","r":true,"d":"Revenu au pouvoir pendant la guerre d’Algérie, le général de Gaulle fait adopter une Constitution qui renforce le pouvoir du président."},
+{"id":"e115","y":1960,"t":"L’année des indépendances africaines","n":"3","c":"Indépendances et nouveaux États","r":false,"d":"Dix-sept pays d’Afrique deviennent indépendants, dont la plupart des anciennes colonies françaises d’Afrique subsaharienne."},
+{"id":"e116","y":1961,"t":"Construction du mur de Berlin","n":"3","c":"Un monde bipolaire","r":false,"d":"La RDA communiste construit un mur pour empêcher ses habitants de fuir vers Berlin-Ouest. Il devient le symbole de la guerre froide."},
+{"id":"e117","y":1962,"t":"Crise des missiles de Cuba","n":"3","c":"Un monde bipolaire","r":false,"d":"L’installation de missiles soviétiques à Cuba fait craindre une guerre nucléaire. Les deux Grands finissent par négocier."},
+{"id":"e118","y":1962,"t":"Élection du président au suffrage universel direct","n":"3","c":"La Ve République","r":false,"d":"Par référendum, les Français décident que le président sera élu directement par les citoyens. La première élection de ce type a lieu en 1965."},
+{"id":"e119","y":1968,"t":"Mai 68","n":"3","c":"Femmes et hommes dans la société","r":false,"d":"Étudiants puis ouvriers manifestent et font grève. Le mouvement exprime une volonté de libérer la société et les mœurs."},
+{"id":"e120","y":1975,"t":"Loi Veil","n":"3","c":"Femmes et hommes dans la société","r":false,"d":"Portée par la ministre Simone Veil, cette loi autorise l’interruption volontaire de grossesse (IVG)."},
+{"id":"e121","y":1981,"t":"Alternance : élection de François Mitterrand","n":"3","c":"La Ve République","r":true,"d":"Pour la première fois sous la Ve République, la gauche arrive au pouvoir. La peine de mort est abolie la même année."},
+{"id":"e122","y":1986,"t":"Première cohabitation","n":"3","c":"La Ve République","r":false,"d":"Le président socialiste François Mitterrand doit gouverner avec un Premier ministre de droite, Jacques Chirac."},
+{"id":"e123","y":1989,"t":"Chute du mur de Berlin","n":"3","c":"Un monde bipolaire","r":true,"d":"Le 9 novembre, les Berlinois de l’Est franchissent librement le mur. L’Allemagne est réunifiée en 1990."},
+{"id":"e124","y":1991,"t":"Disparition de l’URSS","n":"3","c":"Le monde après 1989","r":false,"d":"L’Union soviétique éclate en quinze États indépendants. La guerre froide est terminée."},
+{"id":"e125","y":1992,"t":"Traité de Maastricht","n":"3","c":"La construction européenne","r":true,"d":"La CEE devient l’Union européenne. Le traité crée une citoyenneté européenne et prévoit une monnaie unique."},
+{"id":"e126","y":2001,"t":"Attentats du 11 septembre","n":"3","c":"Le monde après 1989","r":true,"d":"Des terroristes d’Al-Qaïda détournent des avions et frappent les États-Unis, faisant près de 3 000 morts. Les États-Unis entrent en guerre en Afghanistan."},
+{"id":"e127","y":2002,"t":"L’euro dans les porte-monnaie","n":"3","c":"La construction européenne","r":false,"d":"Les pièces et billets en euros remplacent le franc et d’autres monnaies nationales dans douze pays."},
+{"id":"e128","y":2020,"t":"Le Royaume-Uni quitte l’Union européenne","n":"3","c":"La construction européenne","r":false,"d":"Après le référendum de 2016, le Brexit devient effectif le 31 janvier 2020."}
+]}</script>
+<script type="application/json" id="ateliers-data">{"ateliers": [{"id": "a-nomade", "n": "6", "theme": "La longue histoire de l’humanité et des migrations", "title": "Nomade ou sédentaire ?", "type": "classer", "ev": "e4", "intro": "Il y a environ 12 000 ans, au Proche-Orient, les humains changent de mode de vie : c’est le début du Néolithique.", "consigne": "Range chaque activité avant ou après le passage au Néolithique.", "cats": [{"k": "nom", "l": "Avant : chasseurs-cueilleurs nomades"}, {"k": "sed", "l": "Après : agriculteurs sédentaires"}], "items": [{"t": "Habiter un campement provisoire sous une tente de peaux", "k": "nom", "x": "Les chasseurs-cueilleurs se déplacent en suivant le gibier et les saisons."}, {"t": "Cultiver du blé et de l’orge", "k": "sed", "x": "L’agriculture apparaît au Proche-Orient vers 10 000 av. J.-C."}, {"t": "Chasser le renne et cueillir des baies", "k": "nom", "x": "La chasse, la pêche et la cueillette nourrissent les groupes nomades."}, {"t": "Élever des moutons et des chèvres", "k": "sed", "x": "La domestication des animaux accompagne l’agriculture."}, {"t": "Construire une maison durable dans un village", "k": "sed", "x": "En restant près de leurs champs, les humains fondent les premiers villages."}, {"t": "Tailler des pointes de silex pour chasser le gibier", "k": "nom", "x": "Le silex taillé est utilisé depuis des centaines de milliers d’années par les chasseurs."}, {"t": "Fabriquer des poteries pour stocker les récoltes", "k": "sed", "x": "La céramique se développe avec le besoin de conserver les réserves."}, {"t": "Polir une hache de pierre pour défricher la forêt", "k": "sed", "x": "La pierre polie permet d’abattre des arbres pour ouvrir des champs."}, {"t": "Peindre des animaux sur les parois d’une grotte", "k": "nom", "x": "Les peintures de Chauvet ou de Lascaux sont l’œuvre de chasseurs-cueilleurs."}, {"t": "Stocker des réserves de grain dans des silos", "k": "sed", "x": "Les réserves permettent de nourrir plus de monde… et créent des richesses à protéger."}], "outro": "Avec l’agriculture et l’élevage, la population augmente, les villages grandissent et les sociétés deviennent plus inégalitaires."}, {"id": "a-uruk", "n": "6", "theme": "Premiers États, premières écritures", "title": "Le scribe d’Uruk", "type": "qcm", "ev": "e7", "legend": true, "intro": "Vers 3300 av. J.-C., à Uruk en Mésopotamie, des scribes tracent des signes sur l’argile. Les signes ci-dessous sont simplifiés, mais le principe est le même : un signe pour le nombre, un signe pour la chose comptée.", "consigne": "Déchiffre les tablettes à l’aide de la légende.", "questions": [{"q": "Combien de sacs d’orge sont enregistrés ?", "tablet": [["d", "d", "u", "u", "u", "orge"]], "opts": ["23", "32", "5", "203"], "a": 0, "x": "Deux signes de dizaine (2 × 10) et trois unités : 23 sacs d’orge."}, {"q": "Que dit cette tablette ?", "tablet": [["d", "u", "u", "mouton"], ["d", "d", "d", "u", "orge"]], "opts": ["12 moutons et 31 sacs d’orge", "21 moutons et 13 sacs d’orge", "3 moutons et 4 sacs d’orge", "12 sacs d’orge et 31 moutons"], "a": 0, "x": "Première ligne : 10 + 2 = 12 moutons. Deuxième ligne : 30 + 1 = 31 sacs d’orge."}, {"q": "Le scribe note la ration de 5 ouvriers. Combien de sacs chaque ouvrier reçoit-il ?", "tablet": [["u", "u", "u", "u", "u", "ouvrier"], ["d", "u", "u", "u", "u", "u", "orge"]], "opts": ["3", "5", "10", "15"], "a": 0, "x": "5 ouvriers se partagent 15 sacs : 15 ÷ 5 = 3 sacs chacun."}, {"q": "Pourquoi les premiers écrits de Mésopotamie servent-ils surtout à compter ?", "opts": ["Pour gérer les récoltes, les troupeaux et les impôts des temples et des rois", "Pour écrire des romans d’aventure", "Pour envoyer des lettres d’amour", "Pour apprendre à lire à tous les enfants"], "a": 0, "x": "Les premières tablettes sont des documents de gestion : l’écriture naît pour administrer des États de plus en plus grands."}], "outro": "L’invention de l’écriture marque traditionnellement la fin de la Préhistoire et le début de l’Histoire."}, {"id": "a-ecclesia", "n": "6", "theme": "Le monde des cités grecques", "title": "Qui vote à l’Ecclésia ?", "type": "classer", "ev": "e16", "intro": "À Athènes, au Ve siècle av. J.-C., les citoyens se réunissent à l’Ecclésia, l’assemblée du peuple, pour voter les lois et décider de la guerre ou de la paix.", "consigne": "Pour chaque habitant, décide s’il peut voter à l’Ecclésia.", "cats": [{"k": "oui", "l": "Il peut voter"}, {"k": "non", "l": "Il ne peut pas voter"}], "items": [{"t": "Un homme de 30 ans, né d’un père et d’une mère athéniens", "k": "oui", "x": "Il est citoyen : homme libre, majeur, né de parents athéniens."}, {"t": "L’épouse d’un citoyen athénien", "k": "non", "x": "Les femmes sont exclues de la vie politique, même filles ou épouses de citoyens."}, {"t": "Un riche marchand venu de Syracuse, installé à Athènes depuis 20 ans", "k": "non", "x": "C’est un métèque : un étranger libre, qui paie des impôts mais n’est pas citoyen."}, {"t": "Un esclave qui travaille dans les mines d’argent du Laurion", "k": "non", "x": "Les esclaves, très nombreux, n’ont aucun droit politique."}, {"t": "Un garçon de 15 ans, fils de citoyens", "k": "non", "x": "Il est trop jeune : on ne participe à l’assemblée qu’une fois majeur, vers 18 ans."}, {"t": "Un paysan pauvre de 40 ans, fils de citoyens", "k": "oui", "x": "La richesse ne compte pas : les citoyens pauvres votent aussi. Une indemnité permet même aux plus modestes de siéger dans les tribunaux."}, {"t": "Un ancien esclave qui a été affranchi", "k": "non", "x": "L’affranchi devient libre, mais pas citoyen : il prend le statut de métèque."}], "outro": "Seule une minorité des habitants d’Athènes est citoyenne, environ un sur dix. La démocratie athénienne est réelle, mais très limitée."}, {"id": "a-rome", "n": "6", "theme": "Rome, du mythe à l’histoire", "title": "Mythe ou histoire ?", "type": "classer", "ev": "e12", "intro": "Les Romains racontent la naissance de leur ville par des légendes. Les historiens et les archéologues, eux, s’appuient sur des traces et des sources.", "consigne": "Classe chaque affirmation : récit légendaire ou fait établi par l’histoire ?", "cats": [{"k": "leg", "l": "Légende (récit mythique)"}, {"k": "his", "l": "Histoire (sources, archéologie)"}], "items": [{"t": "Romulus et Remus sont allaités par une louve", "k": "leg", "x": "C’est un épisode du récit des origines, raconté par des auteurs romains bien plus tard."}, {"t": "Rome est fondée par Romulus le 21 avril 753 av. J.-C.", "k": "leg", "x": "Cette date précise a été calculée par des savants romains : elle relève de la tradition."}, {"t": "Des traces de cabanes du VIIIe siècle av. J.-C. ont été retrouvées sur le Palatin", "k": "his", "x": "L’archéologie montre que le site est bien habité à cette époque."}, {"t": "Le Troyen Énée est l’ancêtre des Romains", "k": "leg", "x": "Le poète Virgile popularise ce récit sous Auguste, dans l’Énéide."}, {"t": "Au VIe siècle av. J.-C., Rome est dominée par des rois étrusques", "k": "his", "x": "Sources et fouilles montrent la forte influence étrusque sur la Rome royale."}, {"t": "Romulus tue son frère qui a franchi le sillon sacré", "k": "leg", "x": "Ce meurtre fondateur fait partie de la légende."}, {"t": "Les Romains honorent de nombreux dieux, comme Jupiter et Mars", "k": "his", "x": "Temples, inscriptions et textes attestent cette religion polythéiste."}, {"t": "Le dieu Mars est le père des jumeaux", "k": "leg", "x": "En donnant un père divin à Romulus, la légende glorifie Rome."}], "outro": "Le mythe ne dit pas ce qui s’est passé, mais ce que les Romains voulaient croire d’eux-mêmes : un peuple choisi par les dieux."}, {"id": "a-villeromaine", "n": "6", "theme": "L’Empire romain dans le monde antique", "title": "Enquête dans une ville romaine", "type": "zones", "svg": "romaine", "ev": "e19", "intro": "Après la conquête, les villes de Gaule se couvrent de monuments copiés sur ceux de Rome. Voici le plan simplifié d’une cité gallo-romaine.", "consigne": "Retrouve chaque lieu sur le plan.", "zones": [{"k": "forum", "l": "Forum", "q": "Trouve la grande place publique où l’on se réunit pour la politique, la justice et le commerce.", "x": "Le forum est le cœur de la cité, comme à Rome."}, {"k": "temple", "l": "Temple", "q": "Trouve le temple, où l’on honore les dieux et l’empereur.", "x": "Le culte impérial unit les habitants autour de l’empereur. La Maison carrée de Nîmes en est un exemple."}, {"k": "thermes", "l": "Thermes", "q": "Trouve les bains publics, où l’on se lave, fait du sport et discute.", "x": "Les thermes, avec leurs bassins chauds et froids, sont un lieu de vie sociale."}, {"k": "amphi", "l": "Amphithéâtre", "q": "Trouve le monument où se déroulent les combats de gladiateurs.", "x": "Les arènes de Nîmes et d’Arles sont des amphithéâtres romains."}, {"k": "theatre", "l": "Théâtre", "q": "Trouve le monument en demi-cercle où l’on assiste à des pièces.", "x": "Le théâtre d’Orange est l’un des mieux conservés du monde romain."}, {"k": "aqueduc", "l": "Aqueduc", "q": "Trouve l’ouvrage qui apporte l’eau des sources jusqu’à la ville.", "x": "Le pont du Gard faisait partie de l’aqueduc qui alimentait Nîmes."}], "outro": "En adoptant ces monuments et ce mode de vie, les élites gauloises se romanisent."}, {"id": "a-chretiens", "n": "6", "theme": "L’Empire romain dans le monde antique", "title": "De la persécution à la religion officielle", "type": "ordre", "ev": "e26", "intro": "En moins de quatre siècles, le christianisme passe du statut de religion persécutée à celui de religion de l’Empire.", "consigne": "Remets ces étapes dans l’ordre chronologique.", "items": [{"t": "Jésus prêche en Palestine et meurt crucifié à Jérusalem", "d": "vers 30"}, {"t": "Paul de Tarse voyage pour diffuser le christianisme autour de la Méditerranée", "d": "vers 45-60"}, {"t": "Néron accuse les chrétiens de l’incendie de Rome", "d": "64"}, {"t": "Grande persécution sous l’empereur Dioclétien", "d": "303"}, {"t": "L’édit de Milan autorise le christianisme", "d": "313"}, {"t": "Théodose fait du christianisme la religion officielle", "d": "380"}], "outro": "Le christianisme, né dans le monde juif, s’est diffusé grâce aux routes et aux villes de l’Empire romain."}, {"id": "a-carrefour", "n": "5", "theme": "Chrétientés et islam (VIe-XIIIe siècles), des mondes en contact", "title": "Le carrefour méditerranéen", "type": "qcm", "ev": "e41", "intro": "Au Moyen Âge, la Méditerranée relie trois mondes : l’Occident chrétien, l’Empire byzantin et le monde musulman. Marchandises et savoirs y circulent.", "consigne": "Réponds aux questions.", "questions": [{"q": "Le papier, inventé en Chine, arrive en Occident grâce…", "opts": ["au monde musulman, qui le fabrique à Bagdad puis en Espagne", "aux Vikings", "aux seuls croisés", "aux Romains"], "a": 0, "x": "Le savoir-faire chinois passe dans le monde musulman au VIIIe siècle, puis gagne l’Espagne musulmane et l’Europe."}, {"q": "Nos chiffres (0, 1, 2, 3…) viennent…", "opts": ["d’Inde, transmis par les savants du monde musulman", "de Rome", "de Grèce", "d’Égypte"], "a": 0, "x": "On les appelle « chiffres arabes », mais ils ont été inventés en Inde."}, {"q": "Au XIIe siècle, l’Occident redécouvre les œuvres du philosophe grec Aristote grâce…", "opts": ["à des traductions en latin, faites notamment à Tolède à partir de l’arabe", "à des manuscrits retrouvés dans une grotte", "aux moines vikings", "aux marchands chinois"], "a": 0, "x": "Les savants du monde musulman avaient traduit et commenté les auteurs grecs. Ces textes sont ensuite traduits en latin."}, {"q": "Venise et Gênes sont…", "opts": ["de grandes cités marchandes qui commercent avec Byzance et les ports musulmans", "des monastères", "des royaumes musulmans", "des villes de l’Empire byzantin en Asie"], "a": 0, "x": "Leurs marchands rapportent épices, soie et produits de luxe d’Orient."}, {"q": "Au Moyen Âge, Constantinople est…", "opts": ["la capitale chrétienne de l’Empire byzantin et un grand carrefour commercial", "la capitale des califes", "une petite ville de pêcheurs", "la capitale de Charlemagne"], "a": 0, "x": "Avec ses centaines de milliers d’habitants, elle relie l’Europe et l’Asie."}, {"q": "Les croisades montrent que la Méditerranée est aussi…", "opts": ["un espace d’affrontements entre chrétiens et musulmans", "une mer fermée à toute circulation", "une région sans religion", "un territoire entièrement chrétien"], "a": 0, "x": "Échanges et conflits coexistent : on commerce même pendant les croisades."}], "outro": "La Méditerranée médiévale est à la fois une frontière et un carrefour."}, {"id": "a-seigneurie", "n": "5", "theme": "Société, Église et pouvoir politique dans l’Occident féodal", "title": "Une année à la seigneurie", "type": "qcm", "ev": "e38", "gauge": {"start": 100, "unit": "sacs de grain"}, "intro": "Tu es un paysan au XIIe siècle. Ta récolte de l’année : 100 sacs de grain. Les chiffres sont simplifiés, mais les prélèvements sont réels.", "consigne": "Retrouve le nom de chaque prélèvement et regarde ce qu’il te reste.", "questions": [{"q": "Pour avoir le droit de cultiver ta tenure, tu verses chaque année une redevance au seigneur.", "opts": ["Le cens", "La dîme", "La corvée", "La banalité"], "a": 0, "cost": 15, "x": "Le cens est la redevance due au seigneur pour la terre qu’il te concède."}, {"q": "L’Église prélève environ un dixième de ta récolte.", "opts": ["La taille", "La dîme", "Le cens", "La gabelle"], "a": 1, "cost": 10, "x": "La dîme finance le clergé."}, {"q": "Tu dois faire moudre ton grain au moulin du seigneur et lui laisser une part.", "opts": ["La corvée", "La dîme", "La banalité", "Le cens"], "a": 2, "cost": 10, "x": "Les banalités obligent à utiliser le moulin, le four ou le pressoir du seigneur, contre paiement."}, {"q": "Plusieurs jours par an, tu travailles gratuitement sur les terres du seigneur, pendant que tes propres champs attendent.", "opts": ["La banalité", "La corvée", "La dîme", "L’aumône"], "a": 1, "cost": 10, "x": "La corvée est un travail gratuit dû au seigneur sur sa réserve."}, {"q": "Tu gardes 20 sacs comme semences pour l’an prochain. Combien reste-t-il pour nourrir ta famille ?", "opts": ["35", "55", "65", "100"], "a": 0, "cost": 20, "x": "100 − 15 − 10 − 10 − 10 − 20 = 35 sacs : à peine de quoi tenir jusqu’à la récolte suivante, surtout si l’année est mauvaise."}], "outro": "Les paysans, l’immense majorité de la population, nourrissent ceux qui prient (le clergé) et ceux qui combattent (les seigneurs)."}, {"id": "a-domaine", "n": "5", "theme": "Société, Église et pouvoir politique dans l’Occident féodal", "title": "Le domaine royal s’agrandit", "type": "ordre", "ev": "e39", "intro": "En 987, le roi capétien ne contrôle directement qu’un petit territoire. Au fil des siècles, guerres, mariages et héritages agrandissent le domaine royal.", "consigne": "Remets ces étapes dans l’ordre chronologique.", "items": [{"t": "Philippe Auguste conquiert la Normandie", "d": "1204"}, {"t": "Le comté de Toulouse est rattaché au domaine royal", "d": "1271"}, {"t": "Le Dauphiné passe au roi de France", "d": "1349"}, {"t": "Louis XI s’empare de la Bourgogne", "d": "1477"}, {"t": "Louis XI hérite de la Provence", "d": "1481"}, {"t": "La Bretagne est unie au royaume de France", "d": "1532"}], "outro": "En s’agrandissant, le domaine royal renforce le pouvoir du roi face aux grands seigneurs."}, {"id": "a-absolu", "n": "5", "theme": "Transformations de l’Europe et ouverture sur le monde (XVIe-XVIIe siècles)", "title": "Les outils du roi absolu", "type": "classer", "ev": "e62", "intro": "Louis XIV ne partage son pouvoir avec personne. Pour l’imposer, il dispose de nombreux moyens.", "consigne": "Associe chaque élément au pouvoir qu’il représente. Chaque réponse ne sert qu’une fois.", "cats": [{"k": "dieu", "l": "Un pouvoir qui vient de Dieu"}, {"k": "juge", "l": "Le roi rend la justice"}, {"k": "arm", "l": "Le roi fait la guerre"}, {"k": "prov", "l": "Le roi contrôle les provinces"}, {"k": "nob", "l": "Le roi domine la noblesse"}, {"k": "rel", "l": "Le roi impose une seule religion"}], "items": [{"t": "Le sacre à Reims, où le roi reçoit une huile sainte", "k": "dieu", "x": "Le sacre fait du roi un élu de Dieu : c’est la monarchie de droit divin."}, {"t": "La main de justice, remise lors du sacre", "k": "juge", "x": "Le roi est le juge suprême du royaume."}, {"t": "Une armée permanente très nombreuse et les forteresses de Vauban", "k": "arm", "x": "Louis XIV mène de nombreuses guerres et fortifie les frontières."}, {"t": "Les intendants, envoyés dans les provinces pour appliquer ses ordres", "k": "prov", "x": "Ils représentent le roi et contrôlent justice, police et finances."}, {"t": "Le château de Versailles et l’étiquette de la Cour", "k": "nob", "x": "Les nobles vivent auprès du roi, qui les surveille et les occupe."}, {"t": "La révocation de l’édit de Nantes en 1685", "k": "rel", "x": "« Un roi, une foi » : le protestantisme est interdit."}], "outro": "La monarchie absolue concentre tous les pouvoirs entre les mains du roi."}, {"id": "a-reforme", "n": "5", "theme": "Transformations de l’Europe et ouverture sur le monde (XVIe-XVIIe siècles)", "title": "Catholique ou protestant ?", "type": "classer", "ev": "e54", "intro": "À partir de 1517, Luther puis Calvin remettent en cause l’Église catholique. La chrétienté occidentale se divise.", "consigne": "Classe chaque affirmation : position catholique ou protestante ?", "cats": [{"k": "cat", "l": "Catholiques"}, {"k": "pro", "l": "Protestants"}], "items": [{"t": "Seule la Bible est la source de la foi", "k": "pro", "x": "Les protestants rejettent les traditions qui ne sont pas dans l’Écriture."}, {"t": "Le pape est le chef de l’Église", "k": "cat", "x": "Les protestants refusent l’autorité du pape."}, {"t": "Chaque fidèle doit pouvoir lire la Bible dans sa langue", "k": "pro", "x": "Luther traduit la Bible en allemand ; l’imprimerie aide à la diffuser."}, {"t": "La Vierge Marie et les saints peuvent intercéder pour les fidèles", "k": "cat", "x": "Le culte des saints est réaffirmé par l’Église catholique."}, {"t": "Les pasteurs peuvent se marier", "k": "pro", "x": "Les prêtres catholiques, eux, doivent rester célibataires."}, {"t": "Il existe sept sacrements", "k": "cat", "x": "Les protestants n’en gardent que deux : le baptême et la cène."}, {"t": "On est sauvé par la foi seule, pas grâce aux indulgences", "k": "pro", "x": "C’est le cœur de la critique de Luther en 1517."}, {"t": "Le concile de Trente réaffirme la doctrine de l’Église", "k": "cat", "x": "C’est la réponse catholique à la Réforme (1545-1563)."}], "outro": "Ces divisions mènent en France aux guerres de Religion, jusqu’à l’édit de Nantes en 1598."}, {"id": "a-cqsol", "n": "5", "theme": "Transformations de l’Europe et ouverture sur le monde (XVIe-XVIIe siècles)", "title": "Charles Quint ou Soliman ?", "type": "classer", "ev": "e57", "intro": "Au XVIe siècle, deux souverains dominent l’Europe et la Méditerranée : l’empereur Charles Quint et le sultan ottoman Soliman.", "consigne": "Qui suis-je ? Attribue chaque indice au bon souverain.", "cats": [{"k": "cq", "l": "Charles Quint"}, {"k": "so", "l": "Soliman"}], "items": [{"t": "Je suis élu empereur du Saint-Empire en 1519", "k": "cq", "x": "Charles Quint est déjà roi d’Espagne."}, {"t": "Je règne sur l’Empire ottoman de 1520 à 1566", "k": "so", "x": "Sous Soliman, l’Empire ottoman est à son apogée."}, {"t": "J’assiège Vienne en 1529", "k": "so", "x": "Les Ottomans menacent le cœur de l’Europe."}, {"t": "Je règne sur l’Espagne et ses colonies d’Amérique", "k": "cq", "x": "L’or et l’argent d’Amérique financent ses guerres."}, {"t": "Les Européens me surnomment « le Magnifique »", "k": "so", "x": "Ses sujets l’appellent aussi « le Législateur »."}, {"t": "Je convoque Luther à la diète de Worms en 1521", "k": "cq", "x": "Luther refuse de renier ses idées devant l’empereur."}, {"t": "Je m’allie au roi de France François Ier contre mon rival", "k": "so", "x": "Une alliance étonnante entre un roi chrétien et un sultan musulman."}, {"t": "J’abdique et je me retire près d’un monastère espagnol", "k": "cq", "x": "Épuisé, il partage ses possessions en 1556."}], "outro": "Leur rivalité se joue sur terre, en Europe centrale, et sur mer, en Méditerranée."}, {"id": "a-traite", "n": "4", "theme": "Le XVIIIe siècle : expansions, Lumières et révolutions", "title": "Le commerce triangulaire", "type": "classer", "grave": true, "ev": "e65", "intro": "Au XVIIIe siècle, des navires partis de ports comme Nantes ou Bordeaux font un voyage en trois étapes. La traite négrière en est le cœur.", "consigne": "Classe ce qui circule sur chacun des trois trajets.", "cats": [{"k": "ea", "l": "Europe → Afrique"}, {"k": "aa", "l": "Afrique → Amériques"}, {"k": "ae", "l": "Amériques → Europe"}], "items": [{"t": "Tissus, armes, alcool et objets de verre", "k": "ea", "x": "Ces marchandises sont échangées contre des captifs sur les côtes africaines."}, {"t": "Barres de fer et pacotille", "k": "ea", "x": "Elles servent aussi de monnaie d’échange dans la traite."}, {"t": "Captifs africains réduits en esclavage", "k": "aa", "x": "Entassés dans les cales pendant des semaines, beaucoup meurent pendant la traversée."}, {"t": "Sucre", "k": "ae", "x": "Produit par les esclaves dans les plantations des Antilles, comme à Saint-Domingue."}, {"t": "Café", "k": "ae", "x": "Les plantations coloniales en fournissent toute l’Europe."}, {"t": "Coton et indigo", "k": "ae", "x": "Ces produits enrichissent négociants et armateurs européens."}], "outro": "Environ 12 millions d’Africains ont été déportés vers les Amériques entre le XVIe et le XIXe siècle. Depuis la loi Taubira de 2001, la France reconnaît la traite et l’esclavage comme un crime contre l’humanité."}, {"id": "a-lumieres", "n": "4", "theme": "Le XVIIIe siècle : expansions, Lumières et révolutions", "title": "Qui a dit quoi ?", "type": "classer", "ev": "e66", "intro": "Les philosophes des Lumières veulent éclairer les esprits par la raison et critiquent l’absolutisme. Les idées ci-dessous sont reformulées, sauf la dernière, presque mot pour mot.", "consigne": "Associe chaque idée à son auteur. Chaque nom ne sert qu’une fois.", "cats": [{"k": "mon", "l": "Montesquieu"}, {"k": "vol", "l": "Voltaire"}, {"k": "rou", "l": "Rousseau"}, {"k": "did", "l": "Diderot"}, {"k": "oly", "l": "Olympe de Gouges"}], "items": [{"t": "Pour éviter la tyrannie, celui qui fait les lois ne doit pas être celui qui les applique ni celui qui juge.", "k": "mon", "x": "C’est la séparation des pouvoirs, dans De l’esprit des lois (1748)."}, {"t": "Il faut tolérer toutes les religions et combattre le fanatisme.", "k": "vol", "x": "Voltaire publie son Traité sur la tolérance en 1763."}, {"t": "Le pouvoir appartient au peuple, qui exprime la volonté générale.", "k": "rou", "x": "Rousseau développe cette idée dans Du contrat social (1762)."}, {"t": "Il faut rassembler toutes les connaissances dans un grand ouvrage pour éclairer les hommes.", "k": "did", "x": "Diderot dirige l’Encyclopédie avec d’Alembert à partir de 1751."}, {"t": "La femme naît libre et demeure égale à l’homme en droits.", "k": "oly", "x": "Article 1 de la Déclaration des droits de la femme et de la citoyenne (1791)."}], "outro": "Ces idées inspirent les révolutions américaine et française."}, {"id": "a-ddhc", "n": "4", "theme": "Le XVIIIe siècle : expansions, Lumières et révolutions", "title": "1789 contre l’Ancien Régime", "type": "classer", "ev": "e70", "intro": "Texte authentique : voici six articles de la Déclaration des droits de l’homme et du citoyen du 26 août 1789. Chacun abolit un trait de l’Ancien Régime.", "consigne": "Associe chaque article à ce qu’il fait disparaître. Chaque réponse ne sert qu’une fois.", "cats": [{"k": "ord", "l": "La société d’ordres et les privilèges de naissance"}, {"k": "abs", "l": "Le pouvoir absolu du roi"}, {"k": "emp", "l": "Les charges réservées à la noblesse"}, {"k": "arb", "l": "Les arrestations arbitraires (lettres de cachet)"}, {"k": "cen", "l": "La censure"}, {"k": "imp", "l": "Les privilégiés dispensés d’impôts"}], "items": [{"t": "Article 1 : « Les hommes naissent et demeurent libres et égaux en droits. Les distinctions sociales ne peuvent être fondées que sur l’utilité commune. »", "k": "ord", "x": "La naissance ne donne plus de droits particuliers."}, {"t": "Article 3 : « Le principe de toute Souveraineté réside essentiellement dans la Nation. »", "k": "abs", "x": "Le pouvoir ne vient plus de Dieu ni du roi, mais de la Nation."}, {"t": "Article 6 (extrait) : « Tous les Citoyens étant égaux à ses yeux sont également admissibles à toutes dignités, places et emplois publics, selon leur capacité, et sans autre distinction que celle de leurs vertus et de leurs talents. »", "k": "emp", "x": "Le talent remplace la naissance pour accéder aux emplois publics."}, {"t": "Article 7 (extrait) : « Nul homme ne peut être accusé, arrêté ni détenu que dans les cas déterminés par la Loi, et selon les formes qu’elle a prescrites. »", "k": "arb", "x": "Fini l’emprisonnement sur simple ordre du roi."}, {"t": "Article 11 (extrait) : « La libre communication des pensées et des opinions est un des droits les plus précieux de l’Homme. »", "k": "cen", "x": "Chacun peut parler, écrire et imprimer librement, dans le cadre de la loi."}, {"t": "Article 13 (extrait) : « Une contribution commune est indispensable : elle doit être également répartie entre tous les citoyens, en raison de leurs facultés. »", "k": "imp", "x": "Tout le monde paie l’impôt, selon ses moyens."}], "outro": "La Déclaration pose les bases d’une société d’individus libres et égaux en droits, encore à l’origine de notre Constitution."}, {"id": "a-journees", "n": "4", "theme": "Le XVIIIe siècle : expansions, Lumières et révolutions", "title": "Les grandes journées de la Révolution", "type": "ordre", "ev": "e69", "intro": "Entre 1789 et 1793, la France passe de la monarchie absolue à la République.", "consigne": "Remets ces événements dans l’ordre chronologique.", "items": [{"t": "Ouverture des États généraux à Versailles", "d": "5 mai 1789"}, {"t": "Prise de la Bastille", "d": "14 juillet 1789"}, {"t": "Abolition des privilèges", "d": "nuit du 4 août 1789"}, {"t": "Déclaration des droits de l’homme et du citoyen", "d": "26 août 1789"}, {"t": "Fuite du roi, arrêté à Varennes", "d": "juin 1791"}, {"t": "Proclamation de la République", "d": "21 septembre 1792"}, {"t": "Exécution de Louis XVI", "d": "21 janvier 1793"}], "outro": "La fuite à Varennes brise la confiance entre le roi et les révolutionnaires, et ouvre la voie à la République."}, {"id": "a-industrie", "n": "4", "theme": "L’Europe et le monde au XIXe siècle", "title": "La ville industrielle", "type": "zones", "svg": "industrie", "ev": "e67", "intro": "Au XIXe siècle, l’industrialisation transforme les paysages : usines, mines et chemins de fer font naître de nouvelles villes.", "consigne": "Retrouve chaque lieu dans la scène.", "zones": [{"k": "usine", "l": "Usine", "q": "Trouve l’usine textile et ses hautes cheminées.", "x": "Les machines à vapeur, alimentées au charbon, font tourner les métiers à tisser."}, {"k": "mine", "l": "Mine de charbon", "q": "Trouve la mine de charbon et son chevalement.", "x": "Le charbon est l’énergie de l’industrialisation. Des enfants travaillent aussi au fond."}, {"k": "cite", "l": "Cité ouvrière", "q": "Trouve la cité ouvrière : des maisons identiques construites par le patron.", "x": "Le patron loge ses ouvriers près de l’usine… et les contrôle ainsi."}, {"k": "patron", "l": "Maison du patron", "q": "Trouve la maison du patron.", "x": "La bourgeoisie industrielle s’enrichit et vit dans de vastes demeures."}, {"k": "gare", "l": "Gare", "q": "Trouve la gare, où arrivent les matières premières et les voyageurs.", "x": "Le chemin de fer transporte charbon, marchandises et ouvriers venus des campagnes."}], "outro": "L’industrialisation fait naître deux groupes sociaux nouveaux : la bourgeoisie industrielle et le monde ouvrier."}, {"id": "a-suffrage", "n": "4", "theme": "Société, culture et politique dans la France du XIXe siècle", "title": "Qui peut voter en… ?", "type": "curseur", "ev": "e79", "intro": "De 1791 à 1974, le droit de vote s’élargit peu à peu, avec des retours en arrière.", "consigne": "Déplace le curseur pour voir qui vote à chaque époque, puis réponds aux questions.", "groups": [{"k": "ric", "l": "Hommes aisés", "c": "cont"}, {"k": "pau", "l": "Hommes modestes", "c": "ant"}, {"k": "fem", "l": "Femmes", "c": "mod"}, {"k": "jeu", "l": "Jeunes de 18 à 20 ans", "c": "pre"}], "steps": [{"y": "1791", "l": "Suffrage censitaire", "v": "Environ 4,3 millions de « citoyens actifs »", "on": ["ric"], "x": "Seuls les hommes de plus de 25 ans qui paient un impôt minimum votent, et seulement pour désigner des électeurs, plus riches encore."}, {"y": "1792", "l": "Suffrage universel masculin", "v": "Presque tous les hommes de plus de 21 ans", "on": ["ric", "pau"], "x": "Pour élire la Convention, le cens est supprimé. L’expérience ne dure pas."}, {"y": "1815", "l": "Retour au suffrage censitaire", "v": "Environ 100 000 électeurs", "on": ["ric"], "x": "Sous la Restauration, il faut avoir 30 ans et payer un impôt élevé : seuls les plus riches votent."}, {"y": "1830", "l": "Un cens abaissé", "v": "Environ 240 000 électeurs en 1846", "on": ["ric"], "x": "Sous la monarchie de Juillet, le cens et l’âge baissent, mais le vote reste réservé aux plus riches."}, {"y": "1848", "l": "Suffrage universel masculin", "v": "Environ 9 millions d’électeurs", "on": ["ric", "pau"], "x": "La IIe République donne le droit de vote à tous les hommes de plus de 21 ans. Il ne sera plus remis en cause."}, {"y": "1944", "l": "Le vote des femmes", "v": "Le corps électoral double", "on": ["ric", "pau", "fem"], "x": "Ordonnance du 21 avril 1944 ; les Françaises votent pour la première fois en 1945."}, {"y": "1974", "l": "La majorité à 18 ans", "v": "Tous les citoyens de 18 ans et plus", "on": ["ric", "pau", "fem", "jeu"], "x": "La majorité, et donc le droit de vote, passe de 21 à 18 ans."}], "questions": [{"q": "En 1791, qui peut voter ?", "opts": ["Les hommes qui paient un impôt minimum", "Tous les hommes", "Tous les adultes", "Seulement les nobles"], "a": 0, "x": "C’est le suffrage censitaire : le droit de vote dépend de la richesse."}, {"q": "En quelle année le suffrage universel masculin s’installe-t-il durablement ?", "opts": ["1789", "1848", "1870", "1944"], "a": 1, "x": "Établi en 1848, il ne sera plus supprimé, même sous le Second Empire."}, {"q": "Pourquoi parle-t-on de suffrage « universel » en 1848, alors que les femmes ne votent pas ?", "opts": ["Parce qu’on considère alors que la politique est une affaire d’hommes", "Parce que les femmes votent en secret", "Parce que les femmes votent depuis 1791", "C’est une erreur des manuels"], "a": 0, "x": "Le mot reflète les idées de l’époque. Le suffrage ne devient vraiment universel qu’en 1944."}], "outro": "Le droit de vote est une conquête progressive, souvent obtenue par des luttes."}, {"id": "a-mairie", "n": "4", "theme": "Société, culture et politique dans la France du XIXe siècle", "title": "La République au village", "type": "zones", "svg": "mairie", "ev": "e84", "intro": "Sous la IIIe République, chaque commune construit sa mairie et son école. Voici une mairie-école typique des années 1880.", "consigne": "Retrouve chaque élément sur la façade.", "zones": [{"k": "drapeau", "l": "Drapeau tricolore", "q": "Trouve le drapeau tricolore.", "x": "Bleu, blanc, rouge : le drapeau de la Révolution devient l’emblème de la République."}, {"k": "devise", "l": "Devise", "q": "Trouve la devise de la République.", "x": "« Liberté, Égalité, Fraternité » est inscrite sur les bâtiments publics à partir de 1880."}, {"k": "marianne", "l": "Marianne", "q": "Trouve Marianne, coiffée du bonnet phrygien.", "x": "Marianne représente la République ; son buste trône dans les mairies."}, {"k": "mairie", "l": "Mairie", "q": "Trouve la mairie.", "x": "Depuis la loi de 1884, le maire est élu par le conseil municipal dans toutes les communes."}, {"k": "ecoles", "l": "Écoles", "q": "Trouve les écoles.", "x": "Avec les lois Ferry (1881-1882), l’école publique devient gratuite, laïque et obligatoire. Garçons et filles sont souvent séparés."}], "outro": "Dans chaque village, la mairie-école rend la République visible et l’enseigne aux enfants."}, {"id": "a-propagande", "n": "3", "theme": "L’Europe, un théâtre majeur des guerres totales (1914-1945)", "title": "Propagande ou réalité du front ?", "type": "classer", "ev": "e89", "intro": "Pendant la Grande Guerre, la presse est censurée et diffuse un « bourrage de crâne ». Les affirmations ci-dessous sont reformulées à partir de journaux et de lettres de l’époque.", "consigne": "Classe chaque affirmation : propagande ou réalité vécue par les soldats ?", "cats": [{"k": "pro", "l": "Propagande (bourrage de crâne)"}, {"k": "rea", "l": "Réalité vécue au front"}], "items": [{"t": "Les balles allemandes ne sont pas dangereuses : la plupart traversent les chairs sans faire de mal.", "k": "pro", "x": "Ce genre d’affirmation paraît dans la presse de 1914 pour rassurer l’arrière."}, {"t": "Dans les tranchées, nous vivons dans la boue, avec les rats et les poux.", "k": "rea", "x": "Les lettres et carnets de soldats décrivent ces conditions effroyables."}, {"t": "Les soldats s’ennuient tellement qu’ils réclament de monter à l’assaut.", "k": "pro", "x": "La propagande présente la guerre comme une aventure joyeuse."}, {"t": "Le bombardement a duré des heures ; plusieurs camarades ont été ensevelis.", "k": "rea", "x": "L’artillerie est la première cause de mort au front."}, {"t": "L’armée allemande est épuisée : elle va s’effondrer dans quelques semaines.", "k": "pro", "x": "La guerre dure finalement plus de quatre ans."}, {"t": "Nous n’avons pas pu nous laver ni changer de linge depuis des semaines.", "k": "rea", "x": "L’hygiène est quasi impossible en première ligne."}, {"t": "Les cosaques russes seront à Berlin avant Noël.", "k": "pro", "x": "En 1914, beaucoup croient à une guerre courte."}, {"t": "Le courrier est contrôlé : nous ne pouvons pas tout raconter à nos familles.", "k": "rea", "x": "La censure militaire lit et coupe certaines lettres."}], "outro": "L’écart entre la propagande et le vécu crée chez les soldats un fort ressentiment envers l’arrière."}, {"id": "a-totalit", "n": "3", "theme": "L’Europe, un théâtre majeur des guerres totales (1914-1945)", "title": "Démocratie ou totalitarisme ?", "type": "classer", "ev": "e97", "intro": "Dans l’entre-deux-guerres, des démocraties comme la France ou le Royaume-Uni coexistent avec des régimes totalitaires.", "consigne": "Classe chaque caractéristique.", "cats": [{"k": "dem", "l": "Démocratie"}, {"k": "tot", "l": "Régime totalitaire"}], "items": [{"t": "Plusieurs partis se présentent librement aux élections", "k": "dem", "x": "Le pluralisme politique est la base de la démocratie."}, {"t": "Un parti unique contrôle l’État", "k": "tot", "x": "Parti fasciste, parti communiste soviétique, parti nazi."}, {"t": "Les journaux peuvent critiquer le gouvernement", "k": "dem", "x": "La liberté de la presse protège contre les abus de pouvoir."}, {"t": "Une police politique arrête les opposants", "k": "tot", "x": "Gestapo en Allemagne, NKVD en URSS."}, {"t": "Les jeunes sont embrigadés dans les organisations du parti", "k": "tot", "x": "Les Jeunesses hitlériennes en sont un exemple."}, {"t": "Les citoyens élisent librement leurs représentants", "k": "dem", "x": "Le vote est libre et secret."}, {"t": "Le chef est vénéré comme un sauveur", "k": "tot", "x": "Culte du Duce, du Führer ou de Staline."}, {"t": "Les juges sont indépendants du pouvoir", "k": "dem", "x": "La séparation des pouvoirs protège les libertés."}, {"t": "Des camps enferment les opposants et les populations persécutées", "k": "tot", "x": "Goulag en URSS, camps de concentration en Allemagne nazie."}, {"t": "Les syndicats sont libres et le droit de grève existe", "k": "dem", "x": "En Allemagne nazie, les syndicats sont dissous dès 1933."}], "outro": "Le régime totalitaire prétend contrôler toute la société, jusqu’à la pensée des individus."}, {"id": "a-affiche", "n": "3", "theme": "L’Europe, un théâtre majeur des guerres totales (1914-1945)", "title": "Enquête sur une affiche de propagande", "type": "qcm", "ev": "e101", "intro": "Analyse d’un document célèbre, connu sous le nom d’« Affiche rouge ».", "consigne": "Lis la description du document, puis réponds.", "questions": [{"q": "Qui a fait réaliser cette affiche ?", "doc": "<p class=\"doc-l\">Description du document<\/p><p>Affiche placardée en France en février 1944. Sur un fond rouge, dix médaillons montrent les visages de résistants du groupe Manouchian, arrêtés puis jugés. Sous chaque visage figurent un nom, une origine (« Juif hongrois », « Arménien », « communiste italien »…) et le nombre d’attentats attribués. En haut, une question : « Des libérateurs ? ». En bas : « La libération par l’armée du crime ! ». Au pied, des photos de trains déraillés et de victimes.<\/p>", "opts": ["Les autorités allemandes d’occupation", "La Résistance", "Les Alliés", "Le général de Gaulle"], "a": 0, "x": "C’est une affiche de propagande de l’occupant, diffusée avec l’appui du régime de Vichy."}, {"q": "Pourquoi insiste-t-elle sur l’origine étrangère et juive des résistants ?", "opts": ["Pour faire croire que la Résistance est l’œuvre d’étrangers et de criminels", "Pour rendre hommage aux étrangers", "Pour informer objectivement", "Pour recruter des résistants"], "a": 0, "x": "Elle joue sur la xénophobie et l’antisémitisme pour discréditer la Résistance."}, {"q": "Comment l’affiche désigne-t-elle les résistants ?", "opts": ["Comme une « armée du crime »", "Comme des héros", "Comme des soldats alliés", "Comme des otages"], "a": 0, "x": "L’occupant présente les résistants comme des terroristes."}, {"q": "Quel effet a-t-elle souvent produit ?", "opts": ["Beaucoup de passants y ont vu des héros ; certains ont écrit « Morts pour la France » sur l’affiche", "Elle a fait disparaître la Résistance", "Personne ne l’a remarquée", "Elle a été interdite par l’occupant"], "a": 0, "x": "La propagande se retourne : l’affiche devient un symbole de la Résistance."}, {"q": "Le groupe Manouchian appartient…", "opts": ["aux FTP-MOI, une résistance communiste qui regroupe des immigrés", "à la Milice de Vichy", "à l’armée américaine", "aux Forces françaises libres de Londres"], "a": 0, "x": "Missak Manouchian, poète arménien, et ses camarades sont fusillés le 21 février 1944. Il entre au Panthéon en 2024."}], "outro": "Analyser une affiche, c’est se demander qui parle, à qui, pour dire quoi, et ce que le document cache."}, {"id": "a-blocs", "n": "3", "theme": "Le monde depuis 1945", "title": "Deux blocs face à face", "type": "classer", "ev": "e110", "intro": "À partir de 1947, le monde se divise en deux camps : c’est la guerre froide.", "consigne": "Range chaque élément dans le bon bloc.", "cats": [{"k": "oue", "l": "Bloc de l’Ouest (autour des États-Unis)"}, {"k": "est", "l": "Bloc de l’Est (autour de l’URSS)"}], "items": [{"t": "L’OTAN, alliance militaire créée en 1949", "k": "oue", "x": "Elle unit les États-Unis, le Canada et des pays d’Europe de l’Ouest."}, {"t": "Le pacte de Varsovie, créé en 1955", "k": "est", "x": "C’est la réponse militaire de l’URSS et de ses alliés."}, {"t": "Le plan Marshall d’aide à la reconstruction", "k": "oue", "x": "L’aide américaine est refusée par l’URSS et ses alliés."}, {"t": "La RDA (Allemagne de l’Est)", "k": "est", "x": "Créée en 1949 dans la zone d’occupation soviétique."}, {"t": "La RFA (Allemagne de l’Ouest)", "k": "oue", "x": "Créée en 1949 dans les zones américaine, britannique et française."}, {"t": "Une économie planifiée par l’État", "k": "est", "x": "L’État fixe la production : c’est le modèle communiste."}, {"t": "Une économie de marché, fondée sur la libre entreprise", "k": "oue", "x": "C’est le modèle capitaliste."}, {"t": "La Pologne et la Hongrie", "k": "est", "x": "Ces démocraties populaires sont contrôlées par Moscou."}, {"t": "Le Royaume-Uni et la France", "k": "oue", "x": "Deux démocraties membres de l’OTAN."}, {"t": "Un parti communiste au pouvoir, sans élections libres", "k": "est", "x": "Les opposants y sont surveillés et réprimés."}], "outro": "Les deux Grands ne s’affrontent jamais directement, mais à travers des crises et des conflits ailleurs dans le monde."}, {"id": "a-cuba", "n": "3", "theme": "Le monde depuis 1945", "title": "La crise de Cuba", "type": "ordre", "ev": "e117", "intro": "En 1962, le monde frôle la guerre nucléaire.", "consigne": "Remets ces événements dans l’ordre chronologique.", "items": [{"t": "Fidel Castro prend le pouvoir à Cuba", "d": "1959"}, {"t": "Échec du débarquement de la baie des Cochons, soutenu par les États-Unis", "d": "avril 1961"}, {"t": "Un avion espion américain photographie des rampes de missiles soviétiques à Cuba", "d": "14 octobre 1962"}, {"t": "Kennedy annonce un blocus naval de Cuba", "d": "22 octobre 1962"}, {"t": "Khrouchtchev accepte de retirer les missiles", "d": "28 octobre 1962"}, {"t": "Installation du « téléphone rouge » entre Washington et Moscou", "d": "1963"}], "outro": "Après avoir frôlé la catastrophe, les deux Grands cherchent à éviter l’affrontement direct : c’est le début de la détente."}, {"id": "a-ve", "n": "3", "theme": "Françaises et Français dans une République repensée", "title": "Qui fait quoi sous la Ve République ?", "type": "classer", "ev": "e114", "intro": "La Constitution de 1958 organise les pouvoirs de la Ve République.", "consigne": "Associe chaque rôle à la bonne institution. Chaque réponse ne sert qu’une fois.", "cats": [{"k": "pre", "l": "Le président de la République"}, {"k": "pm", "l": "Le Premier ministre"}, {"k": "par", "l": "Le Parlement"}, {"k": "cc", "l": "Le Conseil constitutionnel"}, {"k": "cit", "l": "Les citoyens"}], "items": [{"t": "Élu au suffrage universel direct, il nomme le Premier ministre et peut dissoudre l’Assemblée nationale.", "k": "pre", "x": "Élu pour sept ans à l’origine, il l’est pour cinq ans depuis 2002."}, {"t": "Il dirige l’action du gouvernement.", "k": "pm", "x": "Le gouvernement est responsable devant l’Assemblée nationale."}, {"t": "Formé de l’Assemblée nationale et du Sénat, il vote les lois et contrôle le gouvernement.", "k": "par", "x": "C’est le pouvoir législatif."}, {"t": "Il vérifie que les lois respectent la Constitution.", "k": "cc", "x": "Il peut censurer une loi contraire à la Constitution."}, {"t": "Ils élisent leurs représentants et peuvent être consultés par référendum.", "k": "cit", "x": "La souveraineté appartient au peuple."}], "outro": "La Ve République donne un rôle central au président, surtout depuis son élection au suffrage universel direct (1962)."}, {"id": "a-europe", "n": "3", "theme": "Le monde depuis 1945", "title": "L’Europe s’agrandit", "type": "classer", "ev": "e113", "intro": "De six pays en 1957, la construction européenne s’étend à 27 membres aujourd’hui.", "consigne": "Classe chaque pays selon sa date d’entrée dans la CEE ou l’Union européenne.", "cats": [{"k": "57", "l": "1957, les fondateurs"}, {"k": "73", "l": "1973"}, {"k": "80", "l": "1981-1986"}, {"k": "95", "l": "1995"}, {"k": "04", "l": "2004 et après"}], "items": [{"t": "France", "k": "57", "x": "Membre fondateur (traités de Rome)."}, {"t": "Italie", "k": "57", "x": "Membre fondateur."}, {"t": "Belgique", "k": "57", "x": "Membre fondateur."}, {"t": "Royaume-Uni", "k": "73", "x": "Entré en 1973, sorti en 2020 (Brexit)."}, {"t": "Danemark", "k": "73", "x": "Entré en 1973, avec le Royaume-Uni et l’Irlande."}, {"t": "Grèce", "k": "80", "x": "Entrée en 1981, après la fin de la dictature des colonels."}, {"t": "Espagne", "k": "80", "x": "Entrée en 1986, après le retour à la démocratie."}, {"t": "Portugal", "k": "80", "x": "Entré en 1986."}, {"t": "Suède", "k": "95", "x": "Entrée en 1995, avec l’Autriche et la Finlande."}, {"t": "Autriche", "k": "95", "x": "Entrée en 1995."}, {"t": "Pologne", "k": "04", "x": "Entrée en 2004, avec neuf autres pays, surtout d’Europe de l’Est."}, {"t": "Roumanie", "k": "04", "x": "Entrée en 2007."}, {"t": "Croatie", "k": "04", "x": "Entrée en 2013, dernier pays à avoir rejoint l’Union."}], "outro": "L’élargissement de 2004 réunit l’Europe de l’Ouest et une partie de l’ancien bloc de l’Est."}, {"id": "a-femmes", "n": "3", "theme": "Françaises et Français dans une République repensée", "title": "La conquête des droits des femmes", "type": "ordre", "ev": "e105", "intro": "Depuis 1944, les Françaises obtiennent progressivement l’égalité des droits.", "consigne": "Remets ces étapes dans l’ordre chronologique.", "items": [{"t": "Droit de vote et d’éligibilité", "d": "1944"}, {"t": "Une femme mariée peut travailler et ouvrir un compte bancaire sans l’autorisation de son mari", "d": "1965"}, {"t": "La loi Neuwirth autorise la contraception", "d": "1967"}, {"t": "La loi Veil autorise l’IVG", "d": "1975"}, {"t": "La loi Roudy impose l’égalité professionnelle entre femmes et hommes", "d": "1983"}, {"t": "Une loi impose la parité des candidatures aux élections", "d": "2000"}], "outro": "Ces lois sont souvent le fruit de mobilisations féministes. L’égalité réelle, notamment des salaires, reste un combat."}]}</script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- Données et constantes ---------- */
+var NOW = new Date().getFullYear();
+var END = Math.max(NOW + 1, 2027);
+var DATA = JSON.parse(document.getElementById('frise-data').textContent);
+var BASE = DATA.events;
+var LEVELS = [{k:'6',name:'6e'},{k:'5',name:'5e'},{k:'4',name:'4e'},{k:'3',name:'3e'}];
+var PERIODS = [
+  {k:'pre', name:'Préhistoire', a:-300000, b:-3300, range:'jusqu’à l’invention de l’écriture, vers 3300 av. J.-C.'},
+  {k:'ant', name:'Antiquité', a:-3300, b:476, range:'de l’invention de l’écriture (vers 3300 av. J.-C.) à 476'},
+  {k:'moy', name:'Moyen Âge', a:476, b:1492, range:'de 476 à 1492'},
+  {k:'mod', name:'Temps modernes', a:1492, b:1789, range:'de 1492 à 1789'},
+  {k:'cont', name:'Époque contemporaine', a:1789, b:END, range:'de 1789 à nos jours'}
+];
+var SEG = [
+  {a:-300000, b:-40000, h:170, step:50000, unit:'50 000 ans'},
+  {a:-40000, b:-3300, h:300, step:5000, unit:'5000 ans'},
+  {a:-3300, b:-1000, h:360, step:500, unit:'500 ans'},
+  {a:-1000, b:476, h:760, step:100, unit:'100 ans'},
+  {a:476, b:1492, h:900, step:100, unit:'100 ans'},
+  {a:1492, b:1789, h:700, step:50, unit:'50 ans'},
+  {a:1789, b:1848, h:420, step:10, unit:'10 ans'},
+  {a:1848, b:1914, h:480, step:10, unit:'10 ans'},
+  {a:1914, b:1945, h:600, step:5, unit:'5 ans'},
+  {a:1945, b:END, h:900, step:10, unit:'10 ans'}
+];
+var BOUNDS = [-40000, -3300, -1000, 476, 1492, 1789, 1848, 1914, 1945];
+var ZOOMS = [0.5, 0.75, 1, 1.5, 2, 3, 4.5];
+var PAD = 64, GAP = 8;
+var KEY = 'frise-vivante:v1';
+var ZIG = '<svg viewBox="0 0 60 14" width="60" height="14" aria-hidden="true"><polyline points="0,7 7.5,2 15,12 22.5,2 30,12 37.5,2 45,12 52.5,2 60,7" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+
+var S = load();
+var G = null;          // géométrie de la frise affichée
+var current = 'frise'; // onglet actif
+var lastFocus = null;
+
+/* ---------- Utilitaires ---------- */
+function $(id){ return document.getElementById(id); }
+function el(tag, cls, html){ var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function shuffle(a){ for (var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+function inArr(a, v){ return a.indexOf(v) >= 0; }
+
+function load(){
+  var d = {custom:[], mastery:{}, best:{}, prefs:{levels:['6','5','4','3','p'], rep:false, recent:true, zoom:2, dys:false, dlevels:['6','5','4','3'], rlevels:['6','5','4','3'], rlist:false, theme:'light', alevels:['6','5','4','3']}, at:{}};
+  try {
+    var raw = localStorage.getItem(KEY);
+    if (raw){
+      var o = JSON.parse(raw);
+      if (o && typeof o === 'object'){
+        if (o.custom instanceof Array) d.custom = o.custom;
+        if (o.mastery && typeof o.mastery === 'object') d.mastery = o.mastery;
+        if (o.best && typeof o.best === 'object') d.best = o.best;
+        if (o.at && typeof o.at === 'object') d.at = o.at;
+        if (o.prefs && typeof o.prefs === 'object'){ for (var k in o.prefs){ if (o.prefs.hasOwnProperty(k)) d.prefs[k] = o.prefs[k]; } }
+      }
+    }
+  } catch (e) {}
+  if (!(d.prefs.zoom >= 0 && d.prefs.zoom < ZOOMS.length)) d.prefs.zoom = 2;
+  return d;
+}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+function allEvents(){
+  var out = BASE.slice();
+  for (var i = 0; i < S.custom.length; i++){
+    var c = S.custom[i];
+    out.push({id:c.id, y:c.y, y2:c.y2, a:c.a, t:c.t, d:c.d || '', n:'p', c:'Ma frise', r:false, perso:true});
+  }
+  return out;
+}
+function byId(id){ var all = allEvents(); for (var i = 0; i < all.length; i++){ if (all[i].id === id) return all[i]; } return null; }
+function lvName(n){ if (n === 'p') return 'Ma frise'; return n + 'e'; }
+
+/* ---------- Dates, siècles, périodes ---------- */
+function sp(n){ var s = String(Math.abs(Math.round(n))); return s.length > 4 ? s.replace(/\B(?=(\d{3})+(?!\d))/g, '\u202F') : s; }
+function fy(y){ return y < 0 ? sp(y) + '\u00A0av.\u00A0J.-C.' : sp(y); }
+function fdate(e){
+  var p = e.a ? 'vers ' : '';
+  if (e.y2 != null && e.y2 !== e.y){
+    if (e.y < 0 && e.y2 < 0) return p + sp(e.y) + ' – ' + fy(e.y2);
+    return p + fy(e.y) + ' – ' + fy(e.y2);
+  }
+  return p + fy(e.y);
+}
+function roman(n){
+  var m = [[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']], r = '';
+  for (var i = 0; i < m.length; i++){ while (n >= m[i][0]){ r += m[i][1]; n -= m[i][0]; } }
+  return r;
+}
+function centNum(y){ return Math.max(1, Math.ceil(Math.abs(y) / 100)); }
+function centHTML(n, bc){ return roman(n) + '<sup>' + (n === 1 ? 'er' : 'e') + '</sup>\u00A0siècle' + (bc ? ' av.\u00A0J.-C.' : ''); }
+function centOf(y){ return centHTML(centNum(y), y < 0); }
+function centText(y){ var n = centNum(y); return roman(n) + (n === 1 ? 'er' : 'e') + ' siècle' + (y < 0 ? ' av. J.-C.' : ''); }
+function milOf(y){ var n = Math.ceil(Math.abs(y) / 1000); return roman(n) + '<sup>' + (n === 1 ? 'er' : 'e') + '</sup>\u00A0millénaire' + (y < 0 ? ' av.\u00A0J.-C.' : ''); }
+function periodOf(y){
+  if (y < -3300) return PERIODS[0];
+  if (y < 476) return PERIODS[1];
+  if (y < 1492) return PERIODS[2];
+  if (y < 1789) return PERIODS[3];
+  return PERIODS[4];
+}
+function agoText(e){
+  var y = e.y;
+  var n = y < 0 ? NOW - y - 1 : NOW - y;
+  if (n <= 0) return 'cette année';
+  if (n > 20000) n = Math.round(n / 1000) * 1000;
+  return 'il y a ' + (e.a || n > 20000 ? 'environ ' : '') + sp(n) + (n > 1 ? ' ans' : ' an');
+}
+function explainCent(y){
+  var n = centNum(y), H = centHTML(n, y < 0);
+  if (y > 0){
+    if (y <= 100) return 'Les années 1 à 100 forment le ' + H + '.';
+    if (y % 100 === 0) return 'Attention au piège : une année « ronde » comme ' + y + ' est la dernière année d’un siècle. ' + y + ' appartient donc au ' + H + '.';
+    var c = Math.floor(y / 100);
+    return 'Dans ' + y + ', il y a ' + c + ' centaine' + (c > 1 ? 's' : '') + ' complète' + (c > 1 ? 's' : '') + '. On ajoute 1 : ' + c + ' + 1 = ' + n + '. C’est le ' + H + '.';
+  }
+  var a = -y;
+  if (a <= 100) return 'Avant J.-C., on compte à rebours : les années 100 à 1 av. J.-C. forment le ' + H + '.';
+  if (a % 100 === 0) return 'Avant J.-C., on compte à rebours. ' + a + ' av. J.-C. est la première année du ' + H + ' (qui va de ' + a + ' à ' + (a - 99) + ' av. J.-C.).';
+  var c2 = Math.floor(a / 100);
+  return 'Avant J.-C., on compte à rebours mais le calcul reste le même : ' + c2 + ' centaine' + (c2 > 1 ? 's' : '') + ' + 1 = ' + n + '. C’est le ' + H + '.';
+}
+
+/* ---------- Géométrie de la frise ---------- */
+function geom(Z, recent, floors){
+  var hs = [], tot = 0, i;
+  for (i = 0; i < SEG.length; i++){ hs.push(Math.max(SEG[i].h * Z, floors ? floors[i] : 0)); tot += hs[i]; }
+  function pos(y){
+    if (y <= SEG[0].a) return 0;
+    var acc = 0;
+    for (var j = 0; j < SEG.length; j++){
+      var s = SEG[j];
+      if (y <= s.b) return acc + (y - s.a) / (s.b - s.a) * hs[j];
+      acc += hs[j];
+    }
+    return tot;
+  }
+  function Y(y){ var p = pos(y); return PAD + (recent ? tot - p : p); }
+  function inv(px){
+    var p = px - PAD; if (recent) p = tot - p;
+    if (p <= 0) return SEG[0].a;
+    var acc = 0;
+    for (var j = 0; j < SEG.length; j++){
+      if (p <= acc + hs[j]){ var s = SEG[j]; return s.a + (p - acc) / hs[j] * (s.b - s.a); }
+      acc += hs[j];
+    }
+    return SEG[SEG.length - 1].b;
+  }
+  function segAt(y){ for (var j = 0; j < SEG.length; j++){ if (y <= SEG[j].b) return SEG[j]; } return SEG[SEG.length - 1]; }
+  return {Y:Y, inv:inv, tot:tot, segAt:segAt};
+}
+
+/* Placement 1D sans chevauchement : regroupe les cartes en grappes centrées sur leurs dates */
+function place(items, minTop){
+  var cl = [], i, j;
+  for (i = 0; i < items.length; i++){
+    var it = items[i];
+    var c = {items:[it], H:it.h, sum:it.des, n:1, top:it.des};
+    while (cl.length){
+      var p = cl[cl.length - 1];
+      if (p.top + p.H + GAP > c.top){
+        var shift = p.H + GAP;
+        p.sum = p.sum + (c.sum - shift * c.n);
+        p.items = p.items.concat(c.items);
+        p.H = p.H + GAP + c.H;
+        p.n += c.n;
+        p.top = p.sum / p.n;
+        cl.pop();
+        c = p;
+      } else break;
+    }
+    cl.push(c);
+  }
+  var cursor = minTop;
+  for (i = 0; i < cl.length; i++){
+    var top = Math.max(cl[i].top, cursor), y = top;
+    for (j = 0; j < cl[i].items.length; j++){ cl[i].items[j].top = y; y += cl[i].items[j].h + GAP; }
+    cursor = y;
+  }
+}
+
+function fmtTick(t){ if (t === 0) return 'an 1'; return t < 0 ? '−' + sp(t) : sp(t); }
+
+function filteredEvents(){
+  var P = S.prefs;
+  return allEvents().filter(function(e){ return inArr(P.levels, e.n) && (!P.rep || e.r || e.perso); });
+}
+
+function segIndexOf(y){ for (var j = 0; j < SEG.length; j++){ if (y <= SEG[j].b) return j; } return SEG.length - 1; }
+
+function renderTimeline(opts){
+  opts = opts || {};
+  var tl = $('tl');
+  var keep = opts.keepYear;
+  var P = S.prefs, Z = ZOOMS[P.zoom], recent = !!P.recent;
+  var W = tl.clientWidth || 360;
+  var wide = W >= 760, roomy = W >= 1000;
+  var CW = 60, half = CW / 2;
+  var cx = wide ? Math.round(W / 2) : 46;
+  var i, j;
+
+  tl.innerHTML = '';
+  tl.className = roomy ? '' : 'compact';
+  tl.style.setProperty('--cx', cx + 'px');
+
+  // 1. Cartes (créées d’abord pour mesurer leur hauteur)
+  var evs = filteredEvents();
+  evs.sort(function(a, b){ var d = recent ? b.y - a.y : a.y - b.y; return d !== 0 ? d : (a.id < b.id ? -1 : 1); });
+  var cardW = wide ? Math.min(360, Math.floor(W / 2 - half - 40)) : Math.max(170, W - (cx + half + 22) - 8);
+  var xR = cx + half + 22, xL = cx - half - 22 - cardW;
+  var ncol = wide ? 2 : 1;
+  var cols = [];
+  for (i = 0; i < ncol; i++) cols.push([]);
+  var items = [];
+  for (i = 0; i < evs.length; i++){
+    var e = evs[i];
+    var side = ncol === 2 ? (i % 2 === 0 ? 'R' : 'L') : 'R';
+    var btn = el('button', 'ev ' + side + (e.perso ? ' perso' : ''),
+      '<span class="d">' + cap(fdate(e)) + '<span class="lvb">' + lvName(e.n) + '</span>' + (e.r ? '<span class="rp">repère</span>' : '') + '</span><span class="t">' + esc(e.t) + '</span>');
+    btn.type = 'button';
+    btn.setAttribute('data-id', e.id);
+    btn.style.setProperty('--lv', 'var(--p-' + periodOf(e.y).k + ')');
+    btn.style.width = cardW + 'px';
+    btn.style.left = (side === 'R' ? xR : xL) + 'px';
+    btn.style.visibility = 'hidden';
+    tl.appendChild(btn);
+    var it = {e:e, el:btn, side:side};
+    items.push(it);
+    cols[side === 'R' ? 0 : 1].push(it);
+  }
+  var heads = [];
+  if (!roomy){
+    for (i = 0; i < PERIODS.length; i++){
+      var pd = PERIODS[i];
+      var rng = pd.k === 'pre' ? 'jusqu’à 3300 av. J.-C.' : (pd.k === 'cont' ? 'depuis 1789' : (pd.a < 0 ? sp(pd.a) + ' av. J.-C.' : pd.a) + ' – ' + pd.b);
+      var hd = el('div', 'phead s-' + pd.k, '<span>' + pd.name + '</span><small>' + rng + '</small>');
+      hd.style.width = cardW + 'px'; hd.style.left = xR + 'px';
+      tl.appendChild(hd);
+      heads.push({head:true, el:hd, p:pd});
+    }
+  }
+  // Hauteur minimale de chaque tronçon pour que ses cartes y tiennent
+  var need = [];
+  for (i = 0; i < SEG.length; i++) need.push([0, 0]);
+  for (i = 0; i < items.length; i++){
+    items[i].h = items[i].el.offsetHeight || 52;
+    need[segIndexOf(items[i].e.y)][items[i].side === 'R' ? 0 : 1] += items[i].h + GAP;
+  }
+  for (i = 0; i < heads.length; i++){
+    heads[i].h = heads[i].el.offsetHeight || 34;
+    var sy = recent ? Math.min(heads[i].p.b, END) - 1 : heads[i].p.a + 1;
+    need[segIndexOf(sy)][0] += heads[i].h + GAP;
+  }
+  var floors = [];
+  for (i = 0; i < SEG.length; i++) floors.push(Math.max(need[i][0], need[i][1]) * 1.1);
+  var g = geom(Z, recent, floors);
+
+  for (i = 0; i < items.length; i++){
+    items[i].anchor = g.Y(items[i].e.y);
+    items[i].des = items[i].anchor - items[i].h / 2;
+  }
+  for (i = 0; i < heads.length; i++){
+    var st = recent ? g.Y(Math.min(heads[i].p.b, END)) : g.Y(heads[i].p.a);
+    heads[i].des = st + 6; heads[i].anchor = st + 6 + heads[i].h / 2;
+    cols[0].push(heads[i]);
+  }
+  for (i = 0; i < cols.length; i++){
+    cols[i].sort(function(a, b){ return a.anchor - b.anchor; });
+    place(cols[i], 8);
+  }
+  for (i = 0; i < heads.length; i++) heads[i].el.style.top = heads[i].top + 'px';
+
+  // 2. Strates, carotte, graduations
+  var frag = document.createDocumentFragment();
+  var bands = {};
+  for (i = 0; i < PERIODS.length; i++){
+    var pr = PERIODS[i];
+    var y1 = g.Y(pr.a), y2 = g.Y(Math.min(pr.b, END));
+    var b = el('div', 'band s-' + pr.k, '<div class="plabel">' + pr.name + '</div>');
+    b.id = 'band-' + pr.k;
+    b.style.top = Math.min(y1, y2) + 'px';
+    b.style.height = Math.abs(y2 - y1) + 'px';
+    bands[pr.k] = b;
+    frag.appendChild(b);
+  }
+  var core = el('div', 'core');
+  core.style.left = (cx - half) + 'px';
+  core.style.width = CW + 'px';
+  frag.appendChild(core);
+
+  var boundY = [];
+  for (i = 0; i < BOUNDS.length; i++) boundY.push(g.Y(BOUNDS[i]));
+  boundY.push(g.Y(SEG[0].a)); boundY.push(g.Y(NOW));
+  for (i = 0; i < SEG.length; i++){
+    var s = SEG[i];
+    var first = Math.ceil(s.a / s.step) * s.step;
+    for (var t = first; t < s.b; t += s.step){
+      if (t <= s.a) continue;
+      if (t > NOW) break;
+      var yy = g.Y(t), near = false;
+      for (j = 0; j < boundY.length; j++){ if (Math.abs(boundY[j] - yy) < 24){ near = true; break; } }
+      if (near) continue;
+      var tk = el('div', 'tick', fmtTick(t));
+      tk.style.left = cx + 'px'; tk.style.top = yy + 'px';
+      frag.appendChild(tk);
+    }
+  }
+  for (i = 0; i < BOUNDS.length; i++){
+    var by = g.Y(BOUNDS[i]);
+    var rp = el('div', 'rupt', ZIG);
+    rp.title = 'Changement d’échelle';
+    rp.style.left = (cx - half) + 'px'; rp.style.width = CW + 'px'; rp.style.top = (by + 16) + 'px';
+    frag.appendChild(rp);
+    var bt = el('div', 'tick bound', fmtTick(BOUNDS[i]));
+    bt.style.left = cx + 'px'; bt.style.top = by + 'px';
+    frag.appendChild(bt);
+  }
+  var tNow = el('div', 'tick end', 'Aujourd’hui');
+  tNow.style.left = cx + 'px'; tNow.style.top = g.Y(NOW) + 'px';
+  frag.appendChild(tNow);
+  var tOld = el('div', 'tick end', fmtTick(SEG[0].a));
+  tOld.style.left = cx + 'px'; tOld.style.top = g.Y(SEG[0].a) + 'px';
+  frag.appendChild(tOld);
+
+  // 3. Liens, points, durées
+  var maxB = 0;
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('id', 'links');
+  svg.setAttribute('aria-hidden', 'true');
+  var lanes = {R:[], L:[]};
+  for (i = 0; i < items.length; i++){
+    var o = items[i];
+    o.el.style.top = o.top + 'px';
+    o.el.style.visibility = '';
+    maxB = Math.max(maxB, o.top + o.h);
+    var edge = o.side === 'R' ? cx + half : cx - half;
+    var cardEdge = o.side === 'R' ? xR : xL + cardW;
+    var ty = Math.min(Math.max(o.anchor, o.top + 12), o.top + o.h - 12);
+    var ln = document.createElementNS(svgNS, 'line');
+    ln.setAttribute('x1', edge); ln.setAttribute('y1', o.anchor);
+    ln.setAttribute('x2', cardEdge); ln.setAttribute('y2', ty);
+    svg.appendChild(ln);
+    var dt = el('div', 'dot2');
+    dt.style.setProperty('--lv', 'var(--p-' + periodOf(o.e.y).k + ')');
+    dt.style.left = edge + 'px'; dt.style.top = o.anchor + 'px';
+    frag.appendChild(dt);
+    if (o.e.y2 != null){
+      var ya = g.Y(o.e.y), yb = g.Y(o.e.y2), top2 = Math.min(ya, yb), hh = Math.abs(yb - ya);
+      if (hh >= 4){
+        var L = lanes[o.side], lane = 0;
+        while (lane < L.length && L[lane] > top2 - 2) lane++;
+        L[lane] = top2 + hh;
+        lane = lane % 4;
+        var du = el('div', 'dur');
+        du.style.setProperty('--lv', 'var(--p-' + periodOf(o.e.y).k + ')');
+        du.style.top = top2 + 'px'; du.style.height = hh + 'px';
+        du.style.left = (o.side === 'R' ? cx + half - 7 - lane * 6 : cx - half + 3 + lane * 6) + 'px';
+        frag.appendChild(du);
+      }
+    }
+  }
+  for (i = 0; i < heads.length; i++) maxB = Math.max(maxB, heads[i].top + heads[i].h);
+  var H = Math.max(g.tot + 2 * PAD, maxB + PAD);
+  svg.setAttribute('width', W); svg.setAttribute('height', H);
+  frag.appendChild(svg);
+  tl.insertBefore(frag, tl.firstChild);
+  tl.style.height = H + 'px';
+
+  // Les strates extrêmes couvrent tout le haut et le bas
+  var topBand = recent ? bands.cont : bands.pre, botBand = recent ? bands.pre : bands.cont;
+  var tTop = parseFloat(topBand.style.top);
+  topBand.style.height = (parseFloat(topBand.style.height) + tTop) + 'px';
+  topBand.style.top = '0px';
+  var bTop = parseFloat(botBand.style.top);
+  botBand.style.height = (H - bTop) + 'px';
+
+  if (!evs.length){
+    var em = el('div', 'empty', 'Aucun événement avec ces filtres. Active au moins un niveau.');
+    em.style.position = 'absolute'; em.style.left = '0'; em.style.right = '0'; em.style.top = '120px'; em.style.zIndex = '7';
+    tl.appendChild(em);
+  }
+
+  G = {g:g, recent:recent, W:W};
+  $('zval').textContent = '×' + String(Z).replace('.', ',');
+  $('zout').disabled = P.zoom === 0;
+  $('zin').disabled = P.zoom === ZOOMS.length - 1;
+
+  if (opts.focusId) focusCard(opts.focusId);
+  else if (keep != null) scrollToYear(keep);
+  updateInfo();
+}
+
+function tlTop(){ return $('tl').getBoundingClientRect().top + window.pageYOffset; }
+function centerYear(){
+  if (!G) return null;
+  var px = window.pageYOffset + window.innerHeight / 2 - tlTop();
+  return G.g.inv(px);
+}
+function scrollToYear(y){
+  if (!G) return;
+  var target = tlTop() + G.g.Y(y) - window.innerHeight / 2;
+  window.scrollTo(0, Math.max(0, target));
+}
+function focusCard(id){
+  var c = $('tl').querySelector('[data-id="' + id + '"]');
+  if (!c) return;
+  var r = c.getBoundingClientRect();
+  window.scrollTo(0, Math.max(0, window.pageYOffset + r.top - window.innerHeight / 2 + r.height / 2));
+  c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+  try { c.focus({preventScroll:true}); } catch (e) { c.focus(); }
+}
+
+var infoTick = false;
+function updateInfo(){
+  if (current !== 'frise' || !G) return;
+  var y = centerYear();
+  var r = $('tl').getBoundingClientRect();
+  var info = $('info');
+  $('viseur').style.visibility = r.top > window.innerHeight * 0.5 ? 'hidden' : '';
+  if (r.top > window.innerHeight * 0.55){ info.style.setProperty('--lv', 'var(--accent)'); info.innerHTML = '<span class="cl">Compteur temporel</span><b>' + NOW + '</b><span class="cs">Fais défiler pour voyager</span>'; return; }
+  var pr = periodOf(y), sg = G.g.segAt(y);
+  var ry = y < -10000 ? Math.round(y / 500) * 500 : Math.round(y);
+  if (ry === 0) ry = 1;
+  if (ry > NOW) ry = NOW;
+  info.style.setProperty('--lv', 'var(--p-' + pr.k + ')');
+  info.innerHTML = '<span class="cl">Tu es en</span><b>' + (ry < 0 ? sp(ry) + ' <small>av. J.-C.</small>' : ry) + '</b><span class="cp">' + pr.name + '</span><span class="cs">1 graduation = ' + sg.unit + '</span>';
+}
+window.addEventListener('scroll', function(){
+  if (infoTick) return;
+  infoTick = true;
+  (window.requestAnimationFrame || setTimeout)(function(){ infoTick = false; updateInfo(); });
+}, {passive:true});
+
+function zoomBy(d){
+  var n = Math.min(ZOOMS.length - 1, Math.max(0, S.prefs.zoom + d));
+  if (n === S.prefs.zoom) return;
+  var y = centerYear();
+  S.prefs.zoom = n; save();
+  renderTimeline({keepYear:y});
+}
+
+/* ---------- Barre d’outils ---------- */
+function renderTools(){
+  var P = S.prefs, h = '';
+  h += '<div class="grp" role="group" aria-label="Niveaux affichés"><span class="grp-l">Niveaux</span>';
+  for (var i = 0; i < LEVELS.length; i++){
+    h += '<button type="button" class="chip" data-lv="' + LEVELS[i].k + '" style="--lv:var(--ink-soft)" aria-pressed="' + inArr(P.levels, LEVELS[i].k) + '"><span class="dot"></span>' + LEVELS[i].name + '</button>';
+  }
+  h += '<button type="button" class="chip" data-lv="p" style="--lv:var(--ink-soft)" aria-pressed="' + inArr(P.levels, 'p') + '"><span class="dot"></span>Ma frise</button></div>';
+  h += '<div class="grp"><button type="button" class="chip" id="t-rep" style="--lv:var(--gold)" aria-pressed="' + !!P.rep + '"><span class="dot"></span>Repères seulement</button>';
+  h += '<button type="button" class="chip go" id="t-sens">' + (P.recent ? 'Aujourd’hui en haut' : 'Préhistoire en haut') + ' ⇅</button></div>';
+  h += '<div class="grp" role="group" aria-label="Aller à une période"><span class="grp-l">Aller à</span>';
+  for (var k = 0; k < PERIODS.length; k++){
+    h += '<button type="button" class="chip go" data-go="' + PERIODS[k].k + '" style="--lv:var(--p-' + PERIODS[k].k + ')"><span class="dot"></span>' + PERIODS[k].name + '</button>';
+  }
+  h += '</div>';
+  $('tools').innerHTML = h;
+}
+$('tools').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('button') : null;
+  if (!b) return;
+  var P = S.prefs, y = centerYear();
+  if (b.hasAttribute('data-lv')){
+    var lv = b.getAttribute('data-lv'), ix = P.levels.indexOf(lv);
+    if (ix >= 0) P.levels.splice(ix, 1); else P.levels.push(lv);
+    save(); renderTools(); renderTimeline({keepYear:y});
+  } else if (b.id === 't-rep'){
+    P.rep = !P.rep; save(); renderTools(); renderTimeline({keepYear:y});
+  } else if (b.id === 't-sens'){
+    P.recent = !P.recent; save(); renderTools(); renderTimeline({keepYear:y});
+  } else if (b.hasAttribute('data-go')){
+    var band = $('band-' + b.getAttribute('data-go'));
+    if (band){
+      var pk = b.getAttribute('data-go'), per = null;
+      for (var i = 0; i < PERIODS.length; i++) if (PERIODS[i].k === pk) per = PERIODS[i];
+      var startY = G.recent ? G.g.Y(Math.min(per.b, NOW)) : G.g.Y(per.a);
+      var stick = $('tabs').offsetHeight;
+      window.scrollTo(0, Math.max(0, tlTop() + startY - stick - 12));
+    }
+  }
+});
+$('tl').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('.ev') : null;
+  if (b) openSheet(b.getAttribute('data-id'));
+});
+$('zin').addEventListener('click', function(){ zoomBy(1); });
+$('zout').addEventListener('click', function(){ zoomBy(-1); });
+
+/* ---------- Fiche détaillée ---------- */
+function openSheet(id){
+  var e = byId(id);
+  if (!e) return;
+  lastFocus = document.activeElement;
+  var pr = periodOf(e.y);
+  var h = '<p class="sh-date">' + cap(fdate(e)) + '<span class="lvb">' + lvName(e.n) + '</span>' + (e.r ? '<span class="rp">repère</span>' : '') + '</p>';
+  h += '<h2 id="sh-title">' + esc(e.t) + '</h2><dl class="facts">';
+  if (e.y < -10000){
+    h += '<dt>Quand ?</dt><dd>' + cap(agoText(e)) + '</dd>';
+  } else {
+    var cs = centOf(e.y);
+    if (e.y2 != null && centNum(e.y2) !== centNum(e.y) || (e.y2 != null && (e.y < 0) !== (e.y2 < 0))) cs += ' → ' + centOf(e.y2);
+    h += '<dt>Siècle</dt><dd>' + cs + '</dd>';
+    if (e.y < -1000) h += '<dt>Millénaire</dt><dd>' + milOf(e.y) + '</dd>';
+    h += '<dt>C’était</dt><dd>' + agoText(e) + '</dd>';
+  }
+  h += '<dt>Période</dt><dd>' + pr.name + '</dd>';
+  h += '<dt>Niveau</dt><dd>' + lvName(e.n) + (e.perso ? '' : ' : ' + esc(e.c)) + '</dd></dl>';
+  if (e.d) h += '<p class="desc">' + esc(e.d) + '</p>';
+  if (current !== 'frise') h += '<div class="row"><button type="button" class="btn" id="sh-go">Voir sur la frise</button></div>';
+  $('sheet-body').innerHTML = h;
+  $('sheet-in').style.setProperty('--lv', 'var(--p-' + periodOf(e.y).k + ')');
+  $('sheet').hidden = false;
+  document.body.classList.add('noscroll');
+  var go = $('sh-go');
+  if (go) go.addEventListener('click', function(){ closeSheet(true); goToEvent(e.id); });
+  $('sheet-x').focus();
+}
+function closeSheet(noRestore){
+  $('sheet').hidden = true;
+  document.body.classList.remove('noscroll');
+  if (!noRestore && lastFocus && lastFocus.focus){ try { lastFocus.focus({preventScroll:true}); } catch (e) { lastFocus.focus(); } }
+}
+$('sheet-x').addEventListener('click', function(){ closeSheet(); });
+$('sheet').addEventListener('click', function(ev){ if (ev.target === $('sheet')) closeSheet(); });
+document.addEventListener('keydown', function(ev){
+  if ($('sheet').hidden) return;
+  if (ev.key === 'Escape' || ev.key === 'Esc'){ closeSheet(); return; }
+  if (ev.key === 'Tab'){
+    var f = $('sheet-in').querySelectorAll('button, [href], input, textarea');
+    if (!f.length) return;
+    var a = f[0], z = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === a){ ev.preventDefault(); z.focus(); }
+    else if (!ev.shiftKey && document.activeElement === z){ ev.preventDefault(); a.focus(); }
+  }
+});
+function goToEvent(id){
+  var e = byId(id);
+  if (!e) return;
+  var P = S.prefs, changed = false;
+  if (!inArr(P.levels, e.n)){ P.levels.push(e.n); changed = true; }
+  if (P.rep && !e.r && !e.perso){ P.rep = false; changed = true; }
+  if (changed){ save(); renderTools(); }
+  show('frise', {focusId:id});
+}
+
+/* ---------- Onglets ---------- */
+var friseYear = null;
+function show(tab, opts){
+  if (current === 'frise' && tab !== 'frise' && G) friseYear = centerYear();
+  current = tab;
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute('aria-selected', tabs[i].getAttribute('data-tab') === tab ? 'true' : 'false');
+  var ids = ['frise', 'defis', 'ateliers', 'revision', 'perso'];
+  for (var k = 0; k < ids.length; k++) $('v-' + ids[k]).hidden = ids[k] !== tab;
+  $('fbar').hidden = tab !== 'frise';
+  $('viseur').hidden = tab !== 'frise';
+  if (tab === 'frise') renderTimeline(opts || (friseYear != null ? {keepYear:friseYear} : {}));
+  else { window.scrollTo(0, 0); }
+  if (tab === 'defis'){ if (!GM) renderDefisHome(); }
+  if (tab === 'ateliers'){ if (!AT) renderAteliersHome(); }
+  if (tab === 'revision') renderRevision();
+  if (tab === 'perso') renderPerso();
+}
+$('tabs').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('.tab') : null;
+  if (b) show(b.getAttribute('data-tab'));
+});
+
+/* ---------- Défis ---------- */
+var MODES = [
+  {k:'ordre', name:'Remets dans l’ordre', desc:'Cinq événements à classer du plus ancien au plus récent.', n:5},
+  {k:'avant', name:'Avant ou après ?', desc:'Deux événements : lequel s’est produit en premier ?', n:10},
+  {k:'siecle', name:'Quel siècle ?', desc:'Retrouve le siècle à partir d’une date. Attention aux pièges !', n:10},
+  {k:'periode', name:'Quelle période ?', desc:'Range chaque événement dans la bonne grande période.', n:10},
+  {k:'date', name:'Le bon repère', desc:'Retrouve la date des grands repères à connaître.', n:10}
+];
+var GM = null;
+function modeOf(k){ for (var i = 0; i < MODES.length; i++) if (MODES[i].k === k) return MODES[i]; return null; }
+function poolFor(levels){ return BASE.filter(function(e){ return inArr(levels, e.n); }); }
+function levelChips(name, arr){
+  var h = '<div class="grp" role="group" aria-label="Niveaux"><span class="grp-l">Niveaux</span>';
+  for (var i = 0; i < LEVELS.length; i++){
+    h += '<button type="button" class="chip" data-' + name + '="' + LEVELS[i].k + '" style="--lv:var(--ink-soft)" aria-pressed="' + inArr(arr, LEVELS[i].k) + '"><span class="dot"></span>' + LEVELS[i].name + '</button>';
+  }
+  return h + '</div>';
+}
+function toggleLevel(arr, k){ var ix = arr.indexOf(k); if (ix >= 0) arr.splice(ix, 1); else arr.push(k); save(); }
+
+function renderDefisHome(msg){
+  GM = null;
+  var h = '<h2 class="sec-h">Défis</h2><p class="sec-p">Choisis les niveaux, puis un défi. Ton meilleur score est gardé sur cet appareil.</p>';
+  h += levelChips('dl', S.prefs.dlevels);
+  if (msg) h += '<p class="msg" role="alert">' + msg + '</p>';
+  h += '<div class="modes">';
+  for (var i = 0; i < MODES.length; i++){
+    var m = MODES[i], b = S.best[m.k];
+    h += '<button type="button" class="mode" data-mode="' + m.k + '" style="--lv:var(--p-' + ['cont','mod','moy','ant','pre'][i] + ')"><b>' + m.name + '</b><span>' + m.desc + '</span>' + (b ? '<em>Record : ' + b.s + ' / ' + b.m + '</em>' : '<em>Pas encore joué</em>') + '</button>';
+  }
+  h += '</div>';
+  $('defis').innerHTML = h;
+}
+
+function distinctYears(arr){ var s = {}, n = 0; for (var i = 0; i < arr.length; i++){ if (!s[arr[i].y]){ s[arr[i].y] = 1; n++; } } return n; }
+function pickDistinct(pool, k){
+  var sh = shuffle(pool.slice()), out = [], seen = {};
+  for (var i = 0; i < sh.length && out.length < k; i++){ if (!seen[sh[i].y]){ seen[sh[i].y] = 1; out.push(sh[i]); } }
+  return out.length === k ? out : null;
+}
+function shiftC(s, d){ var r = s + d; if (s > 0 && r <= 0) r -= 1; if (s < 0 && r >= 0) r += 1; return r; }
+
+function buildQuestions(k, pool, n){
+  var qs = [], i, cand;
+  if (k === 'ordre'){
+    if (distinctYears(pool) < 5) return null;
+    for (i = 0; i < n; i++){ qs.push({items:shuffle(pickDistinct(pool, 5)), sel:[]}); }
+    return qs;
+  }
+  if (k === 'avant'){
+    if (distinctYears(pool) < 2) return null;
+    for (i = 0; i < n; i++){ var pr = pickDistinct(pool, 2); qs.push({a:pr[0], b:pr[1]}); }
+    return qs;
+  }
+  if (k === 'siecle'){
+    cand = pool.filter(function(e){ return e.y >= -2000; });
+    if (cand.length < 4) return null;
+    cand = shuffle(cand.slice());
+    for (i = 0; i < n; i++){
+      var e = cand[i % cand.length];
+      var s = e.y < 0 ? -centNum(e.y) : centNum(e.y);
+      var opts = [s];
+      var tries = e.y < 0 ? [-s, shiftC(s, -1), shiftC(s, 1), shiftC(s, 2), shiftC(s, -2)] : [shiftC(s, -1), shiftC(s, 1), shiftC(s, 2), shiftC(s, -2)];
+      for (var t = 0; t < tries.length && opts.length < 4; t++){ if (opts.indexOf(tries[t]) < 0) opts.push(tries[t]); }
+      opts.sort(function(a, b){ return a - b; });
+      qs.push({e:e, s:s, opts:opts});
+    }
+    return qs;
+  }
+  if (k === 'periode'){
+    cand = pool.filter(function(e){ return e.y !== -3300 && e.y !== 476 && e.y !== 1492 && e.y !== 1789; });
+    if (cand.length < 3) return null;
+    cand = shuffle(cand.slice());
+    for (i = 0; i < Math.min(n, cand.length); i++) qs.push({e:cand[i], hint:false});
+    return qs;
+  }
+  if (k === 'date'){
+    cand = pool.filter(function(e){ return e.r; });
+    if (cand.length < 3) return null;
+    cand = shuffle(cand.slice());
+    var years = [], seen = {};
+    for (i = 0; i < BASE.length; i++){ if (!seen[BASE[i].y]){ seen[BASE[i].y] = 1; years.push(BASE[i].y); } }
+    for (i = 0; i < Math.min(n, cand.length); i++){
+      var ev = cand[i];
+      var others = years.filter(function(y){ return y !== ev.y; });
+      others.sort(function(a, b){ return Math.abs(a - ev.y) - Math.abs(b - ev.y); });
+      var opts2 = shuffle(others.slice(0, 7)).slice(0, 3);
+      opts2.push(ev.y);
+      opts2.sort(function(a, b){ return a - b; });
+      qs.push({e:ev, opts:opts2});
+    }
+    return qs;
+  }
+  return null;
+}
+
+function startGame(k){
+  var m = modeOf(k);
+  if (!S.prefs.dlevels.length){ renderDefisHome('Choisis au moins un niveau.'); return; }
+  var qs = buildQuestions(k, poolFor(S.prefs.dlevels), m.n);
+  if (!qs || !qs.length){ renderDefisHome('Pas assez d’événements pour ce défi avec ces niveaux. Ajoute un niveau.'); return; }
+  GM = {k:k, m:m, qs:qs, i:0, score:0, max:(k === 'ordre' ? qs.length * 5 : qs.length), errs:[], done:false};
+  renderQ();
+}
+
+function renderQ(){
+  var q = GM.qs[GM.i], k = GM.k, h = '';
+  GM.done = false;
+  h += '<div class="game"><div class="g-head"><h2>' + GM.m.name + '</h2><span>Question ' + (GM.i + 1) + ' / ' + GM.qs.length + ' · Score ' + GM.score + '</span></div>';
+  h += '<div class="prog"><i style="width:' + Math.round(GM.i / GM.qs.length * 100) + '%"></i></div>';
+  if (k === 'ordre'){
+    h += '<p class="q">Du plus ancien au plus récent</p><p class="q-sub">Touche les événements dans l’ordre. Touche à nouveau pour retirer.</p><div class="ord" id="g-opts">';
+    for (var i = 0; i < q.items.length; i++){
+      h += '<button type="button" class="opt" data-i="' + i + '"><span class="num"></span><span>' + esc(q.items[i].t) + '<small hidden></small></span></button>';
+    }
+    h += '</div><div id="g-fb" aria-live="polite"></div><div class="row"><button type="button" class="btn" id="g-check" disabled>Valider</button><button type="button" class="btn alt" id="g-quit">Arrêter</button></div>';
+  } else if (k === 'avant'){
+    h += '<p class="q">Lequel s’est passé en premier ?</p><p class="q-sub">&nbsp;</p><div class="opts two" id="g-opts">';
+    h += '<button type="button" class="opt" data-v="a">' + esc(q.a.t) + '<small hidden></small></button>';
+    h += '<button type="button" class="opt" data-v="b">' + esc(q.b.t) + '<small hidden></small></button></div>';
+    h += '<div id="g-fb" aria-live="polite"></div><div class="row"><button type="button" class="btn alt" id="g-quit">Arrêter</button></div>';
+  } else if (k === 'siecle'){
+    h += '<p class="q">' + esc(q.e.t) + '</p><p class="q-sub">En quel siècle ?</p><span class="big-date">' + cap(fdate({y:q.e.y, a:q.e.a})) + '</span><div class="opts" id="g-opts">';
+    for (var s = 0; s < q.opts.length; s++) h += '<button type="button" class="opt" data-v="' + q.opts[s] + '">' + centHTML(Math.abs(q.opts[s]), q.opts[s] < 0) + '</button>';
+    h += '</div><div id="g-fb" aria-live="polite"></div><div class="row"><button type="button" class="btn alt" id="g-quit">Arrêter</button></div>';
+  } else if (k === 'periode'){
+    h += '<p class="q">' + esc(q.e.t) + '</p><p class="q-sub">Dans quelle grande période ?</p>';
+    h += '<p id="g-hint"><button type="button" class="small-btn" id="g-hintbtn">Indice : voir la date</button></p><div class="opts" id="g-opts">';
+    for (var p = 0; p < PERIODS.length; p++) h += '<button type="button" class="opt" data-v="' + PERIODS[p].k + '">' + PERIODS[p].name + '</button>';
+    h += '</div><div id="g-fb" aria-live="polite"></div><div class="row"><button type="button" class="btn alt" id="g-quit">Arrêter</button></div>';
+  } else if (k === 'date'){
+    h += '<p class="q">' + esc(q.e.t) + '</p><p class="q-sub">En quelle année' + (q.e.a ? ' (environ)' : '') + ' ?</p><div class="opts" id="g-opts">';
+    for (var d = 0; d < q.opts.length; d++) h += '<button type="button" class="opt" data-v="' + q.opts[d] + '">' + fy(q.opts[d]) + '</button>';
+    h += '</div><div id="g-fb" aria-live="polite"></div><div class="row"><button type="button" class="btn alt" id="g-quit">Arrêter</button></div>';
+  }
+  h += '</div>';
+  $('defis').innerHTML = h;
+  var first = $('g-opts').querySelector('button');
+  if (first) try { first.focus({preventScroll:true}); } catch (e) {}
+}
+
+function lockOpts(){ var b = $('g-opts').querySelectorAll('.opt'); for (var i = 0; i < b.length; i++) b[i].disabled = true; }
+function feedback(ok, html, errText){
+  if (ok === true) GM.score += 1;
+  if (errText) GM.errs.push(errText);
+  GM.done = true;
+  lockOpts();
+  var last = GM.i === GM.qs.length - 1;
+  var cls = ok === true ? 'ok' : (ok === false ? 'ko' : (ok >= 0.99 ? 'ok' : 'ko'));
+  var title = ok === true ? 'Bravo !' : (ok === false ? 'Pas tout à fait.' : '');
+  $('g-fb').innerHTML = '<div class="fb ' + cls + '">' + (title ? '<b>' + title + '</b>' : '') + html + '</div><div class="row" style="margin-bottom:12px"><button type="button" class="btn" id="g-next">' + (last ? 'Voir mon score' : 'Question suivante') + '</button></div>';
+  var nx = $('g-next');
+  try { nx.focus({preventScroll:true}); } catch (e) { nx.focus(); }
+  nx.scrollIntoView ? nx.scrollIntoView({block:'nearest'}) : null;
+}
+
+$('defis').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('button') : null;
+  if (!b) return;
+  if (b.hasAttribute('data-dl')){ toggleLevel(S.prefs.dlevels, b.getAttribute('data-dl')); renderDefisHome(); return; }
+  if (b.hasAttribute('data-mode')){ startGame(b.getAttribute('data-mode')); return; }
+  if (b.id === 'g-quit' || b.id === 'g-home'){ renderDefisHome(); return; }
+  if (b.id === 'g-again'){ startGame(GM.k); return; }
+  if (b.id === 'g-next'){ GM.i++; if (GM.i >= GM.qs.length) endGame(); else renderQ(); return; }
+  if (b.hasAttribute('data-ev')){ openSheet(b.getAttribute('data-ev')); return; }
+  if (!GM) return;
+  var q = GM.qs[GM.i];
+  if (b.id === 'g-hintbtn'){ q.hint = true; $('g-hint').innerHTML = '<span class="big-date">' + cap(fdate(q.e)) + '</span>'; return; }
+  if (GM.done || !b.classList.contains('opt') && b.id !== 'g-check') return;
+
+  if (GM.k === 'ordre'){
+    if (b.id === 'g-check'){ checkOrder(); return; }
+    var ix = parseInt(b.getAttribute('data-i'), 10), pos = q.sel.indexOf(ix);
+    if (pos >= 0) q.sel.splice(pos, 1); else q.sel.push(ix);
+    var items = $('g-opts').querySelectorAll('.opt');
+    for (var i = 0; i < items.length; i++){
+      var nEl = items[i].querySelector('.num'), p = q.sel.indexOf(i);
+      nEl.textContent = p >= 0 ? (p + 1) : '';
+      nEl.className = 'num' + (p >= 0 ? ' on' : '');
+    }
+    $('g-check').disabled = q.sel.length !== q.items.length;
+    return;
+  }
+  var v = b.getAttribute('data-v');
+  if (GM.k === 'avant'){
+    var firstE = q.a.y < q.b.y ? q.a : q.b, chosen = v === 'a' ? q.a : q.b, ok = chosen === firstE;
+    var bs = $('g-opts').querySelectorAll('.opt');
+    for (var j = 0; j < bs.length; j++){
+      var e2 = bs[j].getAttribute('data-v') === 'a' ? q.a : q.b;
+      var sm = bs[j].querySelector('small'); sm.hidden = false; sm.textContent = cap(fdate(e2));
+      if (e2 === firstE) bs[j].classList.add('ok'); else if (bs[j] === b) bs[j].classList.add('ko');
+    }
+    var other = firstE === q.a ? q.b : q.a;
+    var gap = other.y - firstE.y; if (firstE.y < 0 && other.y > 0) gap -= 1;
+    feedback(ok, '« ' + esc(firstE.t) + ' » a eu lieu ' + (firstE.a || other.a ? 'environ ' : '') + sp(gap) + ' an' + (gap > 1 ? 's' : '') + ' avant « ' + esc(other.t) + ' ».',
+      ok ? null : 'Le plus ancien : ' + firstE.t + ' (' + fdate(firstE) + ')');
+    return;
+  }
+  if (GM.k === 'siecle'){
+    var val = parseInt(v, 10), ok2 = val === q.s;
+    markOpts(String(q.s), b);
+    feedback(ok2, explainCent(q.e.y), ok2 ? null : q.e.t + ' (' + fdate(q.e) + ') : ' + centText(q.e.y));
+    return;
+  }
+  if (GM.k === 'periode'){
+    var pr = periodOf(q.e.y), ok3 = v === pr.k;
+    markOpts(pr.k, b);
+    var ART = {pre:'la ', ant:'l’', moy:'le ', mod:'les ', cont:'l’'};
+    feedback(ok3, cap(fdate(q.e)) + ' : c’est ' + ART[pr.k] + pr.name + ' (' + pr.range + ').', ok3 ? null : q.e.t + ' : ' + pr.name);
+    return;
+  }
+  if (GM.k === 'date'){
+    var ok4 = parseInt(v, 10) === q.e.y;
+    markOpts(String(q.e.y), b);
+    feedback(ok4, esc(q.e.t) + ' : ' + fdate(q.e) + ', au ' + centOf(q.e.y) + '.', ok4 ? null : q.e.t + ' : ' + fdate(q.e));
+    return;
+  }
+});
+function markOpts(goodV, chosen){
+  var bs = $('g-opts').querySelectorAll('.opt');
+  for (var i = 0; i < bs.length; i++){
+    if (bs[i].getAttribute('data-v') === goodV) bs[i].classList.add('ok');
+    else if (bs[i] === chosen) bs[i].classList.add('ko');
+  }
+}
+function checkOrder(){
+  var q = GM.qs[GM.i];
+  var sorted = q.items.slice().sort(function(a, b){ return a.y - b.y; });
+  var good = 0, bs = $('g-opts').querySelectorAll('.opt');
+  for (var i = 0; i < q.items.length; i++){
+    var p = q.sel.indexOf(i), it = q.items[i];
+    var okPos = sorted[p] === it;
+    if (okPos) good++;
+    bs[i].classList.add(okPos ? 'ok' : 'ko');
+    var sm = bs[i].querySelector('small'); sm.hidden = false; sm.textContent = cap(fdate(it));
+  }
+  $('g-check').hidden = true;
+  GM.score += good;
+  var list = '<ol>';
+  for (var k = 0; k < sorted.length; k++) list += '<li>' + esc(sorted[k].t) + ' (' + fdate(sorted[k]) + ')</li>';
+  list += '</ol>';
+  feedback(good / 5, '<b>' + (good === 5 ? 'Parfait, tout est dans l’ordre !' : good + ' événement' + (good > 1 ? 's' : '') + ' bien placé' + (good > 1 ? 's' : '') + ' sur 5.') + '</b>' + (good === 5 ? '' : 'L’ordre correct :' + list),
+    good === 5 ? null : 'Ordre : ' + sorted.map(function(e){ return e.t + ' (' + fdate(e) + ')'; }).join(' → '));
+}
+function endGame(){
+  var b = S.best[GM.k], rec = false;
+  if (!b || GM.score / GM.max > b.s / b.m){ S.best[GM.k] = {s:GM.score, m:GM.max}; rec = !!b || GM.score > 0; save(); }
+  var pct = GM.score / GM.max;
+  var word = pct === 1 ? 'Sans faute !' : (pct >= 0.7 ? 'Très bien !' : (pct >= 0.4 ? 'Pas mal, continue !' : 'Il faut revoir un peu la frise.'));
+  var h = '<div class="game"><div class="g-head"><h2>' + GM.m.name + '</h2></div><p class="score">' + GM.score + ' / ' + GM.max + '</p><p class="q-sub">' + word + (rec ? ' Nouveau record.' : '') + '</p>';
+  if (GM.errs.length){
+    h += '<h3 class="sec-h" style="font-size:1.2rem">À retenir</h3><ul class="errs">';
+    for (var i = 0; i < GM.errs.length; i++) h += '<li>' + esc(GM.errs[i]) + '</li>';
+    h += '</ul>';
+  }
+  h += '<div class="row"><button type="button" class="btn" id="g-again">Rejouer</button><button type="button" class="btn alt" id="g-home">Autres défis</button></div></div>';
+  $('defis').innerHTML = h;
+  $('g-again').focus();
+}
+
+/* ---------- Mes repères (révision) ---------- */
+var R = {queue:[], cur:null, back:false};
+function repPool(){ return BASE.filter(function(e){ return e.r && inArr(S.prefs.rlevels, e.n); }); }
+function buildQueue(){
+  var pool = shuffle(repPool().slice());
+  pool.sort(function(a, b){ return (S.mastery[a.id] || 0) - (S.mastery[b.id] || 0); });
+  R.queue = pool.map(function(e){ return e.id; });
+  R.cur = R.queue.shift() || null; R.back = false;
+}
+function renderRevision(rebuild){
+  if (rebuild || (!R.cur && !R.queue.length && R.finished !== true)) { R.finished = false; buildQueue(); }
+  var pool = repPool(), known = 0;
+  for (var i = 0; i < pool.length; i++) if ((S.mastery[pool[i].id] || 0) >= 2) known++;
+  var h = '<h2 class="sec-h">Mes repères</h2><p class="sec-p">Les grandes dates à connaître. Un repère est maîtrisé quand tu l’as su deux fois de suite.</p>';
+  h += levelChips('rl', S.prefs.rlevels);
+  h += '<div class="bar" aria-hidden="true"><i style="width:' + (pool.length ? Math.round(known / pool.length * 100) : 0) + '%"></i></div>';
+  h += '<p class="q-sub">' + known + ' repère' + (known > 1 ? 's' : '') + ' maîtrisé' + (known > 1 ? 's' : '') + ' sur ' + pool.length + '</p>';
+  h += '<div class="row" style="margin-bottom:8px"><button type="button" class="chip go" id="r-mode">' + (S.prefs.rlist ? 'Mode cartes' : 'Voir la liste') + '</button><button type="button" class="chip go" id="r-reset">Remettre à zéro</button></div>';
+  if (!pool.length){
+    h += '<p class="msg">Choisis au moins un niveau.</p>';
+  } else if (S.prefs.rlist){
+    var sorted = pool.slice().sort(function(a, b){ return a.y - b.y; });
+    h += '<div class="tbl-w"><table><thead><tr><th>Date</th><th>Événement</th><th>Siècle</th><th>Maîtrise</th></tr></thead><tbody>';
+    for (var k = 0; k < sorted.length; k++){
+      var e = sorted[k], m = S.mastery[e.id] || 0;
+      h += '<tr><td class="dt">' + cap(fdate(e)) + '</td><td><span class="lvl-dot" style="--lv:var(--p-' + periodOf(e.y).k + ')"></span>' + esc(e.t) + '</td><td>' + (e.y < -10000 ? '—' : centOf(e.y)) + '</td><td><span class="mst" aria-label="Niveau ' + m + ' sur 3"><i class="' + (m >= 1 ? 'on' : '') + '"></i><i class="' + (m >= 2 ? 'on' : '') + '"></i><i class="' + (m >= 3 ? 'on' : '') + '"></i></span></td></tr>';
+    }
+    h += '</tbody></table></div>';
+  } else if (!R.cur){
+    h += '<div class="card" style="--lv:var(--ok)"><span class="lvl">Tour terminé</span><p class="ct">Tu as passé en revue tous les repères de ces niveaux.</p><div class="row"><button type="button" class="btn" id="r-restart">Recommencer un tour</button></div></div>';
+  } else {
+    var c = byId(R.cur);
+    h += '<div class="card" style="--lv:var(--p-' + periodOf(c.y).k + ')"><span class="lvl">' + lvName(c.n) + ' · encore ' + (R.queue.length + 1) + ' carte' + (R.queue.length ? 's' : '') + '</span><p class="ct">' + esc(c.t) + '</p>';
+    if (!R.back){
+      h += '<div class="row"><button type="button" class="btn" id="r-flip">Voir la date</button></div>';
+    } else {
+      h += '<div class="ans"><span class="ad">' + cap(fdate(c)) + '</span><br>' + (c.y < -10000 ? cap(agoText(c)) : centOf(c.y)) + ', ' + periodOf(c.y).name + '<p>' + esc(c.d) + '</p></div>';
+      h += '<div class="row"><button type="button" class="btn" id="r-yes">Je savais</button><button type="button" class="btn alt" id="r-no">À revoir</button></div>';
+    }
+    h += '</div>';
+  }
+  $('revision').innerHTML = h;
+  var f = $('r-flip') || $('r-yes');
+  if (f) try { f.focus({preventScroll:true}); } catch (e2) {}
+}
+var resetArmed = false;
+$('revision').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('button') : null;
+  if (!b) return;
+  if (b.hasAttribute('data-rl')){ toggleLevel(S.prefs.rlevels, b.getAttribute('data-rl')); renderRevision(true); return; }
+  if (b.id === 'r-mode'){ S.prefs.rlist = !S.prefs.rlist; save(); renderRevision(); return; }
+  if (b.id === 'r-reset'){
+    if (!resetArmed){ resetArmed = true; b.textContent = 'Confirmer la remise à zéro'; b.style.color = 'var(--ko)'; return; }
+    resetArmed = false; S.mastery = {}; save(); renderRevision(true); return;
+  }
+  if (b.id === 'r-flip'){ R.back = true; renderRevision(); return; }
+  if (b.id === 'r-restart'){ renderRevision(true); return; }
+  if (b.id === 'r-yes' || b.id === 'r-no'){
+    var id = R.cur;
+    if (b.id === 'r-yes') S.mastery[id] = Math.min(3, (S.mastery[id] || 0) + 1);
+    else { S.mastery[id] = 0; R.queue.splice(Math.min(3, R.queue.length), 0, id); }
+    save();
+    R.cur = R.queue.shift() || null; R.back = false;
+    if (!R.cur) R.finished = true;
+    renderRevision();
+  }
+});
+
+/* ---------- Ma frise (événements personnels) ---------- */
+var delArmed = null;
+function renderPerso(){
+  var h = '<h2 class="sec-h">Ma frise</h2><p class="sec-p">Ajoute tes propres événements : l’histoire de ta ville, d’un personnage étudié, de ta famille… Ils apparaissent sur la frise avec le filtre « Ma frise ».</p>';
+  h += '<div class="form">';
+  h += '<div class="field"><label for="p-t">Événement</label><input type="text" id="p-t" maxlength="120" placeholder="Ex. : Fondation de ma ville"></div>';
+  h += '<div class="field"><label for="p-y">Année</label><div class="inline"><input type="number" id="p-y" min="1" max="300000" inputmode="numeric"><label class="ck"><input type="checkbox" id="p-bc"> av. J.-C.</label><label class="ck"><input type="checkbox" id="p-a"> date approximative</label></div></div>';
+  h += '<div class="field"><label for="p-y2">Année de fin (facultatif, pour une période)</label><div class="inline"><input type="number" id="p-y2" min="1" max="300000" inputmode="numeric"><label class="ck"><input type="checkbox" id="p-bc2"> av. J.-C.</label></div></div>';
+  h += '<div class="field"><label for="p-d">Explication (facultatif)</label><textarea id="p-d" maxlength="500"></textarea></div>';
+  h += '<p class="err" id="p-err" role="alert"></p><div class="row"><button type="button" class="btn" id="p-add">Ajouter à ma frise</button></div></div>';
+
+  var list = S.custom.slice().sort(function(a, b){ return a.y - b.y; });
+  h += '<h3 class="sec-h" style="font-size:1.25rem">Mes événements (' + list.length + ')</h3>';
+  if (!list.length) h += '<p class="sec-p">Aucun événement pour l’instant. Remplis le formulaire ci-dessus pour commencer.</p>';
+  else {
+    h += '<ul class="plist">';
+    for (var i = 0; i < list.length; i++){
+      var e = list[i];
+      h += '<li><div class="pt"><b>' + cap(fdate(e)) + '</b><span>' + esc(e.t) + '</span></div><button type="button" class="small-btn" data-see="' + e.id + '">Voir sur la frise</button><button type="button" class="small-btn danger" data-del="' + e.id + '">' + (delArmed === e.id ? 'Confirmer' : 'Supprimer') + '</button></li>';
+    }
+    h += '</ul>';
+  }
+  h += '<h3 class="sec-h" style="font-size:1.25rem">Partager</h3><p class="sec-p">Copie le code de ta frise pour l’envoyer à un camarade ou à ton professeur. Pour récupérer une frise, colle son code puis importe-la.</p>';
+  h += '<div class="form share"><div class="field"><label for="p-code">Code de ma frise</label><textarea id="p-code" readonly></textarea></div><div class="row"><button type="button" class="btn alt" id="p-gen">Afficher le code</button><button type="button" class="btn alt" id="p-copy">Copier</button></div>';
+  h += '<div class="field"><label for="p-imp">Coller un code reçu</label><textarea id="p-imp"></textarea></div><p class="ok-msg" id="p-msg" role="status"></p><div class="row"><button type="button" class="btn alt" id="p-doimp">Importer</button></div></div>';
+  $('perso').innerHTML = h;
+}
+function readYear(id, bcId){
+  var v = $(id).value.trim();
+  if (v === '') return null;
+  var n = parseInt(v, 10);
+  if (isNaN(n) || n < 1 || String(n) !== v.replace(/^0+/, '')) return NaN;
+  return $(bcId).checked ? -n : n;
+}
+function validItem(o){
+  return o && typeof o.t === 'string' && o.t.trim().length > 0 && typeof o.y === 'number' && isFinite(o.y) && o.y !== 0 && o.y >= -300000 && o.y <= NOW &&
+    (o.y2 == null || (typeof o.y2 === 'number' && o.y2 > o.y && o.y2 <= NOW && o.y2 !== 0));
+}
+$('perso').addEventListener('click', function(ev){
+  var b = ev.target.closest ? ev.target.closest('button') : null;
+  if (!b) return;
+  if (b.id === 'p-add'){
+    var t = $('p-t').value.trim(), y = readYear('p-y', 'p-bc'), y2 = readYear('p-y2', 'p-bc2'), err = $('p-err');
+    if (!t){ err.textContent = 'Écris le nom de l’événement.'; $('p-t').focus(); return; }
+    if (y === null || isNaN(y)){ err.textContent = 'Indique une année valide (un nombre entier, sans le signe moins : coche « av. J.-C. » si besoin).'; $('p-y').focus(); return; }
+    if (y < -300000 || y > NOW){ err.textContent = 'L’année doit être comprise entre 300 000 av. J.-C. et ' + NOW + '.'; $('p-y').focus(); return; }
+    if (y2 !== null && (isNaN(y2) || y2 <= y || y2 > NOW)){ err.textContent = 'L’année de fin doit être après l’année de début, et au plus tard ' + NOW + '.'; $('p-y2').focus(); return; }
+    var o = {id:'p' + Date.now().toString(36) + Math.floor(Math.random() * 1000), t:t.slice(0, 120), y:y, a:$('p-a').checked, d:$('p-d').value.trim().slice(0, 500)};
+    if (y2 !== null) o.y2 = y2;
+    S.custom.push(o); save();
+    if (!inArr(S.prefs.levels, 'p')){ S.prefs.levels.push('p'); save(); renderTools(); }
+    renderPerso();
+    $('p-err').className = 'ok-msg'; $('p-err').textContent = '« ' + o.t + ' » a été ajouté à ta frise.';
+    return;
+  }
+  if (b.hasAttribute('data-see')){ goToEvent(b.getAttribute('data-see')); return; }
+  if (b.hasAttribute('data-del')){
+    var id = b.getAttribute('data-del');
+    if (delArmed !== id){ delArmed = id; renderPerso(); return; }
+    delArmed = null;
+    S.custom = S.custom.filter(function(e){ return e.id !== id; }); save(); renderPerso();
+    return;
+  }
+  if (b.id === 'p-gen' || b.id === 'p-copy'){
+    var code = JSON.stringify({frise:1, events:S.custom.map(function(e){ var o2 = {t:e.t, y:e.y}; if (e.y2 != null) o2.y2 = e.y2; if (e.a) o2.a = true; if (e.d) o2.d = e.d; return o2; })});
+    var ta = $('p-code'); ta.value = code;
+    if (b.id === 'p-copy'){
+      var done = function(){ $('p-msg').textContent = 'Code copié.'; };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(code).then(done, function(){ ta.select(); try { document.execCommand('copy'); done(); } catch (e) { $('p-msg').textContent = 'Sélectionne le code et copie-le à la main.'; } });
+      } else { ta.select(); try { document.execCommand('copy'); done(); } catch (e) { $('p-msg').textContent = 'Sélectionne le code et copie-le à la main.'; } }
+    }
+    return;
+  }
+  if (b.id === 'p-doimp'){
+    var raw = $('p-imp').value.trim(), msg = $('p-msg');
+    msg.className = 'ok-msg';
+    var data = null;
+    try { data = JSON.parse(raw); } catch (e) { data = null; }
+    var arr = data && data.events instanceof Array ? data.events : (data instanceof Array ? data : null);
+    if (!arr){ msg.className = 'err'; msg.textContent = 'Ce code n’est pas reconnu. Vérifie qu’il a été copié en entier.'; return; }
+    var added = 0, skipped = 0;
+    for (var i = 0; i < arr.length; i++){
+      var it = arr[i];
+      if (!validItem(it)){ skipped++; continue; }
+      var dup = S.custom.some(function(e){ return e.t === it.t.trim() && e.y === it.y; });
+      if (dup){ skipped++; continue; }
+      var n = {id:'p' + Date.now().toString(36) + i + Math.floor(Math.random() * 1000), t:it.t.trim().slice(0, 120), y:Math.round(it.y), a:!!it.a, d:typeof it.d === 'string' ? it.d.slice(0, 500) : ''};
+      if (it.y2 != null) n.y2 = Math.round(it.y2);
+      S.custom.push(n); added++;
+    }
+    save();
+    if (added && !inArr(S.prefs.levels, 'p')){ S.prefs.levels.push('p'); save(); renderTools(); }
+    renderPerso();
+    $('p-msg').textContent = added + ' événement' + (added > 1 ? 's' : '') + ' importé' + (added > 1 ? 's' : '') + (skipped ? ', ' + skipped + ' ignoré' + (skipped > 1 ? 's' : '') + ' (doublon ou invalide)' : '') + '.';
+  }
+});
+
+/* ---------- Ateliers thématiques ---------- */
+var ATD = JSON.parse(document.getElementById('ateliers-data').textContent).ateliers;
+var TYPE_LABEL = {classer:'Tri', ordre:'Remise en ordre', zones:'Scène à explorer', qcm:'Questions', curseur:'Curseur'};
+var AT = null;
+if (!S.at || typeof S.at !== 'object') S.at = {};
+if (!S.prefs.alevels) S.prefs.alevels = ['6','5','4','3'];
+
+function atColor(a){ var e = a.ev ? byId(a.ev) : null; return e ? periodOf(e.y).k : 'cont'; }
+function atById(id){ for (var i = 0; i < ATD.length; i++) if (ATD[i].id === id) return ATD[i]; return null; }
+
+var GLYPHS = {
+  u:'<svg viewBox="0 0 20 20"><path d="M4 3 L16 3 L10 17 Z" fill="currentColor"/></svg>',
+  d:'<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="3"/></svg>',
+  orge:'<svg viewBox="0 0 20 20"><path d="M10 2 V18 M10 6 L5 3 M10 6 L15 3 M10 10 L5 7 M10 10 L15 7 M10 14 L5 11 M10 14 L15 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  mouton:'<svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5.5 5.5 L14.5 14.5 M14.5 5.5 L5.5 14.5" stroke="currentColor" stroke-width="2"/></svg>',
+  ouvrier:'<svg viewBox="0 0 20 20"><circle cx="10" cy="6" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 18 Q10 7 17 18" fill="none" stroke="currentColor" stroke-width="2"/></svg>'
+};
+var GLYPH_NAME = {u:'1 (unité)', d:'10 (dizaine)', orge:'orge (sac de grain)', mouton:'mouton', ouvrier:'ouvrier, personne'};
+function tabletHTML(lines){
+  var h = '<div class="tablet" role="img" aria-label="Tablette d’argile">';
+  for (var i = 0; i < lines.length; i++){
+    h += '<div class="tab-line">';
+    for (var j = 0; j < lines[i].length; j++) h += '<span class="gl">' + GLYPHS[lines[i][j]] + '</span>';
+    h += '</div>';
+  }
+  return h + '</div>';
+}
+function legendHTML(){
+  var h = '<div class="legend"><span class="doc-l">Légende des signes</span>';
+  var ks = ['u','d','orge','mouton','ouvrier'];
+  for (var i = 0; i < ks.length; i++) h += '<span class="lg"><span class="gl">' + GLYPHS[ks[i]] + '</span>' + GLYPH_NAME[ks[i]] + '</span>';
+  return h + '</div>';
+}
+
+/* Scènes SVG originales */
+function arches(x0, x1, y, h){
+  var d = 'M' + x0 + ' ' + (y + h), w = 14;
+  for (var x = x0; x < x1; x += w) d += ' L' + x + ' ' + (y + h) + ' Q' + (x + w / 2) + ' ' + (y + 2) + ' ' + (x + w) + ' ' + (y + h);
+  return '<rect x="' + x0 + '" y="' + (y - 5) + '" width="' + (x1 - x0) + '" height="6" class="sc-b"/><path d="' + d + '" class="sc-line"/>';
+}
+function zoneG(k, inner, hit, lx, ly, label){
+  return '<g class="zone" data-z="' + k + '" tabindex="0" role="button" aria-label="Zone à identifier">' + hit + inner + '<text class="lbl" x="' + lx + '" y="' + ly + '" text-anchor="middle">' + label + '</text></g>';
+}
+var SVGS = {
+  romaine: function(a){
+    var L = {}; for (var i = 0; i < a.zones.length; i++) L[a.zones[i].k] = a.zones[i].l;
+    var s = '<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">';
+    s += '<rect width="400" height="300" class="sc-ground"/>';
+    s += '<rect x="40" y="40" width="320" height="230" rx="30" class="sc-wall"/>';
+    s += '<rect x="195" y="40" width="10" height="230" class="sc-road"/><rect x="40" y="145" width="320" height="10" class="sc-road"/>';
+    var ins = [[60,55,40,25],[110,55,30,25],[300,55,40,30],[300,100,40,30],[150,175,30,25],[60,245,50,15],[150,215,35,30],[300,160,45,35]];
+    for (var k = 0; k < ins.length; k++) s += '<rect x="' + ins[k][0] + '" y="' + ins[k][1] + '" width="' + ins[k][2] + '" height="' + ins[k][3] + '" class="sc-house"/>';
+    s += zoneG('aqueduc', arches(0, 196, 22, 14) + '<rect x="196" y="17" width="6" height="25" class="sc-b"/>', '<rect class="hit" x="0" y="10" width="206" height="34"/>', 100, 12, L.aqueduc);
+    s += zoneG('theatre', '<path d="M70 120 A42 42 0 0 1 154 120 Z" class="sc-b"/><path d="M84 120 A28 28 0 0 1 140 120" class="sc-line"/><path d="M98 120 A14 14 0 0 1 126 120" class="sc-line"/><rect x="74" y="120" width="76" height="8" class="sc-b"/>', '<rect class="hit" x="64" y="72" width="96" height="62"/>', 112, 142, L.theatre);
+    s += zoneG('temple', '<rect x="218" y="88" width="40" height="46" class="sc-b"/><rect x="226" y="100" width="24" height="28" class="sc-in"/>' + (function(){ var c = ''; for (var i = 0; i < 4; i++) c += '<circle cx="' + (223 + i * 10) + '" cy="93" r="2" class="sc-dot"/>'; return c; })(), '<rect class="hit" x="212" y="82" width="52" height="58"/>', 238, 78, L.temple);
+    s += zoneG('forum', '<rect x="212" y="162" width="66" height="44" class="sc-b"/>' + (function(){ var c = ''; for (var i = 0; i < 6; i++){ c += '<circle cx="' + (218 + i * 11) + '" cy="167" r="1.8" class="sc-dot"/><circle cx="' + (218 + i * 11) + '" cy="201" r="1.8" class="sc-dot"/>'; } return c; })(), '<rect class="hit" x="208" y="158" width="74" height="52"/>', 245, 189, L.forum);
+    s += zoneG('thermes', '<rect x="62" y="172" width="80" height="58" class="sc-b"/><circle cx="84" cy="200" r="11" class="sc-water"/><circle cx="120" cy="200" r="11" class="sc-water"/><rect x="72" y="216" width="60" height="8" class="sc-water"/>', '<rect class="hit" x="56" y="166" width="92" height="70"/>', 102, 246, L.thermes);
+    s += zoneG('amphi', '<ellipse cx="318" cy="238" rx="38" ry="24" class="sc-b"/><ellipse cx="318" cy="238" rx="20" ry="11" class="sc-in"/>', '<rect class="hit" x="276" y="210" width="84" height="56"/>', 318, 282, L.amphi);
+    return s + '</svg>';
+  },
+  industrie: function(a){
+    var L = {}; for (var i = 0; i < a.zones.length; i++) L[a.zones[i].k] = a.zones[i].l;
+    var s = '<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">';
+    s += '<rect width="400" height="300" class="sc-sky"/><rect y="200" width="400" height="100" class="sc-ground"/>';
+    s += '<line x1="0" y1="282" x2="400" y2="282" class="sc-line"/><line x1="0" y1="288" x2="400" y2="288" class="sc-line"/>';
+    for (var r = 4; r < 400; r += 14) s += '<line x1="' + r + '" y1="280" x2="' + r + '" y2="290" class="sc-thin"/>';
+    s += '<g><rect x="150" y="266" width="44" height="14" rx="3" class="sc-b"/><rect x="186" y="256" width="14" height="24" class="sc-b"/><circle cx="160" cy="282" r="4" class="sc-dot"/><circle cx="182" cy="282" r="4" class="sc-dot"/><rect x="104" y="268" width="40" height="12" class="sc-b"/><circle cx="114" cy="282" r="4" class="sc-dot"/><circle cx="134" cy="282" r="4" class="sc-dot"/></g>';
+    s += zoneG('usine', '<circle cx="66" cy="54" r="10" class="sc-smoke"/><circle cx="80" cy="40" r="13" class="sc-smoke"/><circle cx="108" cy="70" r="9" class="sc-smoke"/><rect x="58" y="66" width="14" height="90" class="sc-b"/><rect x="100" y="84" width="12" height="72" class="sc-b"/><path d="M36 222 V160 L58 145 V160 L80 145 V160 L102 145 V160 L124 145 V160 L146 145 V160 L168 145 V222 Z" class="sc-b"/>' + (function(){ var c = ''; for (var i = 0; i < 5; i++) c += '<rect x="' + (44 + i * 24) + '" y="180" width="12" height="16" class="sc-win"/>'; return c; })(), '<rect class="hit" x="30" y="30" width="144" height="196"/>', 104, 174, L.usine);
+    s += zoneG('mine', '<path d="M206 196 L226 112 L246 196 M212 170 L240 170 M216 150 L236 150" class="sc-line"/><circle cx="226" cy="112" r="11" class="sc-b"/><circle cx="226" cy="112" r="3" class="sc-dot"/><rect x="196" y="186" width="62" height="30" class="sc-b"/><path d="M262 216 L272 198 L284 216 Z" class="sc-coal"/>', '<rect class="hit" x="190" y="96" width="98" height="124"/>', 236, 92, L.mine);
+    s += zoneG('patron', '<path d="M300 140 L338 112 L376 140 Z" class="sc-b"/><rect x="304" y="140" width="68" height="44" class="sc-b"/><rect x="314" y="150" width="12" height="12" class="sc-win"/><rect x="350" y="150" width="12" height="12" class="sc-win"/><rect x="332" y="164" width="12" height="20" class="sc-in"/><circle cx="292" cy="176" r="9" class="sc-tree"/><circle cx="385" cy="174" r="9" class="sc-tree"/>', '<rect class="hit" x="280" y="106" width="116" height="84"/>', 338, 102, L.patron);
+    s += zoneG('cite', (function(){ var c = ''; for (var i = 0; i < 5; i++){ var x = 14 + i * 32; c += '<path d="M' + x + ' 246 L' + (x + 14) + ' 234 L' + (x + 28) + ' 246 Z" class="sc-b"/><rect x="' + (x + 2) + '" y="246" width="24" height="20" class="sc-b"/><rect x="' + (x + 10) + '" y="254" width="8" height="12" class="sc-in"/>'; } return c; })(), '<rect class="hit" x="10" y="228" width="168" height="42"/>', 94, 226, L.cite);
+    s += zoneG('gare', '<path d="M276 212 L322 196 L368 212 Z" class="sc-b"/><rect x="280" y="212" width="84" height="56" class="sc-b"/><circle cx="322" cy="226" r="7" class="sc-in"/><rect x="290" y="240" width="14" height="28" class="sc-in"/><rect x="315" y="240" width="14" height="28" class="sc-in"/><rect x="340" y="240" width="14" height="28" class="sc-in"/>', '<rect class="hit" x="272" y="192" width="100" height="80"/>', 322, 188, L.gare);
+    return s + '</svg>';
+  },
+  mairie: function(a){
+    var L = {}; for (var i = 0; i < a.zones.length; i++) L[a.zones[i].k] = a.zones[i].l;
+    var s = '<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">';
+    s += '<rect width="400" height="300" class="sc-sky"/><rect y="262" width="400" height="38" class="sc-ground"/>';
+    var wing = function(x, txt){
+      var c = '<rect x="' + x + '" y="140" width="100" height="122" class="sc-b"/><rect x="' + (x + 6) + '" y="148" width="88" height="14" class="sc-in"/><text x="' + (x + 50) + '" y="158.5" text-anchor="middle" class="sc-txt" font-size="7.2">' + txt + '</text>';
+      c += '<rect x="' + (x + 12) + '" y="176" width="16" height="26" class="sc-win"/><rect x="' + (x + 72) + '" y="176" width="16" height="26" class="sc-win"/><rect x="' + (x + 40) + '" y="214" width="20" height="48" class="sc-in"/>';
+      return c;
+    };
+    s += zoneG('ecoles', wing(40, 'ÉCOLE DE GARÇONS'), '<rect class="hit" x="36" y="136" width="108" height="128"/>', 90, 132, L.ecoles);
+    s += zoneG('ecoles', wing(260, 'ÉCOLE DE FILLES'), '<rect class="hit" x="256" y="136" width="108" height="128"/>', 310, 132, L.ecoles);
+    s += zoneG('mairie', '<rect x="140" y="104" width="120" height="158" class="sc-b"/><rect x="170" y="148" width="60" height="14" class="sc-in"/><text x="200" y="158.5" text-anchor="middle" class="sc-txt" font-size="9">MAIRIE</text><rect x="152" y="172" width="18" height="30" class="sc-win"/><rect x="230" y="172" width="18" height="30" class="sc-win"/><path d="M184 262 V222 A16 16 0 0 1 216 222 V262 Z" class="sc-in"/><rect x="176" y="258" width="48" height="5" class="sc-b"/>', '<rect class="hit" x="146" y="140" width="108" height="124"/>', 200, 274, L.mairie);
+    s += zoneG('devise', '<rect x="140" y="104" width="120" height="30" class="sc-b"/><text x="200" y="116" text-anchor="middle" class="sc-txt" font-size="7.5">LIBERTÉ · ÉGALITÉ</text><text x="200" y="127" text-anchor="middle" class="sc-txt" font-size="7.5">FRATERNITÉ</text>', '<rect class="hit" x="140" y="104" width="120" height="30"/>', 200, 146, L.devise);
+    s += '<path d="M134 104 L200 62 L266 104 Z" class="sc-b"/>';
+    s += zoneG('marianne', '<path d="M188 101 Q188 90 200 89 Q212 90 212 101 Z" class="sc-bust"/><circle cx="200" cy="82" r="6.5" class="sc-bust"/><path d="M193 79 Q196 70 206 72 Q210 74 208 79 Z" class="sc-cap"/>', '<rect class="hit" x="182" y="68" width="36" height="35"/>', 230, 92, L.marianne);
+    s += zoneG('drapeau', '<line x1="200" y1="62" x2="200" y2="12" class="sc-line"/><rect x="201" y="14" width="12" height="22" fill="#2D4FD6"/><rect x="213" y="14" width="12" height="22" fill="#FFFFFF" stroke="#999" stroke-width=".5"/><rect x="225" y="14" width="12" height="22" fill="#E2324A"/>', '<rect class="hit" x="194" y="8" width="48" height="56"/>', 265, 30, L.drapeau);
+    return s + '</svg>';
+  }
+};
+
+function renderAteliersHome(){
+  AT = null;
+  var lv = S.prefs.alevels;
+  var h = '<h2 class="sec-h">Ateliers</h2><p class="sec-p">Des exercices courts sur des thèmes précis du programme. Ton meilleur résultat est gardé sur cet appareil.</p>';
+  h += levelChips('al', lv);
+  var any = false;
+  for (var l = 0; l < LEVELS.length; l++){
+    var n = LEVELS[l].k;
+    if (!inArr(lv, n)) continue;
+    any = true;
+    h += '<h3 class="lv-h">' + LEVELS[l].name + '</h3><div class="modes">';
+    for (var i = 0; i < ATD.length; i++){
+      var a = ATD[i];
+      if (a.n !== n) continue;
+      var r = S.at[a.id];
+      var res = r ? (r.m && !a.grave ? 'Meilleur résultat : ' + r.s + ' / ' + r.m : 'Fait') : 'À faire';
+      h += '<button type="button" class="mode" data-at="' + a.id + '" style="--lv:var(--p-' + atColor(a) + ')"><span class="tag">' + TYPE_LABEL[a.type] + '</span><b>' + esc(a.title) + '</b><span>' + esc(a.theme) + '</span><em>' + res + '</em></button>';
+    }
+    h += '</div>';
+  }
+  if (!any) h += '<p class="msg">Choisis au moins un niveau.</p>';
+  $('ateliers').innerHTML = h;
+}
+
+function startAtelier(id){
+  var a = atById(id);
+  if (!a) return;
+  AT = {a:a, i:0, score:0, done:false, sel:[], found:{}, firstTry:true, phase:'explore', step:0, seen:{}, left:a.gauge ? a.gauge.start : 0};
+  if (a.type === 'classer'){ AT.order = shuffle(a.items.map(function(_, i){ return i; })); }
+  if (a.type === 'ordre'){ AT.order = shuffle(a.items.map(function(_, i){ return i; })); var guard = 0; while (guard++ < 10 && AT.order.join() === a.items.map(function(_, i){ return i; }).join()) shuffle(AT.order); }
+  if (a.type === 'zones'){ AT.queue = shuffle(a.zones.map(function(_, i){ return i; })); }
+  renderAtelier();
+  window.scrollTo(0, 0);
+}
+
+function atHead(a){
+  var h = '<div class="game at" style="--lv:var(--p-' + atColor(a) + ')"><button type="button" class="small-btn" id="at-back">← Tous les ateliers</button>';
+  h += '<p class="at-meta">' + lvName(a.n) + ' · ' + esc(a.theme) + '</p><h2 class="at-title">' + esc(a.title) + '</h2>';
+  h += '<p class="at-intro">' + esc(a.intro) + '</p>';
+  if (a.legend) h += legendHTML();
+  h += '<p class="q-sub"><b>' + esc(a.consigne) + '</b></p>';
+  return h;
+}
+
+function renderAtelier(){
+  var a = AT.a, h = atHead(a), i;
+  if (a.type === 'classer'){
+    h += '<div class="cl-list" id="at-body">';
+    for (var o = 0; o < AT.order.length; o++){
+      i = AT.order[o];
+      var it = a.items[i];
+      h += '<div class="cl-item" data-i="' + i + '"><p>' + esc(it.t) + '</p><div class="cl-opts" role="group">';
+      for (var c = 0; c < a.cats.length; c++){
+        h += '<button type="button" class="cl-b" data-i="' + i + '" data-k="' + a.cats[c].k + '" aria-pressed="' + (AT.sel[i] === a.cats[c].k) + '">' + esc(a.cats[c].l) + '</button>';
+      }
+      h += '</div><div class="cl-x" hidden></div></div>';
+    }
+    h += '</div><div id="at-fb" aria-live="polite"></div><div class="row" id="at-actions"><button type="button" class="btn" id="at-check" disabled>Vérifier</button></div>';
+  } else if (a.type === 'ordre'){
+    h += '<div class="ord" id="at-body">';
+    for (var k = 0; k < AT.order.length; k++){
+      i = AT.order[k];
+      h += '<button type="button" class="opt" data-oi="' + i + '"><span class="num"></span><span>' + esc(a.items[i].t) + '<small hidden></small></span></button>';
+    }
+    h += '</div><div id="at-fb" aria-live="polite"></div><div class="row" id="at-actions"><button type="button" class="btn" id="at-check" disabled>Vérifier</button></div>';
+  } else if (a.type === 'zones'){
+    h += '<div class="scene" id="at-scene">' + SVGS[a.svg](a) + '</div><div id="at-prompt" class="prompt-box" aria-live="polite"></div><div id="at-fb" aria-live="polite"></div><div class="row" id="at-actions"></div>';
+  } else if (a.type === 'qcm' || (a.type === 'curseur' && AT.phase === 'qcm')){
+    h += '<div id="at-body"></div><div id="at-fb" aria-live="polite"></div><div class="row" id="at-actions"></div>';
+  } else if (a.type === 'curseur'){
+    h += '<div id="at-body"></div><div class="row" id="at-actions"><button type="button" class="btn" id="at-toq">Passer aux questions</button></div>';
+  }
+  h += '</div>';
+  $('ateliers').innerHTML = h;
+  if (a.type === 'zones') nextZone();
+  if (a.type === 'qcm' || (a.type === 'curseur' && AT.phase === 'qcm')) renderAtQ();
+  if (a.type === 'curseur' && AT.phase === 'explore') renderCurseur();
+}
+
+/* QCM */
+function atQuestions(){ return AT.a.questions; }
+function renderAtQ(){
+  var a = AT.a, qs = atQuestions(), q = qs[AT.i], h = '';
+  h += '<div class="prog"><i style="width:' + Math.round(AT.i / qs.length * 100) + '%"></i></div>';
+  if (a.gauge) h += gaugeHTML();
+  h += '<p class="q-sub">Question ' + (AT.i + 1) + ' / ' + qs.length + '</p>';
+  if (q.doc) h += '<div class="doc">' + q.doc + '</div>';
+  if (q.tablet) h += tabletHTML(q.tablet);
+  h += '<p class="q">' + esc(q.q) + '</p><div class="opts" id="at-opts">';
+  var perm = shuffle(q.opts.map(function(_, i){ return i; }));
+  for (var i = 0; i < perm.length; i++) h += '<button type="button" class="opt" data-qa="' + perm[i] + '">' + esc(q.opts[perm[i]]) + '</button>';
+  h += '</div>';
+  $('at-body').innerHTML = h;
+  $('at-fb').innerHTML = ''; $('at-actions').innerHTML = '';
+  AT.done = false;
+}
+function gaugeHTML(){
+  var g = AT.a.gauge, pct = Math.max(0, AT.left / g.start * 100);
+  return '<div class="gauge"><div class="gauge-t"><b>' + AT.left + '</b> ' + g.unit + ' sur ' + g.start + '</div><div class="bar"><i style="width:' + pct + '%"></i></div></div>';
+}
+function answerAtQ(ix){
+  if (AT.done) return;
+  var a = AT.a, qs = atQuestions(), q = qs[AT.i], ok = ix === q.a;
+  AT.done = true;
+  if (ok) AT.score++;
+  var bs = $('at-opts').querySelectorAll('.opt');
+  for (var i = 0; i < bs.length; i++){ var v = parseInt(bs[i].getAttribute('data-qa'), 10); bs[i].disabled = true; if (v === q.a) bs[i].classList.add('ok'); else if (v === ix) bs[i].classList.add('ko'); }
+  if (a.gauge && q.cost){ AT.left -= q.cost; var gEl = $('at-body').querySelector('.gauge'); if (gEl) gEl.outerHTML = gaugeHTML(); }
+  var last = AT.i === qs.length - 1;
+  $('at-fb').innerHTML = '<div class="fb ' + (ok ? 'ok' : 'ko') + '"><b>' + (ok ? 'Exact.' : 'Pas tout à fait. Bonne réponse : ' + esc(q.opts[q.a])) + '</b>' + esc(q.x) + '</div>';
+  $('at-actions').innerHTML = '<button type="button" class="btn" id="at-nextq">' + (last ? 'Voir le bilan' : 'Question suivante') + '</button>';
+  focusEl('at-nextq');
+}
+
+/* Curseur */
+function renderCurseur(){
+  var a = AT.a, st = a.steps[AT.step], h = '';
+  AT.seen[AT.step] = true;
+  h += '<div class="cur"><div class="cur-top"><button type="button" class="small-btn" id="cur-prev" aria-label="Étape précédente"' + (AT.step === 0 ? ' disabled' : '') + '>◀</button>';
+  h += '<div class="cur-year">' + st.y + '</div><button type="button" class="small-btn" id="cur-next" aria-label="Étape suivante"' + (AT.step === a.steps.length - 1 ? ' disabled' : '') + '>▶</button></div>';
+  h += '<input type="range" id="cur-range" min="0" max="' + (a.steps.length - 1) + '" step="1" value="' + AT.step + '" aria-label="Choisir une date">';
+  h += '<div class="cur-ticks" aria-hidden="true">';
+  for (var t = 0; t < a.steps.length; t++) h += '<span>' + a.steps[t].y + '</span>';
+  h += '</div><p class="cur-l">' + esc(st.l) + '</p><p class="cur-v">' + esc(st.v) + '</p><div class="groups">';
+  for (var g = 0; g < a.groups.length; g++){
+    var gr = a.groups[g], on = inArr(st.on, gr.k);
+    h += '<div class="grp-c' + (on ? '' : ' off') + '" style="--gc:var(--p-' + gr.c + ')"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="11" r="7" fill="currentColor"/><path d="M6 38 Q6 21 20 21 Q34 21 34 38 Z" fill="currentColor"/></svg><b>' + esc(gr.l) + '</b><span>' + (on ? 'votent' : 'ne votent pas') + '</span></div>';
+  }
+  h += '</div><p class="cur-x">' + esc(st.x) + '</p></div>';
+  var seen = 0; for (var k in AT.seen) if (AT.seen.hasOwnProperty(k)) seen++;
+  h += '<p class="q-sub">' + seen + ' étape' + (seen > 1 ? 's' : '') + ' explorée' + (seen > 1 ? 's' : '') + ' sur ' + a.steps.length + '</p>';
+  $('at-body').innerHTML = h;
+}
+function setStep(n){
+  var a = AT.a;
+  AT.step = Math.max(0, Math.min(a.steps.length - 1, n));
+  renderCurseur();
+}
+
+/* Zones */
+function nextZone(){
+  var a = AT.a;
+  if (AT.i >= AT.queue.length){ finishAtelier(AT.score, a.zones.length); return; }
+  var z = a.zones[AT.queue[AT.i]];
+  AT.firstTry = true; AT.done = false;
+  $('at-prompt').innerHTML = '<p class="q-sub">Lieu ' + (AT.i + 1) + ' / ' + a.zones.length + '</p><p class="q">' + esc(z.q) + '</p>';
+  $('at-fb').innerHTML = ''; $('at-actions').innerHTML = '';
+}
+function clickZone(k, g){
+  if (AT.done || AT.i >= AT.queue.length) return;
+  var a = AT.a, z = a.zones[AT.queue[AT.i]];
+  if (AT.found[k]) { $('at-fb').innerHTML = '<div class="fb ko">Tu as déjà trouvé ce lieu. Cherche ailleurs.</div>'; return; }
+  if (k === z.k){
+    AT.done = true;
+    if (AT.firstTry) AT.score++;
+    AT.found[k] = true;
+    var gs = $('at-scene').querySelectorAll('.zone[data-z="' + k + '"]');
+    for (var i = 0; i < gs.length; i++) gs[i].classList.add('found');
+    var last = AT.i === AT.queue.length - 1;
+    $('at-fb').innerHTML = '<div class="fb ok"><b>' + (AT.firstTry ? 'Trouvé du premier coup !' : 'Trouvé.') + '</b>' + esc(z.x) + '</div>';
+    $('at-actions').innerHTML = '<button type="button" class="btn" id="at-nextz">' + (last ? 'Voir le bilan' : 'Lieu suivant') + '</button>';
+    focusEl('at-nextz');
+  } else {
+    AT.firstTry = false;
+    var lbl = '';
+    for (var j = 0; j < a.zones.length; j++) if (a.zones[j].k === k) lbl = a.zones[j].l;
+    g.classList.remove('miss'); void g.getBoundingClientRect(); g.classList.add('miss');
+    $('at-fb').innerHTML = '<div class="fb ko">Non, ici c’est : ' + esc(lbl) + '. Essaie encore.</div>';
+  }
+}
+
+/* Classer et ordre */
+function checkClasser(){
+  var a = AT.a, good = 0;
+  for (var i = 0; i < a.items.length; i++){
+    var it = a.items[i], ok = AT.sel[i] === it.k;
+    if (ok) good++;
+    var box = $('at-body').querySelector('.cl-item[data-i="' + i + '"]');
+    box.classList.add(ok ? 'ok' : 'ko');
+    var lab = '';
+    for (var c = 0; c < a.cats.length; c++) if (a.cats[c].k === it.k) lab = a.cats[c].l;
+    var x = box.querySelector('.cl-x'); x.hidden = false;
+    x.innerHTML = (ok ? '<b>Exact.</b> ' : '<b>Réponse : ' + esc(lab) + '.</b> ') + esc(it.x || '');
+    var bs = box.querySelectorAll('.cl-b'); for (var b = 0; b < bs.length; b++) bs[b].disabled = true;
+  }
+  finishAtelier(good, a.items.length, true);
+}
+function checkOrdre(){
+  var a = AT.a, good = 0, bs = $('at-body').querySelectorAll('.opt');
+  for (var b = 0; b < bs.length; b++){
+    var oi = parseInt(bs[b].getAttribute('data-oi'), 10), p = AT.sel.indexOf(oi), ok = p === oi;
+    if (ok) good++;
+    bs[b].classList.add(ok ? 'ok' : 'ko'); bs[b].disabled = true;
+    var sm = bs[b].querySelector('small'); sm.hidden = false; sm.textContent = cap(a.items[oi].d) + (ok ? '' : ' · place correcte : ' + (oi + 1));
+  }
+  finishAtelier(good, a.items.length, true);
+}
+
+function finishAtelier(s, m, inline){
+  var a = AT.a, prev = S.at[a.id];
+  if (!prev || (m && s / m > prev.s / prev.m)) S.at[a.id] = {s:s, m:m};
+  save();
+  var h = '<div class="fb ' + (a.grave ? 'neutral' : (s === m ? 'ok' : 'ko')) + ' at-end">';
+  if (a.grave) h += '<b>Exercice terminé.</b>';
+  else h += '<span class="at-score">' + s + ' / ' + m + '</span><b>' + (s === m ? 'Sans faute !' : (s / m >= 0.6 ? 'Bien joué.' : 'Relis les corrections et réessaie.')) + '</b>';
+  if (a.outro) h += '<p class="at-outro">' + esc(a.outro) + '</p>';
+  h += '</div>';
+  var actions = '<button type="button" class="btn" id="at-again">Recommencer</button><button type="button" class="btn alt" id="at-back2">Tous les ateliers</button>';
+  if (a.ev && byId(a.ev)) actions += '<button type="button" class="btn alt" id="at-frise">Voir sur la frise</button>';
+  if (inline){
+    $('at-fb').innerHTML = h; $('at-actions').innerHTML = actions;
+  } else {
+    var body = $('at-body') || $('at-prompt');
+    if (body) body.innerHTML = '';
+    if ($('at-prompt')) $('at-prompt').innerHTML = '';
+    $('at-fb').innerHTML = h; $('at-actions').innerHTML = actions;
+  }
+  var fb = $('at-fb'); if (fb.scrollIntoView) fb.scrollIntoView({block:'nearest'});
+  focusEl('at-again');
+}
+function focusEl(id){ var e = $(id); if (e){ try { e.focus({preventScroll:true}); } catch (x) { e.focus(); } } }
+
+$('ateliers').addEventListener('click', function(ev){
+  var t = ev.target;
+  var zg = t.closest ? t.closest('.zone') : null;
+  if (zg && AT && AT.a.type === 'zones'){ clickZone(zg.getAttribute('data-z'), zg); return; }
+  var b = t.closest ? t.closest('button') : null;
+  if (!b) return;
+  if (b.hasAttribute('data-al')){ toggleLevel(S.prefs.alevels, b.getAttribute('data-al')); renderAteliersHome(); return; }
+  if (b.hasAttribute('data-at')){ startAtelier(b.getAttribute('data-at')); return; }
+  if (b.id === 'at-back' || b.id === 'at-back2'){ renderAteliersHome(); window.scrollTo(0, 0); return; }
+  if (!AT) return;
+  if (b.id === 'at-again'){ startAtelier(AT.a.id); return; }
+  if (b.id === 'at-frise'){ goToEvent(AT.a.ev); return; }
+  var a = AT.a;
+  if (a.type === 'classer'){
+    if (b.id === 'at-check'){ checkClasser(); b.remove(); return; }
+    if (b.classList.contains('cl-b')){
+      var i = parseInt(b.getAttribute('data-i'), 10);
+      AT.sel[i] = b.getAttribute('data-k');
+      var sib = b.parentNode.querySelectorAll('.cl-b');
+      for (var s = 0; s < sib.length; s++) sib[s].setAttribute('aria-pressed', sib[s] === b ? 'true' : 'false');
+      var n = 0; for (var j = 0; j < a.items.length; j++) if (AT.sel[j]) n++;
+      $('at-check').disabled = n !== a.items.length;
+    }
+    return;
+  }
+  if (a.type === 'ordre'){
+    if (b.id === 'at-check'){ checkOrdre(); return; }
+    if (b.hasAttribute('data-oi') && !b.disabled){
+      var oi = parseInt(b.getAttribute('data-oi'), 10), p = AT.sel.indexOf(oi);
+      if (p >= 0) AT.sel.splice(p, 1); else AT.sel.push(oi);
+      var bs = $('at-body').querySelectorAll('.opt');
+      for (var k = 0; k < bs.length; k++){
+        var idx = AT.sel.indexOf(parseInt(bs[k].getAttribute('data-oi'), 10)), ne = bs[k].querySelector('.num');
+        ne.textContent = idx >= 0 ? idx + 1 : ''; ne.className = 'num' + (idx >= 0 ? ' on' : '');
+      }
+      $('at-check').disabled = AT.sel.length !== a.items.length;
+    }
+    return;
+  }
+  if (a.type === 'zones'){
+    if (b.id === 'at-nextz'){ AT.i++; nextZone(); }
+    return;
+  }
+  if (a.type === 'curseur' && AT.phase === 'explore'){
+    if (b.id === 'cur-prev') setStep(AT.step - 1);
+    else if (b.id === 'cur-next') setStep(AT.step + 1);
+    else if (b.id === 'at-toq'){ AT.phase = 'qcm'; AT.i = 0; AT.score = 0; renderAtelier(); }
+    return;
+  }
+  if (b.hasAttribute('data-qa')){ answerAtQ(parseInt(b.getAttribute('data-qa'), 10)); return; }
+  if (b.id === 'at-nextq'){
+    AT.i++;
+    if (AT.i >= atQuestions().length) finishAtelier(AT.score, atQuestions().length);
+    else renderAtQ();
+  }
+});
+$('ateliers').addEventListener('input', function(ev){
+  if (ev.target.id === 'cur-range' && AT){ setStep(parseInt(ev.target.value, 10)); var r = $('cur-range'); if (r) r.focus(); }
+});
+$('ateliers').addEventListener('keydown', function(ev){
+  var zg = ev.target.closest ? ev.target.closest('.zone') : null;
+  if (zg && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); clickZone(zg.getAttribute('data-z'), zg); }
+});
+
+
+/* ---------- Thème ---------- */
+var THEMES = ['light', 'dark', 'auto'], THEME_LABEL = {auto:'auto', light:'clair', dark:'sombre'};
+function applyTheme(){
+  var t = S.prefs.theme || 'auto';
+  if (t === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', t);
+  $('theme').textContent = 'Thème : ' + THEME_LABEL[t];
+}
+$('theme').addEventListener('click', function(){
+  var t = S.prefs.theme || 'auto';
+  S.prefs.theme = THEMES[(THEMES.indexOf(t) + 1) % THEMES.length];
+  save(); applyTheme();
+});
+
+/* ---------- Lecture facilitée ---------- */
+function applyDys(){
+  document.body.classList.toggle('dys', !!S.prefs.dys);
+  $('dys').setAttribute('aria-pressed', S.prefs.dys ? 'true' : 'false');
+}
+$('dys').addEventListener('click', function(){
+  var y = centerYear();
+  S.prefs.dys = !S.prefs.dys; save(); applyDys();
+  if (current === 'frise') renderTimeline({keepYear:y});
+});
+
+/* ---------- Mise en page réactive ---------- */
+function measureStick(){ document.documentElement.style.setProperty('--stick', $('tabs').offsetHeight + 'px'); }
+var rsT = null, lastW = 0;
+window.addEventListener('resize', function(){
+  clearTimeout(rsT);
+  rsT = setTimeout(function(){
+    measureStick();
+    var w = $('tl').clientWidth;
+    if (current === 'frise' && w !== lastW){ lastW = w; renderTimeline({keepYear:centerYear()}); }
+  }, 180);
+});
+
+/* ---------- Démarrage ---------- */
+applyTheme();
+applyDys();
+renderTools();
+measureStick();
+show('frise');
+lastW = $('tl').clientWidth;
+if (document.fonts && document.fonts.ready){
+  document.fonts.ready.then(function(){ measureStick(); if (current === 'frise'){ var y = window.pageYOffset > 50 ? centerYear() : null; renderTimeline(y != null ? {keepYear:y} : {}); } });
+}
+})();
+
+</script>
+</body>
+</html>
