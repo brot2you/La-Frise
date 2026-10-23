@@ -1,0 +1,11 @@
+LA FRISE — V2 CHRONO EXPLORERS
+
+1. Décompresse cette archive.
+2. Dans le dépôt La-Frise, remplace index.html et ajoute les deux images du dossier assets dans assets. Conserve les autres fichiers déjà présents.
+3. Valide les changements et attends la mise à jour de GitHub Pages.
+4. Recharge la page avec Ctrl + F5.
+
+Cette V2 conserve les 128 événements, les 27 ateliers et les 5 défis. Le bouton Missions ouvre les ateliers existants. La collection d’objets et de nouvelles enquêtes ne sont pas encore ajoutées.
+Les sauvegardes existantes sont conservées sur le même navigateur et la même adresse.
+
+Contrôles : syntaxe JavaScript et données vérifiées. Rendu navigateur et tests interactifs non réalisés : aperçu local inaccessible depuis le navigateur de test.
