@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La Frise — Expéditions temporelles</title>
+<title>La Frise — Les défis du temps</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23151A3A%22%2F%3E%3Cpath%20d%3D%22M10%2032h44%22%20stroke%3D%22%23FFFFFF%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M14%2025v14%22%20stroke%3D%22%23E58A00%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M23%2025v14%22%20stroke%3D%22%230E9C9A%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M32%2022v20%22%20stroke%3D%22%23A88AF0%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M41%2025v14%22%20stroke%3D%22%23E8436A%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M50%2025v14%22%20stroke%3D%22%233D86F0%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M11%2048h42%22%20stroke%3D%22%23F0A500%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -332,6 +332,9 @@ body{background-color:var(--bg)}
 </style><style>.exp-hub{display:flex;gap:25px;align-items:center;justify-content:space-between;padding:25px;background:linear-gradient(120deg,#143f3c,#092c30);color:#fae5b7;border:2px solid #bd9856;border-radius:16px;margin:20px 0 14px}.exp-hub h2{font:700 clamp(1.5rem,3vw,2rem)/1.2 Georgia,serif;margin:12px 0}.exp-hub p{max-width:580px;font-size:1rem;color:#ecdfc4}.exp-stats{display:flex;gap:12px;flex-wrap:wrap;font-size:.86rem}.exp-stats>*{border:1px solid #af9a70;border-radius:20px;padding:5px 12px}.exp-stats b{background:#e5c17e;color:#2c2518}.exp-buttons{display:grid;gap:10px;min-width:230px}.exp-buttons .btn{background:#f0d495;color:#302113;border-color:#b5924e}.exp-buttons .small-btn{color:#f7e3bb;border:1px solid #a38b59;background:#174a48}.epoch-launches{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}.epoch-launch{overflow:hidden;border:1px solid #b99051;background:var(--surface);border-radius:10px;padding:0 0 10px;cursor:pointer}.epoch-launch b,.epoch-launch small{display:block;padding:3px 5px}.epoch-launch b{font:700 1rem Georgia,serif}.epoch-launch small{font-size:.75rem;color:var(--ink-soft)}.epoch-small{display:block;height:70px;background:url('assets/epoques.webp') var(--pos) center/500% auto}.event-scene{display:block;height:42px;border-radius:7px;background:linear-gradient(90deg,#0002,#0000),url('assets/epoques.webp') var(--pos) center/500% auto;margin:0 0 6px}.event-status{display:block;font-size:.76rem;color:var(--ink-soft);margin-top:7px;font-weight:700}.ev{border-color:#b99b69}.ev:hover{box-shadow:0 0 0 3px #16a99c55,0 6px 16px #3b291422}.discovery-actions{padding:18px;background:var(--bg);border:1px solid var(--line);border-radius:12px;margin-top:20px}.discovery-actions p{margin:0 0 12px}.journey-step{display:block;font-size:.78rem;letter-spacing:.1em;font-weight:800;color:var(--accent);margin-bottom:20px}.challenge-clue{padding:18px;border-left:4px solid #b98c40;background:var(--bg);border-radius:8px;line-height:1.7}.challenge-options{display:grid;gap:10px;margin:20px 0}.challenge-options .opt{width:100%;text-align:left;min-height:55px;white-space:normal}.answer-help{background:var(--ko-soft);color:var(--ink);padding:14px;border-radius:8px}.answer-good{background:var(--ok-soft);color:var(--ink);padding:14px;border-radius:8px}.answer-wrong{text-decoration:line-through}.exp-complete{text-align:center;padding:15px}.completion-mark{font-size:4rem;color:#b88930;display:block;line-height:1.2}.reward-date{display:block;font:700 2rem Georgia,serif;color:var(--accent);padding:10px}.exp-complete .row{justify-content:center;gap:12px;flex-wrap:wrap}.passport-stats{display:flex;flex-wrap:wrap;gap:15px;padding:18px;background:#123e3b;color:#ffe5ad;border-radius:12px}.passport-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:25px 0}.passport-card{overflow:hidden;background:var(--surface);border:2px solid #b5a489;border-radius:14px}.passport-card.unlocked{border-color:#bb8e36;box-shadow:0 0 0 3px #e6c47e55}.passport-art{height:140px;background:url('assets/epoques.webp') var(--pos) center/500% auto}.passport-copy{padding:18px}.passport-copy h3{font:700 1.45rem Georgia,serif;margin:10px 0}.passport-copy p{font-size:.85rem}.passport-copy progress{width:100%;height:14px;accent-color:#108d83}.seal{font-size:.7rem;letter-spacing:.07em;color:var(--ink-soft);font-weight:800}.unlocked .seal{color:var(--accent)}.discovered-list{display:grid;gap:10px;margin:20px 0 50px}.discovered-list button{display:flex;align-items:center;gap:18px;text-align:left;padding:15px;background:var(--surface);border:1px solid var(--line);border-radius:10px;cursor:pointer}.discovered-list button b{min-width:110px}.discovered-list button span{flex:1}.discovered-list button small{color:var(--ink-soft)}.sheet-in{max-height:90vh;overflow-y:auto}.event-challenge h2{font-size:clamp(1.35rem,3vw,1.8rem)}
 @media(max-width:700px){.exp-hub{display:block;padding:20px}.exp-buttons{margin-top:20px;min-width:0}.epoch-launches{display:flex;overflow-x:auto;padding-bottom:12px}.epoch-launch{min-width:145px}.passport-grid{grid-template-columns:1fr 1fr}.passport-art{height:110px}.passport-copy{padding:12px}.passport-copy h3{font-size:1.2rem}.passport-copy .btn{font-size:.85rem;padding:10px}.discovered-list button{flex-wrap:wrap;gap:8px}.discovered-list button span{flex-basis:60%}.discovered-list button small{width:100%}.event-scene{height:35px}}
 @media(max-width:420px){.passport-grid{grid-template-columns:1fr}}
+</style><style>.lab-heading{display:flex;gap:25px;align-items:center;justify-content:space-between;margin:30px 0}.lab-heading h2{margin:8px 0}.lab-heading label{white-space:nowrap;font-weight:700}.lab-heading select{padding:10px 18px;background:var(--surface);border:1px solid #a58247;border-radius:8px;color:var(--ink);font:inherit}.lab-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:20px 0 35px}.lab-overview>div{padding:20px;border:1px solid #b89c6b;border-radius:12px;background:#123d3b;color:#ffedc8}.lab-overview svg,.dossier-games svg{width:38px;height:38px;fill:none;stroke:#dfb96f;stroke-width:2;flex-shrink:0}.lab-overview b,.lab-overview span{display:block}.lab-overview b{font:700 1.2rem Georgia,serif;margin:10px 0}.lab-overview span{font-size:.9rem}.resume-lab{display:flex;align-items:center;justify-content:space-between;gap:15px;background:var(--surface);border:2px solid #b78a43;border-radius:12px;padding:18px}.dossier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:20px 0}.dossier{background:var(--surface);border:1px solid #bb9a65;border-radius:14px;overflow:hidden}.dossier-art{height:150px;background:url('assets/epoques.webp') var(--pos) center/500% auto}.dossier-copy{padding:20px}.dossier-meta{font-size:.75rem;font-weight:700;color:var(--ink-soft)}.dossier-copy h3{font:700 1.5rem/1.2 Georgia,serif;margin:12px 0}.dossier-copy p{font-size:.9rem;min-height:70px}.dossier-games{display:grid;gap:10px}.dossier-games button{display:grid;grid-template-columns:35px 1fr;text-align:left;gap:0 10px;align-items:center;padding:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;cursor:pointer}.dossier-games svg{grid-row:1/3;width:30px;stroke:#9d6c23}.dossier-games span{font-weight:700;font-size:.9rem}.dossier-games small{font-size:.72rem;color:var(--ink-soft)}.lab-note{font-size:.85rem;color:var(--ink-soft);margin:25px 0 40px}.study-layout{display:grid;grid-template-columns:1fr 1.3fr;border:1px solid #b18c51;border-radius:14px;overflow:hidden;background:var(--surface);margin:25px 0}.study-art{min-height:370px;background:url('assets/epoques.webp') var(--pos) center/500% 100%;position:relative}.study-art>span{position:absolute;left:15px;top:15px;background:#153d3e;color:#ffe5af;padding:8px 16px;border-radius:20px;font-weight:700;font-size:.85rem}.study-copy{padding:35px}.study-date{font:700 1.8rem Georgia,serif;color:var(--accent)}.study-copy h3{font:700 1.7rem/1.2 Georgia,serif}.study-copy p{line-height:1.8}.study-period{font-weight:700;color:var(--ink-soft)}.lab-controls{display:flex;justify-content:space-between;gap:20px;align-items:center;margin:20px 0}.lab-controls>span{font-size:.85rem;color:var(--ink-soft)}.game-prompt{padding:22px;background:#123f3b;color:#fff0cf;border-radius:12px;margin:20px 0}.game-prompt h3{font:700 1.6rem Georgia,serif;margin:0 0 10px}.game-prompt p{margin:10px 0}.game-prompt>span{font-size:.85rem;color:#e3cf9f}.chronology-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px 0;border-bottom:5px solid #b18b4d}.chrono-slot{border:2px dashed #ac8c55;border-radius:12px;min-height:185px;display:flex;flex-direction:column;padding:10px;background:var(--surface)}.slot-number{width:30px;height:30px;border-radius:50%;background:#a27c39;color:#fff6dc;display:grid;place-items:center;font-weight:800;margin:0 auto 10px}.chrono-slot button{border:0;background:transparent;color:var(--ink);flex:1;cursor:pointer}.chrono-slot button:disabled{opacity:.5;cursor:default}.placed-card b,.placed-card small,.placed-card span{display:block}.placed-card span{font-size:.72rem;margin-top:12px;color:var(--ink-soft)}.placed-card small{font-weight:800;color:var(--accent);margin-top:8px}.bank-label{font-weight:800;margin:20px 0 10px}.chrono-bank{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;min-height:30px;margin-bottom:25px}.bank-card{border:2px solid #c1a46e;border-radius:10px;padding:18px;background:var(--surface);cursor:pointer;min-height:110px}.bank-card b,.bank-card small{display:block}.bank-card small{margin-top:10px}.bank-card.selected{border-color:#07887d;box-shadow:0 0 0 3px #07887d44;background:var(--ok-soft)}.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin:25px 0}.memory-card{min-height:170px;padding:15px;border:3px solid #b68c49;border-radius:12px;background:radial-gradient(ellipse,#30534a,#132d2c);color:#ffdc98;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}.memory-card small{font-size:.68rem;font-weight:800;letter-spacing:.12em}.memory-card b{font-size:.96rem;line-height:1.4}.memory-card.revealed{background:var(--surface);color:var(--ink)}.memory-card.matched{border-color:#318d70;background:var(--ok-soft);color:var(--ink)}.card-compass{font-size:3rem}.intrus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:25px 0}.intrus-card{padding:30px;min-height:130px;background:var(--surface);border:2px solid #b99654;border-radius:12px;cursor:pointer;font-weight:700}.intrus-card:disabled{opacity:.4;text-decoration:line-through}.lab-complete{text-align:center;margin-top:20px}.lab-complete>b{display:inline-block;padding:10px 25px;border:1px solid #b78b3b;border-radius:25px;background:#123f3b;color:#ffe1a7}.recap-timeline{text-align:left;list-style:none;padding:0;max-width:800px;margin:30px auto}.recap-timeline li{padding:15px 20px;border-left:4px solid #b18d4e;background:var(--surface);margin-bottom:12px;border-radius:0 10px 10px 0}.recap-timeline b,.recap-timeline span{display:block}.recap-timeline b{color:var(--accent);font:700 1.2rem Georgia,serif}.recap-timeline span{font-weight:800;margin:8px 0}.recap-timeline p{font-size:.93rem}.lab-complete .row{justify-content:center;gap:12px;margin-bottom:40px}.lab-entry{margin:15px 0;border:1px solid #ba975c;border-radius:12px;padding:18px;background:var(--surface);display:flex;gap:20px;align-items:center;justify-content:space-between}.lab-entry p{margin:4px 0;font-size:.9rem}.lab-entry b{font:700 1.3rem Georgia,serif}#lab{padding-top:24px}button:disabled{cursor:default}
+@media(max-width:800px){.dossier-grid{grid-template-columns:1fr}.dossier{display:grid;grid-template-columns:180px 1fr}.dossier-art{height:100%;min-height:240px;background-size:500% 100%}.lab-overview{gap:8px}.lab-overview>div{padding:14px}.study-layout{grid-template-columns:1fr}.study-art{min-height:200px;max-height:230px;background-size:500% auto}.study-copy{padding:25px}.chronology-slots,.chrono-bank{grid-template-columns:repeat(2,1fr)}.memory-card{min-height:160px}}
+@media(max-width:540px){.lab-heading{display:block}.lab-heading label{display:block;margin-top:15px}.lab-overview{grid-template-columns:1fr}.lab-overview>div{display:grid;grid-template-columns:40px 1fr;gap:0 15px}.lab-overview svg{grid-row:1/3}.lab-overview b{margin:0 0 5px}.dossier{display:block}.dossier-art{height:140px;min-height:0;background-size:500% auto}.dossier-copy p{min-height:0}.resume-lab,.lab-controls,.lab-entry{flex-direction:column;align-items:stretch}.memory-grid{grid-template-columns:repeat(2,1fr);gap:10px}.memory-card{min-height:150px}.intrus-grid{grid-template-columns:1fr;gap:12px}.intrus-card{min-height:85px;padding:20px}.study-date{font-size:1.5rem}.study-copy h3{font-size:1.4rem}.chrono-slot{min-height:175px}.chronology-slots{gap:10px}.bank-card{padding:12px;font-size:.9rem}.lab-complete .row{flex-direction:column}.lab-controls>span{display:block}}
 </style></head>
 <body>
 <header class="top">
@@ -348,14 +351,14 @@ body{background-color:var(--bg)}
 <nav class="tabs" id="tabs" aria-label="Sections">
   <div class="wrap" role="tablist"><button class="tab" role="tab" type="button" data-tab="accueil" aria-selected="false">Accueil</button>
     <button class="tab" role="tab" type="button" data-tab="frise" aria-selected="true">La frise</button>
-    <button class="tab" role="tab" type="button" data-tab="defis" aria-selected="false">Défis</button>
+    <button class="tab" role="tab" type="button" data-tab="defis" aria-selected="false">Jeux classiques</button><button class="tab" role="tab" type="button" data-tab="lab" aria-selected="false">Salle des défis</button>
     <button class="tab" role="tab" type="button" data-tab="ateliers" aria-selected="false">Missions</button>
     <button class="tab" role="tab" type="button" data-tab="revision" aria-selected="false">Mes repères</button>
     <button class="tab" role="tab" type="button" data-tab="perso" aria-selected="false">Ma frise</button><button class="tab" role="tab" type="button" data-tab="collection" aria-selected="false">Collection</button>
   </div>
 </nav>
 
-<main><section id="v-collection" role="tabpanel" aria-label="Collection" hidden><div class="wrap" id="collection"></div></section><section id="v-accueil" role="tabpanel" aria-label="Accueil" hidden><div class="expedition"><div class="hero-copy"><span class="eyebrow">LE GRAND VOYAGE COMMENCE ICI</span><h2>La Frise</h2><p>Les voyageurs du temps</p></div><label class="class-select">Ma classe <select id="home-level"><option value="6">6e</option><option value="5">5e</option><option value="4">4e</option><option value="3">3e</option></select></label><div class="mission-note"><span>TON CARNET DE VOYAGE</span><h3 id="next-title"></h3><p>Observe, découvre et mets tes connaissances à l’épreuve.</p><small id="home-progress"></small></div><button class="travel" id="travel">Commencer mon voyage <span aria-hidden="true">➜</span></button></div><div class="destinations"><button class="destination" data-period="pre"><span class="dest-art" style="--pos:0%"></span><b>Préhistoire</b><small>Les premiers humains</small></button><button class="destination" data-period="ant"><span class="dest-art" style="--pos:25%"></span><b>Antiquité</b><small>Cités et empires</small></button><button class="destination" data-period="moy"><span class="dest-art" style="--pos:50%"></span><b>Moyen Âge</b><small>Châteaux et échanges</small></button><button class="destination" data-period="mod"><span class="dest-art" style="--pos:75%"></span><b>Temps modernes</b><small>Un monde en mouvement</small></button><button class="destination" data-period="cont"><span class="dest-art" style="--pos:100%"></span><b>Époque contemporaine</b><small>Révolutions et sociétés</small></button></div><div class="home-shortcuts"><button data-open="defis"><b>Les défis du temps</b><span>5 jeux pour retrouver tes repères</span></button><button data-open="revision"><b>Mes repères</b><span>Réviser et suivre mes acquis</span></button><button data-open="perso"><b>Ma frise personnelle</b><span>Ajouter mes propres événements</span></button></div><p class="home-hint">Choisis une époque pour explorer la frise, ou commence une mission adaptée à ta classe.</p></section>
+<main><section id="v-lab" role="tabpanel" aria-label="Salle des défis" hidden><div class="wrap" id="lab"></div></section><section id="v-collection" role="tabpanel" aria-label="Collection" hidden><div class="wrap" id="collection"></div></section><section id="v-accueil" role="tabpanel" aria-label="Accueil" hidden><div class="expedition"><div class="hero-copy"><span class="eyebrow">LE GRAND VOYAGE COMMENCE ICI</span><h2>La Frise</h2><p>Les voyageurs du temps</p></div><label class="class-select">Ma classe <select id="home-level"><option value="6">6e</option><option value="5">5e</option><option value="4">4e</option><option value="3">3e</option></select></label><div class="mission-note"><span>TON CARNET DE VOYAGE</span><h3 id="next-title"></h3><p>Observe, découvre et mets tes connaissances à l’épreuve.</p><small id="home-progress"></small></div><button class="travel" id="travel">Commencer mon voyage <span aria-hidden="true">➜</span></button></div><div class="destinations"><button class="destination" data-period="pre"><span class="dest-art" style="--pos:0%"></span><b>Préhistoire</b><small>Les premiers humains</small></button><button class="destination" data-period="ant"><span class="dest-art" style="--pos:25%"></span><b>Antiquité</b><small>Cités et empires</small></button><button class="destination" data-period="moy"><span class="dest-art" style="--pos:50%"></span><b>Moyen Âge</b><small>Châteaux et échanges</small></button><button class="destination" data-period="mod"><span class="dest-art" style="--pos:75%"></span><b>Temps modernes</b><small>Un monde en mouvement</small></button><button class="destination" data-period="cont"><span class="dest-art" style="--pos:100%"></span><b>Époque contemporaine</b><small>Révolutions et sociétés</small></button></div><div class="home-shortcuts"><button data-open="lab"><b>La salle des défis</b><span>Frise à reconstruire, memory et intrus temporel</span></button><button data-open="defis"><b>Les défis du temps</b><span>5 jeux pour retrouver tes repères</span></button><button data-open="revision"><b>Mes repères</b><span>Réviser et suivre mes acquis</span></button><button data-open="perso"><b>Ma frise personnelle</b><span>Ajouter mes propres événements</span></button></div><p class="home-hint">Choisis une époque pour explorer la frise, ou commence une mission adaptée à ta classe.</p></section>
   <section id="v-frise" role="tabpanel" aria-label="La frise">
     <div class="wrap"><div class="tools" id="tools"></div></div>
     <div class="wrap"><div id="explorer-hub"></div></div><div id="tl"></div>
@@ -1091,7 +1094,7 @@ function show(tab, opts){
   current = tab;
   var tabs = document.querySelectorAll('.tab');
   for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute('aria-selected', tabs[i].getAttribute('data-tab') === tab ? 'true' : 'false');
-  var ids = ['accueil', 'frise', 'defis', 'ateliers', 'revision', 'perso', 'collection'];
+  var ids = ['accueil', 'frise', 'defis', 'ateliers', 'revision', 'perso', 'collection', 'lab'];
   document.body.classList.toggle('at-home', tab === 'accueil');
   if(tab === 'accueil') renderHome();
   for (var k = 0; k < ids.length; k++) $('v-' + ids[k]).hidden = ids[k] !== tab;
@@ -1104,6 +1107,7 @@ function show(tab, opts){
   if (tab === 'revision') renderRevision();
   if (tab === 'perso') renderPerso();
   if (tab === 'collection') renderCollection();
+  if (tab === 'lab') renderLab();
 }
 $('tabs').addEventListener('click', function(ev){
   var b = ev.target.closest ? ev.target.closest('.tab') : null;
@@ -1982,7 +1986,7 @@ var EX = S.explore || {};
 EX.seen = EX.seen || {}; EX.passed=EX.passed || {};
 S.explore=EX;
 var CQ=null;
-function exploreXP(){return Object.keys(EX.seen).filter(function(id){return !!byId(id);}).length*10+Object.keys(EX.passed).filter(function(id){return !!byId(id);}).length*30;}
+function exploreXP(){return Object.keys(EX.seen).filter(function(id){return !!byId(id);}).length*10+Object.keys(EX.passed).filter(function(id){return !!byId(id);}).length*30+labXP();}
 function epochPool(k){return BASE.filter(function(e){return periodOf(e.y).k===k;});}
 function epochPassed(k){return epochPool(k).filter(function(e){return !!EX.passed[e.id];}).length;}
 function expPool(){return BASE.filter(function(e){return inArr(S.prefs.levels,e.n)&&(!S.prefs.rep||e.r);});}
@@ -1992,12 +1996,14 @@ function renderExplorerHub(){
  h+='<div class="epoch-launches" aria-label="Expéditions par époque">';
  PERIODS.forEach(function(pr,i){h+='<button data-epoch="'+pr.k+'" class="epoch-launch"><span class="epoch-small" style="--pos:'+i*25+'%" aria-hidden="true"></span><b>'+pr.name+'</b><small>'+epochPassed(pr.k)+' défis validés</small></button>';});h+='</div>';
  if(!pool.length)h+='<p class="msg">Active un niveau pour retrouver des événements.</p>';
+ h+='<div class="lab-entry"><div><b>Prêt à manipuler le temps ?</b><p>12 dossiers · 3 jeux par dossier · découvre avant de jouer</p></div><button class="btn" data-exp="lab">Entrer dans la salle des défis</button></div>';
  $('explorer-hub').innerHTML=h;
 }
 $('explorer-hub').addEventListener('click',function(ev){
  var b=ev.target.closest('button');if(!b)return;
  if(b.dataset.epoch){newJourney(epochPool(b.dataset.epoch),b.dataset.epoch);return;}
  if(b.dataset.exp==='collection'){show('collection');return;}
+ if(b.dataset.exp==='lab'){show('lab');return;}
  if(b.dataset.exp==='journey'){if(EX.journey)openJourney();else newJourney(expPool());}
  if(b.dataset.exp==='surprise'){var pool=expPool();if(pool.length){var unseen=pool.filter(function(e){return !EX.seen[e.id];});openSheet(shuffle(unseen.length?unseen:pool)[0].id);}}
 });
@@ -2066,7 +2072,7 @@ function finishEventChallenge(){
  $('sheet-body').querySelector('button').focus();
 }
 function renderCollection(){
- var h='<h2 class="sec-h">Mon passeport temporel</h2><p class="sec-p">10 XP par découverte, 30 XP par défi validé, une seule fois par événement. Un sceau se débloque après trois défis dans une époque.</p><div class="passport-stats"><b>'+exploreXP()+' XP</b><span>'+Object.keys(EX.seen).length+' découvertes</span><span>'+Object.keys(EX.passed).length+' défis validés</span><span>'+(EX.voyages||0)+' expéditions terminées</span></div><p class="sec-p">Un défi validé indique que tu as terminé l’activité, avec les indices si nécessaire. Pour vérifier tes acquis, utilise aussi « Mes repères ».</p><div class="passport-grid">';
+ var h='<h2 class="sec-h">Mon passeport temporel</h2><p class="sec-p">10 XP par découverte, 30 XP par défi d’événement validé, 20 XP par jeu de dossier terminé pour la première fois. Un sceau se débloque après trois défis dans une époque.</p><div class="passport-stats"><b>'+exploreXP()+' XP</b><span>'+Object.keys(EX.seen).length+' découvertes</span><span>'+Object.keys(EX.passed).length+' défis validés</span><span>'+(EX.voyages||0)+' expéditions terminées</span><span>'+labXP()+' XP dans la salle des défis</span></div><p class="sec-p">Un défi validé indique que tu as terminé l’activité, avec les indices si nécessaire. Pour vérifier tes acquis, utilise aussi « Mes repères ».</p><div class="passport-grid">';
  PERIODS.forEach(function(pr,i){var n=epochPassed(pr.k),unlocked=n>=3;h+='<article class="passport-card '+(unlocked?'unlocked':'')+'"><div class="passport-art" style="--pos:'+i*25+'%"></div><div class="passport-copy"><span class="seal">'+(unlocked?'✦ SCEAU DÉBLOQUÉ':'SCEAU À DÉBLOQUER')+'</span><h3>'+pr.name+'</h3><progress value="'+Math.min(n,3)+'" max="3" aria-label="Progression du sceau '+pr.name+'"></progress><p>'+n+' défis validés · objectif : 3</p><button class="btn" data-trip="'+pr.k+'">Explorer cette époque</button></div></article>';});
  h+='</div><h3 class="sec-h">Mes découvertes</h3><div class="discovered-list">';
  var seen=BASE.filter(function(e){return EX.seen[e.id];});
@@ -2075,6 +2081,117 @@ function renderCollection(){
  h+='</div>';$('collection').innerHTML=h;
 }
 $('collection').addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;if(b.dataset.trip)newJourney(epochPool(b.dataset.trip),b.dataset.trip);if(b.dataset.discovery)openSheet(b.dataset.discovery);});
+
+/* Salle des défis : découvrir, manipuler, mémoriser. */
+var DOSSIERS=[
+ {id:'premiers-humains',n:'6',k:'pre',t:'Les traces des premiers humains',intro:'Des grottes aux premiers villages : retrouve les étapes du dossier.',ids:['e2','e3','e4','e5']},
+ {id:'premiers-etats',n:'6',k:'ant',t:'Les archives des premiers États',intro:'Quatre traces du monde antique attendent leur place dans le temps.',ids:['e7','e8','e9','e10']},
+ {id:'rome',n:'6',k:'ant',t:'Le dossier de Rome',intro:'Reconstitue une partie de l’histoire de Rome à partir de ses repères.',ids:['e12','e15','e20','e28']},
+ {id:'pouvoirs',n:'5',k:'moy',t:'Sur la piste des pouvoirs médiévaux',intro:'Quatre cartes pour suivre les transformations du pouvoir au Moyen Âge.',ids:['e29','e36','e39','e44']},
+ {id:'voyages',n:'5',k:'mod',t:'Les routes maritimes',intro:'Remets en relation les voyages et les conquêtes de ce dossier.',ids:['e51','e52','e56','e58']},
+ {id:'monarchie',n:'5',k:'mod',t:'Dans les archives du royaume',intro:'Retrouve les repères de ce dossier consacré à la monarchie française.',ids:['e61','e62','e63','e64']},
+ {id:'revolution',n:'4',k:'mod',t:'Le dossier des révolutions',intro:'Des idées nouvelles aux changements politiques : explore les cartes puis reconstruis leur chronologie.',ids:['e66','e68','e69','e73']},
+ {id:'napoleon',n:'4',k:'cont',t:'Les années Bonaparte',intro:'Quatre événements à comprendre et à remettre dans leur ordre de début.',ids:['e73','e75','e76','e77']},
+ {id:'republique',n:'4',k:'cont',t:'Les repères de la République',intro:'Construis la chronologie de ce dossier sur la République et ses lois.',ids:['e79','e82','e84','e87']},
+ {id:'guerre14',n:'3',k:'cont',t:'1914–1919 : lire la chronologie',intro:'Étudie ces repères de la Première Guerre mondiale et de son issue.',ids:['e89','e91','e93','e94']},
+ {id:'guerre-froide',n:'3',k:'cont',t:'Les repères de la guerre froide',intro:'Relie quatre repères majeurs du dossier et retrouve leur ordre.',ids:['e110','e116','e117','e123']},
+ {id:'europe',n:'3',k:'cont',t:'Le dossier européen',intro:'Des traités aux changements récents : retrouve quatre étapes du dossier.',ids:['e113','e125','e127','e128']}
+];
+var LAB_MODES=[{id:'chrono',t:'La frise à reconstruire',d:'Choisis une carte, puis sa place sur la frise.',icon:'timeline'},{id:'memory',t:'Le memory temporel',d:'Retrouve les quatre associations date–événement.',icon:'cards'},{id:'intrus',t:'L’intrus temporel',d:'Repère la carte qui commence hors de l’intervalle.',icon:'search'}];
+EX.labs=EX.labs||{};
+function labXP(){var n=0;DOSSIERS.forEach(function(t){var a=EX.labs[t.id]||{};LAB_MODES.forEach(function(m){if(a[m.id])n+=20;});});return n;}
+function labIcon(name){var paths={timeline:'<path d="M4 17h32M9 12v10M20 8v18M31 12v10"/>',cards:'<rect x="5" y="8" width="18" height="25" rx="3"/><path d="M24 5h8a3 3 0 0 1 3 3v22"/><path d="M11 19h6M14 16v6"/>',search:'<circle cx="17" cy="16" r="10"/><path d="m25 24 10 10M12 16h10"/>'};return '<svg viewBox="0 0 40 40" aria-hidden="true">'+paths[name]+'</svg>';}
+function labTheme(id){return DOSSIERS.filter(function(t){return t.id===id;})[0];}
+function labPool(t){return t.ids.map(byId).filter(Boolean);}
+function labResults(t){return EX.labs[t.id]||{};}
+function renderLab(){
+ var lv=S.prefs.homeLevel||'6';
+ var h='<div class="lab-heading"><div><span class="eyebrow">LA SALLE DES DÉFIS</span><h2 class="sec-h">Manipule le temps.</h2><p class="sec-p">Découvre quatre événements, puis reconstruis, associe et enquête. Joue à ton rythme : aucun compte à rebours.</p></div><label>Ma classe <select id="lab-level">'+LEVELS.map(function(l){return '<option value="'+l.k+'" '+(l.k===lv?'selected':'')+'>'+l.name+'</option>';}).join('')+'</select></label></div>';
+ if(EX.labSession)h+='<div class="resume-lab"><span>Une partie est en cours. Ta progression est enregistrée.</span><button class="btn" id="resume-lab">Reprendre ma partie</button></div>';
+ h+='<div class="lab-overview">';LAB_MODES.forEach(function(m){h+='<div>'+labIcon(m.icon)+'<b>'+m.t+'</b><span>'+m.d+'</span></div>';});h+='</div><h3 class="sec-h">Mes dossiers d’exploration · '+lv+'e</h3><div class="dossier-grid">';
+ DOSSIERS.filter(function(t){return t.n===lv;}).forEach(function(t){var a=labResults(t),done=LAB_MODES.filter(function(m){return !!a[m.id];}).length,i=PERIODS.map(function(pr){return pr.k;}).indexOf(t.k);h+='<article class="dossier"><div class="dossier-art" style="--pos:'+i*25+'%"></div><div class="dossier-copy"><span class="dossier-meta">'+t.n+'e · 4 événements · '+done+' / 3 jeux terminés</span><h3>'+t.t+'</h3><p>'+t.intro+'</p><div class="dossier-games">';LAB_MODES.forEach(function(m){h+='<button data-dossier="'+t.id+'" data-labmode="'+m.id+'">'+labIcon(m.icon)+'<span>'+m.t+'</span><small>'+(a[m.id]?'✓ Terminé · rejouer':'+20 XP à la première réussite')+'</small></button>';});h+='</div></div></article>';});h+='</div><p class="lab-note">Les frises de ces jeux servent à travailler l’ordre des événements : l’espacement des cartes ne représente pas la durée écoulée.</p>';
+ $('lab').innerHTML=h;
+ $('lab-level').onchange=function(){S.prefs.homeLevel=this.value;save();renderLab();};
+ if($('resume-lab'))$('resume-lab').onclick=renderLabSession;
+}
+$('lab').addEventListener('click',function(ev){var b=ev.target.closest('[data-dossier]');if(b)startLab(b.dataset.dossier,b.dataset.labmode);});
+function startLab(theme,mode){
+ var t=labTheme(theme);if(!t)return;
+ EX.labSession={theme:theme,mode:mode,ids:t.ids.slice(),stage:'study',readIndex:0,attempts:0};save();renderLabSession();window.scrollTo(0,0);
+}
+function labHeader(t,l){return '<button class="small-btn" id="lab-back">← Salle des défis · partie enregistrée</button><p class="journey-step">'+t.n+'e · '+t.t+'</p><h2 class="sec-h">'+LAB_MODES.filter(function(m){return m.id===l.mode;})[0].t+'</h2>';}
+function bindLabBack(){if($('lab-back'))$('lab-back').onclick=function(){save();renderLab();};}
+function renderLabSession(){
+ var l=EX.labSession;if(!l)return renderLab();var t=labTheme(l.theme);if(!t){EX.labSession=null;save();return renderLab();}
+ var h=labHeader(t,l);
+ if(l.stage==='study'){
+  var e=byId(l.ids[l.readIndex]);if(!EX.seen[e.id]){EX.seen[e.id]=true;save();}
+  h+='<div class="study-layout"><div class="study-art" style="--pos:'+(PERIODS.indexOf(periodOf(e.y))*25)+'%"><span>Découverte '+(l.readIndex+1)+' / '+l.ids.length+'</span></div><article class="study-copy"><span class="study-date">'+cap(fdate(e))+'</span><h3>'+esc(e.t)+'</h3><p>'+esc(e.d)+'</p><p class="study-period">'+periodOf(e.y).name+'</p><div class="row">'+(l.readIndex>0?'<button class="small-btn" id="study-prev">← Précédent</button>':'')+'<button class="btn" id="study-next">'+(l.readIndex===l.ids.length-1?'Je suis prêt : jouer':'Découverte suivante →')+'</button></div></article></div><p class="lab-note">Retiens ce qui s’est passé et quand. Tu pourras rouvrir le dossier pendant le jeu.</p>';
+  $('lab').innerHTML=h;bindLabBack();
+  if($('study-prev'))$('study-prev').onclick=function(){l.readIndex--;save();renderLabSession();};
+  $('study-next').onclick=function(){if(l.readIndex<l.ids.length-1)l.readIndex++;else{l.stage='play';initLabGame(l);}save();renderLabSession();};return;
+ }
+ if(l.stage==='complete'){renderLabComplete(t,l);return;}
+ h+='<div class="lab-controls"><button class="small-btn" id="review-lab">Relire les quatre découvertes</button><span>Prends ton temps. Les erreurs donnent des indices.</span></div>';
+ $('lab').innerHTML=h+'<div id="lab-play"></div><div id="lab-feedback" role="status" aria-live="polite"></div>';
+ bindLabBack();$('review-lab').onclick=function(){l.stage='study';l.readIndex=0;save();renderLabSession();};
+ if(l.mode==='chrono')renderLabChrono(l);
+ if(l.mode==='memory')renderLabMemory(l);
+ if(l.mode==='intrus')renderLabIntrus(l);
+}
+function initLabGame(l){
+ if(l.initialized)return;l.initialized=true;
+ if(l.mode==='chrono'){l.bank=shuffle(l.ids.slice());l.slots=[null,null,null,null];l.selected=null;l.hint=false;}
+ if(l.mode==='memory'){l.cards=shuffle(l.ids.flatMap(function(id){return [{id:id,type:'date'},{id:id,type:'event'}];}));l.open=[];l.matched=[];l.moves=0;}
+ if(l.mode==='intrus'){
+  var sorted=l.ids.map(byId).sort(function(a,b){return a.y-b.y;});
+  var earlier=Math.random()<.5;l.intrus={correct:(earlier?sorted[3]:sorted[0]).id,a:(earlier?sorted[0]:sorted[1]).y,b:(earlier?sorted[2]:sorted[3]).y,order:shuffle(l.ids.slice()),wrong:[]};
+ }
+}
+function shortYear(y){return y<0?Math.abs(y).toLocaleString('fr-FR')+' av. J.-C.':String(y);}
+function renderLabChrono(l){
+ var h='<div class="game-prompt"><h3>Reconstruis la frise du dossier</h3><p>1. Choisis une carte. 2. Touche une place sur la frise. Pour déplacer une carte déjà placée, remets-la dans la réserve.</p><span>Du plus ancien au plus récent · date de début pour les événements longs</span></div><div class="chronology-slots">';
+ l.slots.forEach(function(id,i){h+='<div class="chrono-slot"><span class="slot-number">'+(i+1)+'</span>'+(id?'<button class="placed-card" data-remove-slot="'+i+'"><b>'+esc(byId(id).t)+'</b>'+(l.hint?'<small>'+cap(fdate(byId(id)))+'</small>':'')+'<span>Remettre dans la réserve</span></button>':'<button data-fill-slot="'+i+'" '+(!l.selected?'disabled':'')+'>Placer ici</button>')+'</div>';});
+ h+='</div><p class="bank-label">Réserve de cartes'+(l.selected?' · choisis une place sur la frise':'')+'</p><div class="chrono-bank">';
+ l.bank.forEach(function(id){var e=byId(id);h+='<button class="bank-card '+(l.selected===id?'selected':'')+'" data-select-card="'+id+'" aria-pressed="'+(l.selected===id)+'"><b>'+esc(e.t)+'</b>'+(l.hint?'<small>'+cap(fdate(e))+'</small>':'')+'</button>';});h+='</div><button class="btn" id="check-chrono" '+(l.slots.some(function(id){return !id;})?'disabled':'')+'>Vérifier ma frise</button>';
+ $('lab-play').innerHTML=h;
+ $('lab-play').querySelectorAll('[data-select-card]').forEach(function(b){b.onclick=function(){l.selected=b.dataset.selectCard;save();renderLabChrono(l);};});
+ $('lab-play').querySelectorAll('[data-fill-slot]').forEach(function(b){b.onclick=function(){if(!l.selected)return;l.slots[Number(b.dataset.fillSlot)]=l.selected;l.bank=l.bank.filter(function(id){return id!==l.selected;});l.selected=null;save();renderLabChrono(l);};});
+ $('lab-play').querySelectorAll('[data-remove-slot]').forEach(function(b){b.onclick=function(){var i=Number(b.dataset.removeSlot);l.bank.push(l.slots[i]);l.slots[i]=null;l.selected=null;save();renderLabChrono(l);};});
+ $('check-chrono').onclick=function(){
+  if(l.slots.some(function(id){return !id;}))return;l.attempts++;
+  var good=l.slots.every(function(id,i){return i===0||byId(l.slots[i-1]).y<=byId(id).y;});
+  if(good)completeLab(l);else{l.hint=true;save();renderLabChrono(l);$('lab-feedback').innerHTML='<p class="answer-help">La chronologie contient une inversion. Les dates sont maintenant visibles : compare-les puis replace les cartes. Pour une date avant J.-C., la plus grande distance à l’an 1 est la plus ancienne.</p>';}
+ };
+}
+function renderLabMemory(l){
+ var h='<div class="game-prompt"><h3>Retrouve les quatre paires</h3><p>Associe une carte « date » et la carte « événement » correspondante.</p><span>'+l.matched.length+' / 4 paires · '+l.moves+' essais</span></div><div class="memory-grid">';
+ l.cards.forEach(function(c,i){var matched=l.matched.indexOf(c.id)>=0,open=matched||l.open.indexOf(i)>=0,e=byId(c.id);h+='<button class="memory-card '+(open?'revealed':'')+' '+(matched?'matched':'')+'" data-memory="'+i+'" '+(matched?'disabled':'')+' aria-label="'+(open?esc((c.type==='date'?'Date : '+cap(fdate(e)):'Événement : '+e.t)):'Retourner la carte '+(i+1))+'">'+(open?'<small>'+(c.type==='date'?'DATE':'ÉVÉNEMENT')+'</small><b>'+esc(c.type==='date'?cap(fdate(e)):e.t)+'</b>':'<span class="card-compass" aria-hidden="true">✧</span><small>CARTE '+(i+1)+'</small>')+'</button>';});h+='</div>';
+ if(l.open.length===2){var c=l.cards[l.open[0]],e=l.cards[l.open[1]];if(c.id!==e.id)h+='<p class="answer-help">Ces cartes ne forment pas une paire. Observe-les avant de les retourner.</p><button class="btn" id="memory-again">Retourner ces deux cartes</button>';}
+ $('lab-play').innerHTML=h;
+ $('lab-play').querySelectorAll('[data-memory]').forEach(function(b){b.onclick=function(){
+  var i=Number(b.dataset.memory);if(l.open.length>=2||l.open.indexOf(i)>=0||l.matched.indexOf(l.cards[i].id)>=0)return;
+  l.open.push(i);if(l.open.length===2){l.moves++;var a=l.cards[l.open[0]],c=l.cards[l.open[1]];if(a.id===c.id&&a.type!==c.type){l.matched.push(a.id);l.open=[];}}
+  save();if(l.matched.length===4)completeLab(l);else renderLabMemory(l);
+ };});
+ if($('memory-again'))$('memory-again').onclick=function(){l.open=[];save();renderLabMemory(l);};
+}
+function renderLabIntrus(l){
+ var g=l.intrus;var h='<div class="game-prompt"><h3>Une carte est hors de l’intervalle</h3><p>Trois événements commencent entre <b>'+shortYear(g.a)+'</b> et <b>'+shortYear(g.b)+'</b>, bornes incluses.</p><p>Lequel commence en dehors de cet intervalle ?</p></div><div class="intrus-grid">';
+ g.order.forEach(function(id){h+='<button class="intrus-card" data-intrus="'+id+'" '+(g.wrong.indexOf(id)>=0?'disabled':'')+'>'+esc(byId(id).t)+'</button>';});h+='</div>';$('lab-play').innerHTML=h;
+ $('lab-play').querySelectorAll('[data-intrus]').forEach(function(b){b.onclick=function(){l.attempts++;var e=byId(b.dataset.intrus);if(e.id===g.correct){completeLab(l);}else{g.wrong.push(e.id);save();renderLabIntrus(l);$('lab-feedback').innerHTML='<p class="answer-help">'+esc(e.t)+' commence en '+shortYear(e.y)+' : cette date est bien dans l’intervalle. Cherche une carte qui commence avant ou après.</p>';}};});
+}
+function completeLab(l){
+ var r=EX.labs[l.theme]||(EX.labs[l.theme]={});l.newReward=!r[l.mode];
+ var score=l.mode==='memory'?l.moves:l.attempts;
+ r[l.mode]={best:r[l.mode]?Math.min(r[l.mode].best,score):score};l.stage='complete';save();renderLabSession();window.scrollTo(0,0);
+}
+function renderLabComplete(t,l){
+ var h=labHeader(t,l)+'<div class="lab-complete"><span class="completion-mark" aria-hidden="true">✦</span><h2>Défi terminé !</h2><p>'+LAB_MODES.filter(function(m){return m.id===l.mode;})[0].t+' · '+t.t+'</p><b>'+(l.newReward?'+20 XP':'Entraînement terminé · XP déjà obtenus')+'</b><p>'+(l.mode==='memory'?l.moves+' essais pour retrouver les quatre paires.':l.attempts+' tentative'+(l.attempts>1?'s':'')+'.')+'</p><h3>La chronologie à retenir</h3><ol class="recap-timeline">';
+ labPool(t).sort(function(a,b){return a.y-b.y;}).forEach(function(e){h+='<li><b>'+cap(fdate(e))+'</b><span>'+esc(e.t)+'</span><p>'+esc(e.d)+'</p></li>';});
+ h+='</ol>';var done=LAB_MODES.filter(function(m){return !!labResults(t)[m.id];}).length;h+='<p class="answer-good">'+(done===3?'Les trois jeux de ce dossier sont terminés !':done+' / 3 jeux terminés dans ce dossier.')+'</p><div class="row">';LAB_MODES.forEach(function(m){h+='<button class="'+(m.id===l.mode?'small-btn':'btn')+'" data-next-lab="'+m.id+'">'+(m.id===l.mode?'Rejouer':m.t)+'</button>';});h+='<button class="small-btn" id="lab-passport">Mon passeport</button></div></div>';
+ $('lab').innerHTML=h;bindLabBack();$('lab').querySelectorAll('[data-next-lab]').forEach(function(b){b.onclick=function(){startLab(t.id,b.dataset.nextLab);};});$('lab-passport').onclick=function(){show('collection');};
+}
 
 /* ---------- Démarrage ---------- */
 if(!S.prefs.homeLevel){S.prefs.homeLevel='6';S.prefs.levels=['6','p'];S.prefs.dlevels=['6'];S.prefs.rlevels=['6'];S.prefs.alevels=['6'];save();}

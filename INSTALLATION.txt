@@ -1,11 +1,33 @@
-LA FRISE — V2 CHRONO EXPLORERS
+LA FRISE V4 — LA SALLE DES DÉFIS
 
-1. Décompresse cette archive.
-2. Dans le dépôt La-Frise, remplace index.html et ajoute les deux images du dossier assets dans assets. Conserve les autres fichiers déjà présents.
-3. Valide les changements et attends la mise à jour de GitHub Pages.
-4. Recharge la page avec Ctrl + F5.
+INSTALLATION
+1. Décompresse le ZIP.
+2. Dans le dépôt La-Frise, remplace index.html. Les deux images du dossier assets sont identiques à la V3 : conserve celles déjà installées, ou fusionne le dossier fourni. Ne supprime aucun autre fichier.
+3. Valide les changements, attends GitHub Pages, puis recharge avec Ctrl + F5.
 
-Cette V2 conserve les 128 événements, les 27 ateliers et les 5 défis. Le bouton Missions ouvre les ateliers existants. La collection d’objets et de nouvelles enquêtes ne sont pas encore ajoutées.
-Les sauvegardes existantes sont conservées sur le même navigateur et la même adresse.
+NOUVEAUTÉS
+Nouvel onglet Salle des défis, aussi accessible depuis l’accueil et la frise.
+12 dossiers : 3 en 6e, 3 en 5e, 3 en 4e, 3 en 3e.
+Chaque dossier comprend quatre découvertes à lire puis trois activités :
+- Frise à reconstruire : sélectionner une carte puis sa place. Les erreurs révèlent les dates pour aider à corriger.
+- Memory : associer quatre dates/plages de dates aux quatre événements. Les cartes mal associées se retournent au rythme de l’élève.
+- Intrus temporel : retrouver l’événement dont la date de début est hors de l’intervalle proposé.
+Chaque jeu se termine par une chronologie récapitulative avec les descriptions.
+20 XP à la première réussite de chaque jeu de dossier, sans doublon lors des reprises. Les découvertes alimentent le passeport existant.
+Partie sauvegardée automatiquement et reprenable après rechargement. Relire le dossier conserve le plateau de jeu.
+L’espacement des cartes des exercices représente l’ordre, pas la durée historique.
 
-Contrôles : syntaxe JavaScript et données vérifiées. Rendu navigateur et tests interactifs non réalisés : aperçu local inaccessible depuis le navigateur de test.
+DOSSIERS
+6e : premiers humains ; premiers États ; Rome.
+5e : pouvoirs médiévaux ; routes maritimes ; archives du royaume.
+4e : révolutions ; années Bonaparte ; République.
+3e : 1914-1919 ; guerre froide ; dossier européen.
+
+COMPATIBILITÉ
+Accueil, frise, 128 événements, 27 ateliers, jeux classiques, expéditions V3, passeport, révision et frise personnelle conservés. Les sauvegardes sont conservées sur le même navigateur et la même adresse. Le fichier en ligne V3 a été comparé à la base utilisée et était identique.
+
+VÉRIFICATIONS
+Syntaxe JavaScript vérifiée.
+Tests de logique DOM : les 36 activités ont été terminées ; erreurs et indices testés ; ordre avant J.-C. testé ; memory, relecture et reprise d’une partie après rechargement testés ; XP sans doublons testés ; fonctions V3 testées à nouveau. Aucun problème d’exécution observé dans ces tests.
+Rendu visuel, géométrie de la frise et manipulations réelles sur téléphone non vérifiés dans un navigateur.
+Les textes historiques et les dates proviennent des contenus existants ; aucune nouvelle certification scientifique ou conformité aux programmes n’est revendiquée.
